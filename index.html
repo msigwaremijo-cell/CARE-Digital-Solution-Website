@@ -542,6 +542,298 @@ main {
       transform: none;
     }
   }
+
+/* ==========================================================
+   About Section — Futuristic Technology Composition
+   ========================================================== */
+.about-section { padding:100px 34px; background:var(--bg-elevated); }
+.about-inner {
+  max-width:1400px;
+  margin:0 auto;
+  display:grid;
+  grid-template-columns:minmax(0,1.05fr) minmax(0,.95fr);
+  gap:72px;
+  align-items:center;
+}
+.about-copy { max-width:620px; }
+.about-label {
+  display:inline-flex;
+  align-items:center;
+  gap:10px;
+  color:var(--accent);
+  font-size:.75rem;
+  font-weight:800;
+  text-transform:uppercase;
+  letter-spacing:.22em;
+  margin:0 0 18px;
+}
+.about-label::before {
+  content:"";
+  width:28px;
+  height:2px;
+  border-radius:2px;
+  background:linear-gradient(90deg,var(--accent) 0%,#00D4FF 100%);
+}
+.about-heading {
+  margin:0 0 22px;
+  font-size:clamp(2rem,3.6vw,3.05rem);
+  font-weight:900;
+  line-height:1.08;
+  letter-spacing:-.04em;
+  color:var(--text);
+}
+.about-lead {
+  max-width:56ch;
+  margin:0 0 38px;
+  color:var(--muted);
+  font-size:clamp(1rem,1.1vw,1.12rem);
+  line-height:1.75;
+}
+.about-principles { display:grid; gap:22px; margin:0; padding:0; list-style:none; }
+.principle { display:flex; gap:16px; align-items:flex-start; }
+.principle-icon {
+  flex:none;
+  display:grid;
+  place-items:center;
+  width:48px;
+  height:48px;
+  border-radius:14px;
+  color:var(--accent);
+  background:linear-gradient(150deg,var(--accent-soft) 0%,rgba(0,212,255,.10) 100%);
+  border:1px solid rgba(37,99,235,.14);
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.65);
+}
+html[data-mode="dark"] .principle-icon {
+  border-color:rgba(0,212,255,.18);
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.05);
+}
+.principle-title { margin:0 0 6px; font-size:1.06rem; font-weight:800; letter-spacing:-.02em; color:var(--text); }
+.principle-text { margin:0; color:var(--muted); font-size:.92rem; line-height:1.65; }
+
+/* Technology stage */
+.about-visual { position:relative; min-width:0; pointer-events:none; }
+.tech-stage {
+  position:relative;
+  isolation:isolate;
+  width:100%;
+  max-width:580px;
+  margin-inline:auto;
+  aspect-ratio:1/1;
+  overflow:hidden;
+  border-radius:30px;
+  border:1px solid rgba(0,212,255,.18);
+  background:
+    radial-gradient(115% 95% at 12% -5%,rgba(37,99,235,.5) 0%,rgba(37,99,235,0) 58%),
+    radial-gradient(85% 85% at 102% 104%,rgba(0,212,255,.3) 0%,rgba(0,212,255,0) 62%),
+    linear-gradient(150deg,#0B1F3A 0%,#071426 58%,#050c1a 100%);
+  box-shadow:
+    0 44px 90px -34px rgba(7,20,38,.72),
+    0 1px 0 rgba(255,255,255,.07) inset,
+    0 0 0 1px rgba(255,255,255,.03) inset;
+}
+html[data-mode="dark"] .tech-stage {
+  border-color:rgba(0,212,255,.26);
+  background:
+    radial-gradient(115% 95% at 12% -5%,rgba(37,99,235,.34) 0%,rgba(37,99,235,0) 58%),
+    radial-gradient(85% 85% at 102% 104%,rgba(0,212,255,.2) 0%,rgba(0,212,255,0) 62%),
+    linear-gradient(150deg,#061530 0%,#040e1e 58%,#02070f 100%);
+  box-shadow:
+    0 40px 90px -30px rgba(0,0,0,.85),
+    0 0 0 1px rgba(0,212,255,.1) inset;
+}
+.tech-stage::after {
+  content:"";
+  position:absolute;
+  inset:0;
+  border-radius:inherit;
+  pointer-events:none;
+  background:linear-gradient(135deg,rgba(255,255,255,.09) 0%,rgba(255,255,255,0) 34%,rgba(255,255,255,0) 68%,rgba(0,212,255,.07) 100%);
+}
+.tech-grid {
+  position:absolute;
+  inset:-4%;
+  background-image:
+    linear-gradient(rgba(0,212,255,.075) 1px,transparent 1px),
+    linear-gradient(90deg,rgba(0,212,255,.075) 1px,transparent 1px);
+  background-size:46px 46px;
+  -webkit-mask-image:radial-gradient(ellipse at 50% 46%,#000 18%,transparent 76%);
+  mask-image:radial-gradient(ellipse at 50% 46%,#000 18%,transparent 76%);
+  transition:transform 420ms cubic-bezier(.2,.8,.2,1);
+}
+.tech-glow { position:absolute; border-radius:50%; filter:blur(58px); }
+.tech-glow-a {
+  width:56%;
+  aspect-ratio:1;
+  top:2%;
+  left:-12%;
+  background:radial-gradient(circle,rgba(37,99,235,.62) 0%,rgba(37,99,235,0) 70%);
+  animation:techDrift 15s ease-in-out infinite;
+}
+.tech-glow-b {
+  width:50%;
+  aspect-ratio:1;
+  right:-10%;
+  bottom:-8%;
+  background:radial-gradient(circle,rgba(0,212,255,.45) 0%,rgba(0,212,255,0) 70%);
+  animation:techDrift 19s ease-in-out infinite reverse;
+}
+.tech-net { position:absolute; inset:0; width:100%; height:100%; transition:transform 420ms cubic-bezier(.2,.8,.2,1); }
+.net-node { fill:#8FE9FF; }
+.net-node-pulse { animation:nodePulse 3.4s ease-in-out infinite; }
+.net-node-pulse.d1 { animation-delay:-.9s; }
+.net-node-pulse.d2 { animation-delay:-1.8s; }
+.net-node-pulse.d3 { animation-delay:-2.6s; }
+.tech-orbit { transform-box:fill-box; transform-origin:center; animation:techSpin 52s linear infinite; }
+.tech-particle {
+  position:absolute;
+  border-radius:50%;
+  background:#00D4FF;
+  box-shadow:0 0 8px rgba(0,212,255,.85);
+  opacity:.5;
+  animation:particleFloat 13s ease-in-out infinite;
+}
+.tech-particle.p1 { width:4px; height:4px; top:22%; left:14%; animation-delay:-2s; }
+.tech-particle.p2 { width:3px; height:3px; top:68%; left:22%; animation-delay:-5s; }
+.tech-particle.p3 { width:5px; height:5px; top:30%; right:18%; animation-delay:-8s; }
+.tech-particle.p4 { width:3px; height:3px; bottom:22%; right:26%; animation-delay:-3.5s; }
+.tech-particle.p5 { width:4px; height:4px; top:52%; left:8%; animation-delay:-10s; }
+
+/* Floating interface panels */
+.tech-panel {
+  position:absolute;
+  min-width:152px;
+  padding:13px 15px;
+  border-radius:16px;
+  color:#EAF6FF;
+  background:linear-gradient(150deg,rgba(255,255,255,.12) 0%,rgba(255,255,255,.035) 100%);
+  border:1px solid rgba(255,255,255,.16);
+  -webkit-backdrop-filter:blur(16px) saturate(150%);
+  backdrop-filter:blur(16px) saturate(150%);
+  box-shadow:0 20px 42px -16px rgba(0,0,0,.7), 0 1px 0 rgba(255,255,255,.16) inset;
+  animation:panelFloat 8s ease-in-out infinite;
+}
+.tech-panel-a { top:6%; right:4%; animation-delay:-1.2s; }
+.tech-panel-b { top:37%; left:2.5%; animation-delay:-3.6s; }
+.tech-panel-c { right:6%; bottom:7%; animation-delay:-5.8s; }
+.tech-panel-head { display:flex; align-items:center; justify-content:space-between; gap:12px; margin-bottom:9px; }
+.tech-panel-title { font-size:.72rem; font-weight:700; letter-spacing:.01em; color:#fff; }
+.tech-panel-icon {
+  display:grid;
+  place-items:center;
+  width:26px;
+  height:26px;
+  border-radius:9px;
+  color:#00D4FF;
+  background:rgba(0,212,255,.14);
+  border:1px solid rgba(0,212,255,.22);
+}
+.tech-panel-icon svg { width:15px; height:15px; }
+.tech-bars { display:flex; align-items:flex-end; gap:4px; height:26px; }
+.tech-bars span { display:block; width:6px; border-radius:3px; background:linear-gradient(180deg,#00D4FF 0%,#2563EB 100%); opacity:.85; }
+.tech-link-row { display:flex; align-items:center; gap:7px; height:26px; }
+.tech-link-row i { display:block; height:2px; border-radius:2px; background:linear-gradient(90deg,rgba(0,212,255,.9) 0%,rgba(37,99,235,.25) 100%); }
+.tech-link-row .tech-dot {
+  display:block;
+  width:7px;
+  height:7px;
+  border-radius:50%;
+  background:#00D4FF;
+  box-shadow:0 0 8px rgba(0,212,255,.9);
+}
+.tech-swatches { display:flex; gap:6px; height:26px; align-items:center; }
+.tech-swatches i { display:block; width:20px; height:20px; border-radius:7px; border:1px solid rgba(255,255,255,.18); }
+
+/* Floating credential badge (existing content, restyled) */
+.tech-badge {
+  position:absolute;
+  left:4%;
+  bottom:6%;
+  display:flex;
+  align-items:center;
+  gap:10px;
+  padding:10px 14px;
+  border-radius:14px;
+  background:linear-gradient(150deg,rgba(255,255,255,.13) 0%,rgba(255,255,255,.04) 100%);
+  border:1px solid rgba(255,255,255,.16);
+  -webkit-backdrop-filter:blur(16px);
+  backdrop-filter:blur(16px);
+  box-shadow:0 20px 42px -18px rgba(0,0,0,.7), 0 1px 0 rgba(255,255,255,.16) inset;
+  animation:panelFloat 9s ease-in-out infinite;
+  animation-delay:-6.4s;
+}
+.tech-badge-num {
+  font-size:1.35rem;
+  font-weight:900;
+  line-height:1;
+  letter-spacing:-.03em;
+  color:#fff;
+  background:linear-gradient(135deg,#FFFFFF 0%,#00D4FF 100%);
+  -webkit-background-clip:text;
+  background-clip:text;
+  -webkit-text-fill-color:transparent;
+}
+.tech-badge-text { font-size:.68rem; line-height:1.25; font-weight:600; color:rgba(234,246,255,.82); }
+
+@keyframes panelFloat {
+  0%,100% { transform:translateY(0); }
+  50% { transform:translateY(-11px); }
+}
+@keyframes techDrift {
+  0%,100% { transform:translate3d(0,0,0) scale(1); }
+  50% { transform:translate3d(5%,4%,0) scale(1.09); }
+}
+@keyframes nodePulse {
+  0%,100% { opacity:.4; }
+  50% { opacity:1; }
+}
+@keyframes particleFloat {
+  0%,100% { transform:translate3d(0,0,0); opacity:.22; }
+  50% { transform:translate3d(6px,-14px,0); opacity:.7; }
+}
+@keyframes techSpin {
+  to { transform:rotate(360deg); }
+}
+
+@media (max-width:1200px) {
+  .about-inner { grid-template-columns:1fr; gap:56px; }
+  .about-copy { max-width:640px; margin-inline:auto; }
+  .tech-stage { max-width:560px; }
+}
+@media (max-width:900px) {
+  .tech-stage { max-width:500px; }
+  .tech-panel { min-width:140px; padding:12px 13px; }
+}
+@media (max-width:768px) {
+  .about-section { padding:74px 20px; }
+  .tech-stage { max-width:440px; border-radius:24px; }
+  .tech-panel-a { top:5%; right:3%; }
+  .tech-panel-b { top:36%; left:2%; }
+  .tech-panel-c { right:4%; bottom:6%; }
+  .tech-panel { animation-duration:10s; }
+}
+@media (max-width:560px) {
+  .about-section { padding:64px 18px; }
+  .about-principles { gap:18px; }
+  .principle-icon { width:44px; height:44px; border-radius:12px; }
+  .tech-stage { max-width:380px; border-radius:22px; }
+  .tech-grid { background-size:36px 36px; }
+  .tech-panel { min-width:124px; padding:10px 12px; border-radius:13px; }
+  .tech-panel-title { font-size:.66rem; }
+  .tech-panel-head { margin-bottom:7px; }
+  .tech-panel-icon { width:22px; height:22px; border-radius:8px; }
+  .tech-bars, .tech-link-row, .tech-swatches { height:20px; }
+  .tech-bars span { width:5px; }
+  .tech-swatches i { width:16px; height:16px; border-radius:6px; }
+  .tech-panel-c { display:none; }
+  .tech-particle { display:none; }
+  .tech-badge { left:3.5%; bottom:4.5%; padding:8px 11px; gap:8px; border-radius:12px; }
+  .tech-badge-num { font-size:1.1rem; }
+  .tech-badge-text { font-size:.62rem; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .net-node-pulse { opacity:.9; }
+  .tech-particle { opacity:.4; }
+}
 </style>
 </head>
 <body>
@@ -679,43 +971,155 @@ main {
     </section>
 
     <!-- Company Introduction -->
-    <section id="about" style="padding:100px 34px;max-width:1400px;margin:0 auto;background:var(--bg-elevated)" aria-labelledby="about-heading">
-      <div style="display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center">
-        <div>
-          <div style="display:inline-block;color:var(--accent);font-size:.75rem;font-weight:700;text-transform:uppercase;letter-spacing:.2em;margin-bottom:16px">About Us</div>
-          <h2 id="about-heading" style="font-size:clamp(2rem,4vw,3rem);font-weight:900;letter-spacing:-.04em;margin-bottom:24px;color:var(--text)">Where Creativity Meets Technology</h2>
-          <p style="color:var(--muted);font-size:1.1rem;line-height:1.7;margin-bottom:32px">CARE Digital Solutions connects creative thinking with modern technology to help businesses communicate effectively, strengthen their brands, and explore new digital opportunities.</p>
-          <div style="display:grid;gap:24px">
-            <div style="display:flex;gap:16px;align-items:flex-start">
-              <div style="width:48px;height:48px;border-radius:12px;background:var(--accent-soft);color:var(--accent);display:grid;place-items:center;flex:none"><svg class="icon" viewBox="0 0 24 24" style="width:24px;height:24px"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2Z"/></svg></div>
+    <section id="about" class="about-section" aria-labelledby="about-heading">
+      <div class="about-inner">
+        <div class="about-copy reveal">
+          <p class="about-label">About Us</p>
+          <h2 id="about-heading" class="about-heading">Where Creativity Meets Technology</h2>
+          <p class="about-lead">CARE Digital Solutions connects creative thinking with modern technology to help businesses communicate effectively, strengthen their brands, and explore new digital opportunities.</p>
+          <ul class="about-principles">
+            <li class="principle">
+              <span class="principle-icon" aria-hidden="true"><svg class="icon" viewBox="0 0 24 24"><path d="M15 14c.2-1 .7-1.7 1.5-2.5 1-.9 1.5-2.2 1.5-3.5A6 6 0 0 0 6 8c0 1-.2 2.2 1.5 3.5.8.8 1.3 1.5 1.5 2.5"/><path d="M9 18h6M10 22h4"/></svg></span>
               <div>
-                <h3 style="font-size:1.1rem;font-weight:800;margin-bottom:8px">Innovation with Purpose</h3>
-                <p style="color:var(--muted);font-size:.9rem;line-height:1.6;margin:0">Every solution we create is designed with clear business objectives and measurable impact.</p>
+                <h3 class="principle-title">Innovation with Purpose</h3>
+                <p class="principle-text">Every solution we create is designed with clear business objectives and measurable impact.</p>
               </div>
-            </div>
-            <div style="display:flex;gap:16px;align-items:flex-start">
-              <div style="width:48px;height:48px;border-radius:12px;background:var(--accent-soft);color:var(--accent);display:grid;place-items:center;flex:none"><svg class="icon" viewBox="0 0 24 24" style="width:24px;height:24px"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2Z"/></svg></div>
+            </li>
+            <li class="principle">
+              <span class="principle-icon" aria-hidden="true"><svg class="icon" viewBox="0 0 24 24"><path d="M3.85 8.62a4 4 0 0 1 4.78-4.77 4 4 0 0 1 6.74 0 4 4 0 0 1 4.78 4.78 4 4 0 0 1 0 6.74 4 4 0 0 1-4.77 4.78 4 4 0 0 1-6.75 0 4 4 0 0 1-4.78-4.77 4 4 0 0 1 0-6.76Z"/><path d="m9 12 2 2 4-4"/></svg></span>
               <div>
-                <h3 style="font-size:1.1rem;font-weight:800;margin-bottom:8px">Quality by Design</h3>
-                <p style="color:var(--muted);font-size:.9rem;line-height:1.6;margin:0">We prioritize excellence in every detail, from initial concept to final delivery.</p>
+                <h3 class="principle-title">Quality by Design</h3>
+                <p class="principle-text">We prioritize excellence in every detail, from initial concept to final delivery.</p>
               </div>
-            </div>
-            <div style="display:flex;gap:16px;align-items:flex-start">
-              <div style="width:48px;height:48px;border-radius:12px;background:var(--accent-soft);color:var(--accent);display:grid;place-items:center;flex:none"><svg class="icon" viewBox="0 0 24 24" style="width:24px;height:24px"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2Z"/></svg></div>
+            </li>
+            <li class="principle">
+              <span class="principle-icon" aria-hidden="true"><svg class="icon" viewBox="0 0 24 24"><path d="M16 7h6v6"/><path d="m22 7-8.5 8.5-5-5L2 17"/></svg></span>
               <div>
-                <h3 style="font-size:1.1rem;font-weight:800;margin-bottom:8px">Technology for Growth</h3>
-                <p style="color:var(--muted);font-size:.9rem;line-height:1.6;margin:0">Solutions designed to scale with your business and adapt to future needs.</p>
+                <h3 class="principle-title">Technology for Growth</h3>
+                <p class="principle-text">We use technology and creative thinking to help businesses explore new opportunities.</p>
               </div>
-            </div>
-          </div>
+            </li>
+          </ul>
         </div>
-        <div style="position:relative">
-          <div style="aspect-ratio:1;border-radius:24px;background:linear-gradient(135deg,var(--accent-soft),var(--bg));border:1px solid var(--line);display:grid;place-items:center;overflow:hidden">
-            <div style="width:80%;height:80%;border-radius:50%;background:radial-gradient(circle at 30% 30%,var(--accent) 0%,var(--hero-bg) 70%);opacity:.2"></div>
-          </div>
-          <div style="position:absolute;bottom:-20px;right:-20px;width:120px;height:120px;border-radius:20px;background:var(--surface-solid);border:1px solid var(--line);padding:20px;box-shadow:var(--shadow)">
-            <div style="font-size:2rem;font-weight:900;color:var(--accent)">8+</div>
-            <div style="font-size:.8rem;color:var(--muted);font-weight:600">Years of Excellence</div>
+        <div class="about-visual reveal">
+          <div class="tech-stage">
+            <div class="tech-grid" data-depth="6"></div>
+            <div class="tech-glow tech-glow-a"></div>
+            <div class="tech-glow tech-glow-b"></div>
+            <svg class="tech-net" data-depth="14" viewBox="0 0 520 520" aria-hidden="true" focusable="false">
+              <defs>
+                <radialGradient id="techCoreGlow" cx="50%" cy="50%" r="50%">
+                  <stop offset="0%" stop-color="#00D4FF" stop-opacity=".5"/>
+                  <stop offset="55%" stop-color="#2563EB" stop-opacity=".16"/>
+                  <stop offset="100%" stop-color="#2563EB" stop-opacity="0"/>
+                </radialGradient>
+                <radialGradient id="techSphere" cx="34%" cy="26%" r="78%">
+                  <stop offset="0%" stop-color="#9DF0FF"/>
+                  <stop offset="32%" stop-color="#37B6F0"/>
+                  <stop offset="66%" stop-color="#2563EB"/>
+                  <stop offset="100%" stop-color="#0B1F3A"/>
+                </radialGradient>
+                <linearGradient id="techLine" x1="0" y1="0" x2="1" y2="1">
+                  <stop offset="0%" stop-color="#00D4FF" stop-opacity=".8"/>
+                  <stop offset="100%" stop-color="#2563EB" stop-opacity=".06"/>
+                </linearGradient>
+                <linearGradient id="techRing" x1="0" y1="0" x2="1" y2="0">
+                  <stop offset="0%" stop-color="#00D4FF" stop-opacity=".04"/>
+                  <stop offset="50%" stop-color="#00D4FF" stop-opacity=".7"/>
+                  <stop offset="100%" stop-color="#2563EB" stop-opacity=".04"/>
+                </linearGradient>
+                <filter id="techSoft" x="-50%" y="-50%" width="200%" height="200%">
+                  <feGaussianBlur stdDeviation="9"/>
+                </filter>
+              </defs>
+
+              <circle cx="260" cy="260" r="168" fill="url(#techCoreGlow)"/>
+
+              <g class="tech-orbit">
+                <circle cx="260" cy="260" r="152" fill="none" stroke="#00D4FF" stroke-opacity=".3" stroke-width="1" stroke-dasharray="3 13" stroke-linecap="round"/>
+                <circle cx="260" cy="260" r="178" fill="none" stroke="#2563EB" stroke-opacity=".26" stroke-width="1" stroke-dasharray="2 18"/>
+              </g>
+
+              <path d="M300 200 Q 380 150 445 105" fill="none" stroke="url(#techLine)" stroke-width="1.3"/>
+              <path d="M250 255 Q 200 235 150 225" fill="none" stroke="url(#techLine)" stroke-width="1.3"/>
+              <path d="M300 320 Q 380 388 440 430" fill="none" stroke="url(#techLine)" stroke-width="1.3"/>
+              <path d="M240 320 Q 170 392 110 450" fill="none" stroke="url(#techLine)" stroke-width="1.1"/>
+              <path d="M235 212 Q 160 148 88 106" fill="none" stroke="url(#techLine)" stroke-width="1" stroke-opacity=".75"/>
+              <path d="M262 215 Q 305 118 356 58" fill="none" stroke="url(#techLine)" stroke-width="1" stroke-opacity=".6"/>
+
+              <circle cx="376" cy="151" r="2.6" class="net-node"/>
+              <circle cx="200" cy="238" r="2.2" class="net-node"/>
+              <circle cx="375" cy="382" r="2.6" class="net-node"/>
+              <circle cx="172" cy="388" r="2.2" class="net-node"/>
+              <circle cx="161" cy="154" r="2" fill="#8FE9FF" opacity=".7"/>
+              <circle cx="307" cy="127" r="2" fill="#8FE9FF" opacity=".6"/>
+
+              <ellipse cx="260" cy="260" rx="178" ry="54" fill="none" stroke="url(#techRing)" stroke-width="1.6" transform="rotate(-18 260 260)"/>
+              <circle cx="429" cy="205" r="3.4" class="net-node net-node-pulse d1"/>
+
+              <circle cx="260" cy="260" r="112" fill="url(#techSphere)"/>
+              <circle cx="260" cy="260" r="112" fill="none" stroke="#9DEBFF" stroke-opacity=".55" stroke-width="1.2"/>
+              <ellipse cx="260" cy="260" rx="112" ry="96" fill="none" stroke="#00D4FF" stroke-opacity=".16"/>
+              <ellipse cx="260" cy="260" rx="112" ry="76" fill="none" stroke="#CFF6FF" stroke-opacity=".22"/>
+              <ellipse cx="260" cy="260" rx="112" ry="40" fill="none" stroke="#CFF6FF" stroke-opacity=".32"/>
+              <ellipse cx="260" cy="260" rx="76" ry="112" fill="none" stroke="#CFF6FF" stroke-opacity=".2"/>
+              <ellipse cx="260" cy="260" rx="40" ry="112" fill="none" stroke="#CFF6FF" stroke-opacity=".3"/>
+
+              <circle cx="186" cy="203" r="3" class="net-node net-node-pulse d2"/>
+              <circle cx="334" cy="220" r="3" class="net-node"/>
+              <circle cx="210" cy="328" r="3" class="net-node net-node-pulse d3"/>
+              <circle cx="314" cy="316" r="2.6" class="net-node"/>
+              <circle cx="260" cy="150" r="2.6" class="net-node net-node-pulse d1"/>
+              <circle cx="260" cy="370" r="2.6" class="net-node"/>
+              <circle cx="150" cy="260" r="2.6" class="net-node"/>
+              <circle cx="370" cy="260" r="2.6" class="net-node net-node-pulse d2"/>
+
+              <ellipse cx="214" cy="198" rx="54" ry="34" fill="#FFFFFF" opacity=".16" filter="url(#techSoft)" transform="rotate(-28 214 198)"/>
+              <circle cx="206" cy="188" r="20" fill="#EAF9FF" opacity=".28" filter="url(#techSoft)"/>
+            </svg>
+
+            <span class="tech-particle p1"></span>
+            <span class="tech-particle p2"></span>
+            <span class="tech-particle p3"></span>
+            <span class="tech-particle p4"></span>
+            <span class="tech-particle p5"></span>
+
+            <div class="tech-panel tech-panel-a" aria-hidden="true">
+              <div class="tech-panel-head">
+                <span class="tech-panel-title">Digital Innovation</span>
+                <span class="tech-panel-icon"><svg class="icon" viewBox="0 0 24 24"><path d="M9 18h6M10 22h4M12 2a7 7 0 0 0-4 12.7V17h8v-2.3A7 7 0 0 0 12 2z"/></svg></span>
+              </div>
+              <div class="tech-bars">
+                <span style="height:38%"></span><span style="height:66%"></span><span style="height:50%"></span><span style="height:86%"></span><span style="height:60%"></span><span style="height:100%"></span>
+              </div>
+            </div>
+
+            <div class="tech-panel tech-panel-b" aria-hidden="true">
+              <div class="tech-panel-head">
+                <span class="tech-panel-title">Connected Systems</span>
+                <span class="tech-panel-icon"><svg class="icon" viewBox="0 0 24 24"><circle cx="12" cy="5" r="2.4"/><circle cx="5" cy="19" r="2.4"/><circle cx="19" cy="19" r="2.4"/><path d="M12 7.4v4.2M6.6 17l3.6-3.4M17.4 17l-3.6-3.4"/></svg></span>
+              </div>
+              <div class="tech-link-row">
+                <span class="tech-dot"></span><i style="width:26px"></i><span class="tech-dot"></span><i style="width:14px"></i><span class="tech-dot"></span>
+              </div>
+            </div>
+
+            <div class="tech-panel tech-panel-c" aria-hidden="true">
+              <div class="tech-panel-head">
+                <span class="tech-panel-title">Creative Solutions</span>
+                <span class="tech-panel-icon"><svg class="icon" viewBox="0 0 24 24"><path d="M12 3.2 13.7 8l4.8 1.6-4.8 1.7L12 16l-1.7-4.7L5.5 9.6 10.3 8z"/><path d="m18.6 15.4.8 2.2 2.2.8-2.2.8-.8 2.2-.8-2.2-2.2-.8 2.2-.8z"/></svg></span>
+              </div>
+              <div class="tech-swatches">
+                <i style="background:linear-gradient(135deg,#2563EB,#00D4FF)"></i>
+                <i style="background:linear-gradient(135deg,#00D4FF,#9DF0FF)"></i>
+                <i style="background:linear-gradient(135deg,#0B1F3A,#2563EB)"></i>
+              </div>
+            </div>
+
+            <div class="tech-badge">
+              <span class="tech-badge-num">8+</span>
+              <span class="tech-badge-text">Years of Excellence</span>
+            </div>
           </div>
         </div>
       </div>
@@ -945,6 +1349,35 @@ main {
 
       backToTop.addEventListener("click", () => {
         window.scrollTo({ top: 0, behavior: reduceMotion.matches ? "auto" : "smooth" });
+      });
+    }
+
+    // About composition — subtle desktop parallax
+    const aboutSection = document.querySelector(".about-section");
+    const aboutVisual = document.querySelector(".about-visual");
+    if (aboutSection && aboutVisual && window.matchMedia("(hover:hover) and (pointer:fine)").matches) {
+      const parallaxLayers = aboutVisual.querySelectorAll("[data-depth]");
+      const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
+      let parallaxFrame = null;
+
+      aboutSection.addEventListener("mousemove", (event) => {
+        if (reduceMotion.matches || parallaxFrame) return;
+        parallaxFrame = window.requestAnimationFrame(() => {
+          parallaxFrame = null;
+          const rect = aboutSection.getBoundingClientRect();
+          const offsetX = (event.clientX - rect.left) / rect.width - .5;
+          const offsetY = (event.clientY - rect.top) / rect.height - .5;
+          parallaxLayers.forEach((layer) => {
+            const depth = parseFloat(layer.dataset.depth) || 0;
+            layer.style.transform = `translate3d(${(-offsetX * depth).toFixed(2)}px, ${(-offsetY * depth).toFixed(2)}px, 0)`;
+          });
+        });
+      }, { passive: true });
+
+      aboutSection.addEventListener("mouseleave", () => {
+        parallaxLayers.forEach((layer) => {
+          layer.style.transform = "";
+        });
       });
     }
   })();
