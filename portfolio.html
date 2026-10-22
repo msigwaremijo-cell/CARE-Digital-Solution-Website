@@ -1,0 +1,2935 @@
+<!DOCTYPE html>
+<html lang="en" data-mode="light">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#071426">
+<meta name="description" content="CARE Digital Solutions Portfolio — Explore our work in web design, software development, branding, and creative digital solutions. Connecting Ideas, Empowering Businesses.">
+<meta name="keywords" content="portfolio, web design, software development, branding, creative work, Tanzania, CARE Digital Solutions">
+<meta name="author" content="CARE Digital Solutions">
+<meta name="robots" content="index, follow">
+<meta property="og:title" content="Portfolio — CARE Digital Solutions">
+<meta property="og:description" content="Explore our work in web design, software development, branding, and creative digital solutions.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://caredigitalsolutions.co.tz/portfolio">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Portfolio — CARE Digital Solutions">
+<meta name="twitter:description" content="Explore our work in web design, software development, branding, and creative digital solutions.">
+<link rel="canonical" href="https://caredigitalsolutions.co.tz/portfolio">
+<title>Portfolio — CARE Digital Solutions</title>
+<style>
+/* ==========================================================
+   CARE Digital Solutions — Premium Portfolio Page
+   Vanilla HTML + CSS + JS | No framework or build step needed
+   ========================================================== */
+:root {
+  color-scheme: light;
+  --bg: #F4F7FB;
+  --bg-elevated: #ffffff;
+  --surface: rgba(255,255,255,.76);
+  --surface-solid: #fff;
+  --surface-soft: #eef2f8;
+  --text: #071426;
+  --muted: #64748B;
+  --line: rgba(7,20,38,.08);
+  --accent: #2563EB;
+  --accent-2: #22D3EE;
+  --accent-soft: rgba(37,99,235,.08);
+  --hero-bg: #071426;
+  --hero-bg-deep: #0B1F3A;
+  --shadow: 0 18px 50px rgba(7,20,38,.12);
+  --shadow-sm: 0 8px 24px rgba(7,20,38,.08);
+  --header-height: 80px;
+  --radius-xl: 24px;
+  --radius-lg: 18px;
+  --radius-md: 14px;
+  --radius-sm: 10px;
+  --transition: 280ms cubic-bezier(.2,.8,.2,1);
+  --font: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+}
+html[data-mode="dark"] {
+  color-scheme: dark;
+  --bg:#071426;
+  --bg-elevated:#0B1F3A;
+  --surface:rgba(11,31,58,.78);
+  --surface-solid:#0B1F3A;
+  --surface-soft:#0d2847;
+  --text:#f8fafc;
+  --muted:#94a3b8;
+  --line:rgba(255,255,255,.08);
+  --accent-soft:rgba(37,99,235,.15);
+  --shadow:0 18px 50px rgba(0,0,0,.3);
+  --shadow-sm:0 8px 24px rgba(0,0,0,.2);
+}
+* { box-sizing:border-box; }
+html { scroll-behavior:smooth; }
+body {
+  margin:0; min-height:100vh; font-family:var(--font); color:var(--text);
+  background:var(--bg);
+  line-height:1.6; transition:background-color var(--transition),color var(--transition);
+}
+button, input, select, textarea { font:inherit; }
+button { color:inherit; }
+a { color:inherit; text-decoration:none; }
+button:focus-visible, a:focus-visible, input:focus-visible { outline:3px solid var(--accent-2); outline-offset:3px; }
+.icon { width:20px; height:20px; display:inline-block; flex:none; fill:none; stroke:currentColor; stroke-width:1.8; stroke-linecap:round; stroke-linejoin:round; }
+.skip-link { position:fixed; left:12px; top:-60px; z-index:999; padding:10px 14px; border-radius:10px; background:var(--surface-solid); }
+.skip-link:focus { top:12px; }
+
+/* Premium Header */
+.topbar {
+  height:var(--header-height);
+  position:fixed;
+  top:0;
+  left:0;
+  right:0;
+  z-index:40;
+  display:flex;
+  align-items:center;
+  gap:20px;
+  padding:0 34px;
+  background:transparent;
+  backdrop-filter:blur(20px);
+  -webkit-backdrop-filter:blur(20px);
+  transition:all var(--transition);
+}
+
+.topbar.scrolled {
+  background:rgba(255,255,255,.95);
+  border-bottom:1px solid var(--line);
+  box-shadow:var(--shadow-sm);
+}
+
+html[data-mode="dark"] .topbar.scrolled {
+  background:rgba(7,20,38,.95);
+}
+
+.main-area {
+  min-height:100vh;
+  display:flex;
+  flex-direction:column;
+}
+
+main {
+  width:100%;
+  max-width:100%;
+  margin:0 auto;
+  flex:1;
+}
+
+/* Portfolio Hero */
+.portfolio-hero {
+  position:relative;
+  min-height:80vh;
+  display:flex;
+  align-items:center;
+  background:linear-gradient(135deg,var(--hero-bg) 0%,var(--hero-bg-deep) 100%);
+  overflow:hidden;
+  padding:140px 34px 100px;
+}
+
+.portfolio-hero-bg {
+  position:absolute;
+  inset:0;
+  overflow:hidden;
+  pointer-events:none;
+}
+
+.portfolio-hero-grid {
+  position:absolute;
+  inset:0;
+  background-image:
+    linear-gradient(rgba(37,99,235,.03) 1px,transparent 1px),
+    linear-gradient(90deg,rgba(37,99,235,.03) 1px,transparent 1px);
+  background-size:60px 60px;
+  mask-image:radial-gradient(ellipse at center,black 30%,transparent 70%);
+}
+
+.portfolio-hero-glow {
+  position:absolute;
+  width:600px;
+  height:600px;
+  border-radius:50%;
+  background:radial-gradient(circle,rgba(37,99,235,.15) 0%,transparent 70%);
+  top:-200px;
+  right:-200px;
+  filter:blur(80px);
+}
+
+.portfolio-hero-glow-2 {
+  position:absolute;
+  width:400px;
+  height:400px;
+  border-radius:50%;
+  background:radial-gradient(circle,rgba(34,211,238,.1) 0%,transparent 70%);
+  bottom:-100px;
+  left:-100px;
+  filter:blur(60px);
+}
+
+/* Hero — digital network & data pathways */
+.portfolio-hero-network {
+  position:absolute;
+  inset:0;
+  width:100%;
+  height:100%;
+  opacity:.75;
+}
+
+.portfolio-hero-network line {
+  stroke:rgba(34,211,238,.18);
+  stroke-width:1;
+}
+
+.portfolio-hero-network circle {
+  fill:var(--accent-2);
+  opacity:.5;
+  animation:nodePulse 5s ease-in-out infinite;
+}
+
+.portfolio-hero-network circle:nth-child(2n) { animation-delay:1.4s; }
+.portfolio-hero-network circle:nth-child(3n) { animation-delay:2.8s; }
+
+@keyframes nodePulse {
+  0%,100% { opacity:.25; }
+  50% { opacity:.9; }
+}
+
+/* Hero — slow-moving light particles */
+.portfolio-hero-particles {
+  position:absolute;
+  inset:0;
+  background-image:
+    radial-gradient(2px 2px at 12% 22%,rgba(34,211,238,.7) 0,transparent 100%),
+    radial-gradient(1.5px 1.5px at 28% 68%,rgba(255,255,255,.5) 0,transparent 100%),
+    radial-gradient(2px 2px at 44% 34%,rgba(37,99,235,.7) 0,transparent 100%),
+    radial-gradient(1.5px 1.5px at 62% 78%,rgba(255,255,255,.4) 0,transparent 100%),
+    radial-gradient(2px 2px at 78% 18%,rgba(34,211,238,.6) 0,transparent 100%),
+    radial-gradient(1.5px 1.5px at 88% 56%,rgba(37,99,235,.6) 0,transparent 100%),
+    radial-gradient(1.5px 1.5px at 8% 84%,rgba(255,255,255,.35) 0,transparent 100%);
+  animation:particleDrift 26s ease-in-out infinite alternate;
+}
+
+@keyframes particleDrift {
+  from { transform:translate3d(0,0,0); opacity:.55; }
+  to { transform:translate3d(-26px,-18px,0); opacity:.9; }
+}
+
+/* Hero — abstract technology globe */
+.portfolio-hero-globe {
+  position:absolute;
+  width:340px;
+  height:340px;
+  right:6%;
+  top:50%;
+  margin-top:-170px;
+  border-radius:50%;
+  border:1px solid rgba(34,211,238,.14);
+  background:radial-gradient(circle at 50% 50%,rgba(37,99,235,.16) 0%,transparent 65%);
+  box-shadow:inset 0 0 60px rgba(37,99,235,.12);
+}
+
+.portfolio-hero-globe::before,
+.portfolio-hero-globe::after {
+  content:"";
+  position:absolute;
+  inset:14%;
+  border-radius:50%;
+  border:1px solid rgba(34,211,238,.12);
+}
+
+.portfolio-hero-globe::after {
+  inset:30%;
+  border-color:rgba(255,255,255,.08);
+}
+
+.portfolio-hero-content {
+  position:relative;
+  z-index:2;
+  max-width:1400px;
+  margin:0 auto;
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:80px;
+  align-items:center;
+}
+
+.portfolio-hero-text {
+  color:#fff;
+}
+
+.portfolio-hero-eyebrow {
+  display:inline-block;
+  color:var(--accent-2);
+  font-size:.75rem;
+  font-weight:700;
+  text-transform:uppercase;
+  letter-spacing:.2em;
+  margin-bottom:24px;
+}
+
+.portfolio-hero-title {
+  font-size:clamp(2.5rem,5vw,4rem);
+  font-weight:900;
+  letter-spacing:-.04em;
+  line-height:1.1;
+  margin-bottom:24px;
+}
+
+.portfolio-hero-description {
+  font-size:1.1rem;
+  line-height:1.7;
+  color:rgba(255,255,255,.7);
+  margin-bottom:32px;
+  max-width:580px;
+}
+
+.portfolio-hero-actions {
+  display:flex;
+  gap:16px;
+  flex-wrap:wrap;
+  margin-bottom:24px;
+}
+
+.portfolio-hero-trust {
+  font-size:.85rem;
+  color:rgba(255,255,255,.5);
+  font-weight:600;
+  letter-spacing:.1em;
+  text-transform:uppercase;
+}
+
+.portfolio-hero-visual {
+  position:relative;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  min-height:520px;
+}
+
+/* Curated digital studio showcase */
+.showcase-stage {
+  position:relative;
+  width:100%;
+  max-width:560px;
+  height:520px;
+}
+
+.showcase-orb {
+  position:absolute;
+  inset:5% 1%;
+  border-radius:50%;
+  background:radial-gradient(circle at 52% 46%,rgba(37,99,235,.3) 0%,rgba(7,20,38,0) 66%);
+}
+
+.showcase-net {
+  position:absolute;
+  top:-6%;
+  left:-4%;
+  width:108%;
+  height:114%;
+  opacity:.6;
+}
+
+.showcase-net line { stroke:rgba(34,211,238,.2); stroke-width:1; }
+.showcase-net circle { fill:var(--accent-2); opacity:.8; animation:nodePulse 5s ease-in-out infinite; }
+.showcase-net circle:nth-child(2n) { animation-delay:1.6s; }
+
+/* Floating project preview frames */
+.mock-frame {
+  position:absolute;
+  border-radius:14px;
+  overflow:hidden;
+  border:1px solid rgba(255,255,255,.14);
+  background:linear-gradient(165deg,rgba(13,32,58,.96) 0%,rgba(7,20,38,.96) 100%);
+  box-shadow:0 30px 70px rgba(0,0,0,.45);
+  animation:float 9s ease-in-out infinite;
+}
+
+.mock-bar {
+  display:flex;
+  align-items:center;
+  gap:6px;
+  padding:9px 12px;
+  border-bottom:1px solid rgba(255,255,255,.07);
+  background:rgba(255,255,255,.03);
+}
+
+.mock-dot { width:7px; height:7px; border-radius:50%; background:rgba(255,255,255,.22); }
+.mock-dot.is-red { background:rgba(248,113,113,.75); }
+.mock-dot.is-amber { background:rgba(251,191,36,.75); }
+.mock-dot.is-green { background:rgba(52,211,153,.75); }
+
+.mock-url {
+  flex:1;
+  margin-left:8px;
+  height:15px;
+  border-radius:8px;
+  background:rgba(255,255,255,.07);
+  display:flex;
+  align-items:center;
+  padding:0 9px;
+  font-size:.5rem;
+  font-weight:700;
+  letter-spacing:.08em;
+  text-transform:uppercase;
+  color:rgba(255,255,255,.45);
+}
+
+.mock-body { padding:14px; }
+
+.mock-hero-block {
+  height:56px;
+  border-radius:9px;
+  background:linear-gradient(120deg,rgba(37,99,235,.6) 0%,rgba(34,211,238,.35) 100%);
+}
+
+.mock-row { display:grid; grid-template-columns:repeat(3,1fr); gap:8px; margin-top:10px; }
+
+.mock-cell {
+  height:36px;
+  border-radius:7px;
+  background:rgba(255,255,255,.06);
+  border:1px solid rgba(255,255,255,.05);
+}
+
+.mock-line { height:8px; border-radius:4px; background:rgba(255,255,255,.13); margin-top:10px; }
+.mock-line.is-short { width:58%; }
+.mock-line.is-accent { background:linear-gradient(90deg,rgba(34,211,238,.5),rgba(37,99,235,.3)); }
+
+/* Code window preview */
+.mock-code { padding:14px; }
+
+.mock-code span {
+  display:block;
+  height:7px;
+  border-radius:4px;
+  margin-bottom:8px;
+  background:rgba(255,255,255,.12);
+}
+
+.mock-code span:nth-child(1) { width:46%; background:rgba(34,211,238,.55); }
+.mock-code span:nth-child(2) { width:74%; }
+.mock-code span:nth-child(3) { width:38%; background:rgba(147,197,253,.45); }
+.mock-code span:nth-child(4) { width:62%; }
+.mock-code span:nth-child(5) { width:30%; background:rgba(34,211,238,.4); }
+.mock-code span:last-child { margin-bottom:0; }
+
+/* Dashboard preview */
+.mock-chart {
+  display:flex;
+  align-items:flex-end;
+  gap:8px;
+  height:74px;
+  padding:12px 14px 0;
+}
+
+.mock-chart i {
+  flex:1;
+  border-radius:5px 5px 0 0;
+  background:linear-gradient(180deg,rgba(34,211,238,.65),rgba(37,99,235,.22));
+}
+
+/* Frame placement */
+.mock-frame.is-browser {
+  width:63%;
+  top:3%;
+  left:0;
+  aspect-ratio:16/11;
+  --rotation:-5deg;
+}
+
+.mock-frame.is-code {
+  width:44%;
+  top:33%;
+  right:0;
+  aspect-ratio:4/3;
+  --rotation:6deg;
+  animation-duration:10s;
+  animation-delay:1.2s;
+}
+
+.mock-frame.is-data {
+  width:52%;
+  bottom:1%;
+  left:12%;
+  aspect-ratio:16/9;
+  --rotation:-2deg;
+  animation-duration:11s;
+  animation-delay:2.4s;
+}
+
+/* Floating capability chips */
+.stage-chip {
+  position:absolute;
+  z-index:3;
+  padding:9px 15px;
+  border-radius:999px;
+  font-size:.66rem;
+  font-weight:700;
+  letter-spacing:.1em;
+  text-transform:uppercase;
+  color:#fff;
+  background:rgba(255,255,255,.07);
+  border:1px solid rgba(255,255,255,.16);
+  backdrop-filter:blur(14px);
+  -webkit-backdrop-filter:blur(14px);
+  box-shadow:0 12px 30px rgba(0,0,0,.3);
+  animation:floatSoft 7s ease-in-out infinite;
+  white-space:nowrap;
+}
+
+.stage-chip.is-web { top:13%; right:1%; }
+.stage-chip.is-brand { bottom:25%; left:-3%; animation-delay:1.5s; }
+.stage-chip.is-software { bottom:6%; right:5%; animation-delay:3s; }
+
+@keyframes floatSoft {
+  0%,100% { transform:translateY(0); }
+  50% { transform:translateY(-14px); }
+}
+
+@keyframes float {
+  0%,100% { transform:translateY(0) rotate(var(--rotation, 0deg)); }
+  50% { transform:translateY(-15px) rotate(var(--rotation, 0deg)); }
+}
+
+/* Premium Buttons */
+.btn {
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  gap:10px;
+  padding:14px 28px;
+  border-radius:12px;
+  font-size:.9rem;
+  font-weight:700;
+  cursor:pointer;
+  transition:all var(--transition);
+  white-space:nowrap;
+  text-decoration:none;
+}
+
+.btn-primary {
+  background:linear-gradient(135deg,var(--accent) 0%,var(--accent-2) 100%);
+  color:#fff;
+  border:none;
+  box-shadow:0 8px 24px rgba(37,99,235,.3);
+}
+
+.btn-primary:hover {
+  transform:translateY(-2px);
+  box-shadow:0 12px 32px rgba(37,99,235,.4);
+}
+
+.btn-secondary {
+  background:rgba(255,255,255,.1);
+  color:#fff;
+  border:1px solid rgba(255,255,255,.2);
+  backdrop-filter:blur(10px);
+}
+
+.btn-secondary:hover {
+  background:rgba(255,255,255,.15);
+  border-color:rgba(255,255,255,.3);
+}
+
+/* Section Styling */
+.section {
+  padding:100px 34px;
+  max-width:1400px;
+  margin:0 auto;
+}
+
+.section-header {
+  text-align:center;
+  margin-bottom:60px;
+}
+
+.section-eyebrow {
+  display:inline-block;
+  color:var(--accent);
+  font-size:.75rem;
+  font-weight:700;
+  text-transform:uppercase;
+  letter-spacing:.2em;
+  margin-bottom:16px;
+}
+
+.section-title {
+  font-size:clamp(2rem,4vw,3rem);
+  font-weight:900;
+  letter-spacing:-.04em;
+  margin-bottom:16px;
+  color:var(--text);
+}
+
+.section-description {
+  color:var(--muted);
+  font-size:1.1rem;
+  max-width:700px;
+  margin:0 auto;
+  line-height:1.7;
+}
+
+/* Portfolio Introduction */
+.intro-section {
+  background:var(--bg-elevated);
+  position:relative;
+}
+
+.intro-bg {
+  position:absolute;
+  inset:0;
+  background-image:
+    linear-gradient(rgba(37,99,235,.02) 1px,transparent 1px),
+    linear-gradient(90deg,rgba(37,99,235,.02) 1px,transparent 1px);
+  background-size:40px 40px;
+  pointer-events:none;
+}
+
+.intro-content {
+  position:relative;
+  z-index:2;
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:80px;
+  align-items:center;
+}
+
+.intro-text h3 {
+  font-size:clamp(1.5rem,3vw,2rem);
+  font-weight:800;
+  margin-bottom:24px;
+  letter-spacing:-.02em;
+  color:var(--text);
+}
+
+.intro-text p {
+  color:var(--muted);
+  font-size:1rem;
+  line-height:1.8;
+  margin-bottom:32px;
+}
+
+.intro-visual {
+  position:relative;
+  aspect-ratio:1/1;
+  border-radius:24px;
+  background:linear-gradient(150deg,#071426 0%,#0B1F3A 100%);
+  border:1px solid var(--line);
+  overflow:hidden;
+  box-shadow:var(--shadow);
+}
+
+.intro-visual svg {
+  display:block;
+  width:100%;
+  height:100%;
+}
+
+.intro-badge {
+  position:absolute;
+  left:20px;
+  bottom:20px;
+  display:inline-flex;
+  align-items:center;
+  gap:8px;
+  padding:9px 14px;
+  border-radius:999px;
+  font-size:.68rem;
+  font-weight:700;
+  letter-spacing:.1em;
+  text-transform:uppercase;
+  color:#fff;
+  background:rgba(255,255,255,.08);
+  border:1px solid rgba(255,255,255,.16);
+  backdrop-filter:blur(12px);
+  -webkit-backdrop-filter:blur(12px);
+}
+
+.intro-capabilities {
+  display:flex;
+  flex-wrap:wrap;
+  gap:10px;
+  margin-top:4px;
+}
+
+.intro-chip {
+  padding:7px 14px;
+  border-radius:999px;
+  border:1px solid var(--line);
+  background:var(--surface-solid);
+  color:var(--muted);
+  font-size:.78rem;
+  font-weight:600;
+}
+
+/* Category Filter */
+.filter-section {
+  background:var(--bg);
+}
+
+.filter-toolbar {
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:20px;
+  flex-wrap:wrap;
+  margin-bottom:42px;
+}
+
+.filter-container {
+  display:flex;
+  gap:10px;
+  flex-wrap:wrap;
+  flex:1 1 auto;
+}
+
+.filter-btn {
+  padding:12px 24px;
+  border:1px solid var(--line);
+  border-radius:24px;
+  background:var(--surface-solid);
+  color:var(--muted);
+  font-size:.85rem;
+  font-weight:600;
+  cursor:pointer;
+  transition:all var(--transition);
+}
+
+.filter-btn:hover {
+  border-color:var(--accent);
+  color:var(--accent);
+}
+
+.filter-btn[aria-pressed="true"] {
+  background:var(--accent);
+  color:#fff;
+  border-color:var(--accent);
+  box-shadow:0 8px 20px rgba(37,99,235,.25);
+}
+
+.filter-count {
+  font-size:.82rem;
+  font-weight:600;
+  color:var(--muted);
+  white-space:nowrap;
+}
+
+.filter-count strong { color:var(--text); }
+
+/* Project Gallery */
+.gallery-section {
+  background:var(--bg-elevated);
+}
+
+.project-grid {
+  display:grid;
+  grid-template-columns:repeat(6,1fr);
+  gap:28px;
+  align-items:start;
+}
+
+.project-card {
+  grid-column:span 2;
+  position:relative;
+  border:1px solid var(--line);
+  border-radius:20px;
+  background:var(--surface-solid);
+  overflow:hidden;
+  transition:transform var(--transition),border-color var(--transition),box-shadow var(--transition);
+}
+
+.project-card.is-wide { grid-column:span 4; }
+
+.project-card:hover,
+.project-card:focus-within {
+  transform:translateY(-6px);
+  border-color:var(--accent);
+  box-shadow:var(--shadow);
+}
+
+.project-card.is-hidden { display:none; }
+
+.project-card.is-entering { animation:cardIn 420ms cubic-bezier(.2,.8,.2,1) both; }
+
+@keyframes cardIn {
+  from { opacity:0; transform:translateY(12px); }
+  to { opacity:1; transform:none; }
+}
+
+/* Project preview artwork — CSS-drawn mockups, swap for real screenshots */
+.project-media {
+  position:relative;
+  aspect-ratio:16/11;
+  overflow:hidden;
+  border-bottom:1px solid var(--line);
+  background:linear-gradient(150deg,#0B1F3A 0%,#071426 100%);
+}
+
+.project-card.is-wide .project-media { aspect-ratio:16/8; }
+
+.preview {
+  position:absolute;
+  inset:0;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  padding:16px;
+  transition:transform 600ms cubic-bezier(.2,.8,.2,1);
+}
+
+.project-card:hover .preview { transform:scale(1.04); }
+
+.pv-screen {
+  position:relative;
+  width:100%;
+  height:100%;
+  border-radius:10px;
+  background:rgba(255,255,255,.05);
+  border:1px solid rgba(255,255,255,.1);
+  overflow:hidden;
+  display:flex;
+  flex-direction:column;
+}
+
+.pv-top {
+  display:flex;
+  align-items:center;
+  gap:5px;
+  padding:8px 10px;
+  border-bottom:1px solid rgba(255,255,255,.08);
+  background:rgba(255,255,255,.03);
+}
+
+.pv-top i { width:6px; height:6px; border-radius:50%; background:rgba(255,255,255,.25); }
+.pv-top b { flex:1; height:8px; margin-left:6px; border-radius:4px; background:rgba(255,255,255,.08); }
+
+.pv-body { flex:1; padding:10px; display:flex; flex-direction:column; gap:8px; }
+
+.pv-hero { height:34%; border-radius:7px; background:linear-gradient(120deg,rgba(37,99,235,.65),rgba(34,211,238,.32)); }
+
+.pv-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:7px; flex:1; }
+.pv-grid span { border-radius:6px; background:rgba(255,255,255,.08); border:1px solid rgba(255,255,255,.05); }
+
+.pv-lines span { display:block; height:7px; border-radius:4px; background:rgba(255,255,255,.14); margin-bottom:7px; }
+.pv-lines span:nth-child(2) { width:72%; }
+.pv-lines span:nth-child(3) { width:46%; }
+.pv-lines span:last-child { margin-bottom:0; }
+
+.pv-split { display:flex; gap:8px; flex:1; }
+.pv-rail { width:22%; border-radius:7px; background:rgba(255,255,255,.06); }
+.pv-main { flex:1; display:flex; flex-direction:column; gap:8px; }
+.pv-bars { display:flex; align-items:flex-end; gap:6px; flex:1; }
+.pv-bars i { flex:1; border-radius:4px 4px 0 0; background:linear-gradient(180deg,rgba(34,211,238,.6),rgba(37,99,235,.2)); }
+
+.pv-brand { flex:1; display:grid; grid-template-columns:1fr 1fr; gap:10px; align-items:center; }
+.pv-mark {
+  aspect-ratio:1;
+  border-radius:16px;
+  background:linear-gradient(135deg,var(--accent),var(--accent-2));
+  display:grid;
+  place-items:center;
+  color:#fff;
+  font-size:.7rem;
+  font-weight:900;
+  letter-spacing:.12em;
+}
+.pv-swatches { display:grid; gap:8px; }
+.pv-swatches i { height:18px; border-radius:6px; }
+
+.pv-cards { flex:1; display:grid; grid-template-rows:1fr 1fr; gap:8px; }
+.pv-cards i { border-radius:8px; background:rgba(255,255,255,.07); border:1px solid rgba(255,255,255,.06); }
+.pv-cards i:first-child { background:linear-gradient(120deg,rgba(34,211,238,.32),rgba(37,99,235,.28)); }
+
+.pv-video {
+  flex:1;
+  border-radius:8px;
+  display:grid;
+  place-items:center;
+  background:radial-gradient(circle at 50% 45%,rgba(37,99,235,.5),rgba(7,20,38,.9));
+}
+
+.pv-play {
+  width:44px;
+  height:44px;
+  border-radius:50%;
+  background:rgba(255,255,255,.14);
+  border:1px solid rgba(255,255,255,.3);
+  display:grid;
+  place-items:center;
+  color:#fff;
+}
+
+.pv-timeline { height:8px; border-radius:4px; background:rgba(255,255,255,.1); position:relative; overflow:hidden; }
+.pv-timeline::after {
+  content:"";
+  position:absolute;
+  left:0;
+  top:0;
+  bottom:0;
+  width:42%;
+  background:linear-gradient(90deg,var(--accent),var(--accent-2));
+}
+
+.pv-shop { flex:1; display:grid; grid-template-columns:repeat(2,1fr); gap:8px; }
+.pv-shop i { position:relative; border-radius:8px; background:rgba(255,255,255,.07); border:1px solid rgba(255,255,255,.06); overflow:hidden; }
+.pv-shop i::after { content:""; position:absolute; left:0; right:0; bottom:0; height:34%; background:rgba(255,255,255,.08); }
+
+.pv-banner {
+  flex:1;
+  border-radius:8px;
+  display:grid;
+  place-items:center;
+  color:#fff;
+  font-size:.68rem;
+  font-weight:900;
+  letter-spacing:.18em;
+  text-transform:uppercase;
+  background:linear-gradient(120deg,rgba(37,99,235,.45),rgba(34,211,238,.22));
+}
+
+.pv-tickets { display:flex; gap:8px; }
+.pv-tickets i { flex:1; height:20px; border-radius:6px; background:rgba(255,255,255,.09); }
+
+/* Card labels and hover reveal */
+.project-badge {
+  position:absolute;
+  top:14px;
+  left:14px;
+  z-index:3;
+  padding:6px 12px;
+  border-radius:999px;
+  font-size:.64rem;
+  font-weight:700;
+  letter-spacing:.1em;
+  text-transform:uppercase;
+  color:#fff;
+  background:rgba(7,20,38,.6);
+  border:1px solid rgba(255,255,255,.18);
+  backdrop-filter:blur(10px);
+  -webkit-backdrop-filter:blur(10px);
+}
+
+.project-overlay {
+  position:absolute;
+  inset:0;
+  z-index:2;
+  display:flex;
+  flex-direction:column;
+  justify-content:flex-end;
+  gap:8px;
+  padding:22px;
+  background:linear-gradient(to top,rgba(7,20,38,.94) 0%,rgba(7,20,38,.45) 55%,rgba(7,20,38,0) 100%);
+  opacity:0;
+  transition:opacity var(--transition);
+}
+
+.project-card:hover .project-overlay,
+.project-card:focus-within .project-overlay { opacity:1; }
+
+.project-overlay p {
+  margin:0;
+  color:rgba(255,255,255,.85);
+  font-size:.84rem;
+  line-height:1.55;
+}
+
+.project-overlay span {
+  display:inline-flex;
+  align-items:center;
+  gap:8px;
+  color:var(--accent-2);
+  font-size:.76rem;
+  font-weight:700;
+  letter-spacing:.08em;
+  text-transform:uppercase;
+}
+
+.project-content {
+  padding:28px;
+}
+
+.project-category {
+  display:inline-block;
+  color:var(--accent);
+  font-size:.75rem;
+  font-weight:700;
+  text-transform:uppercase;
+  letter-spacing:.1em;
+  margin-bottom:12px;
+}
+
+.project-title {
+  font-size:1.3rem;
+  font-weight:800;
+  margin-bottom:12px;
+  letter-spacing:-.02em;
+  color:var(--text);
+}
+
+.project-description {
+  color:var(--muted);
+  font-size:.9rem;
+  line-height:1.6;
+  margin-bottom:20px;
+}
+
+.project-meta {
+  display:flex;
+  flex-wrap:wrap;
+  gap:10px;
+  align-items:center;
+  margin-bottom:20px;
+  font-size:.85rem;
+  color:var(--muted);
+}
+
+.project-meta span {
+  display:flex;
+  align-items:center;
+  gap:6px;
+}
+
+.project-tag {
+  padding:4px 12px;
+  border-radius:12px;
+  background:var(--surface-soft);
+  font-size:.75rem;
+  font-weight:600;
+}
+
+.project-link {
+  display:inline-flex;
+  align-items:center;
+  gap:8px;
+  padding:0;
+  border:none;
+  background:transparent;
+  color:var(--accent);
+  font-weight:700;
+  font-size:.85rem;
+  cursor:pointer;
+  text-decoration:none;
+  transition:gap var(--transition);
+}
+
+.project-link:hover { gap:12px; }
+
+/* Featured Project */
+.featured-section {
+  background:linear-gradient(135deg,var(--hero-bg) 0%,var(--hero-bg-deep) 100%);
+  position:relative;
+  overflow:hidden;
+}
+
+.featured-bg {
+  position:absolute;
+  inset:0;
+  background-image:
+    linear-gradient(rgba(37,99,235,.03) 1px,transparent 1px),
+    linear-gradient(90deg,rgba(37,99,235,.03) 1px,transparent 1px);
+  background-size:50px 50px;
+  mask-image:radial-gradient(ellipse at center,black 40%,transparent 70%);
+}
+
+.featured-content {
+  position:relative;
+  z-index:2;
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:80px;
+  align-items:center;
+}
+
+.featured-text h3 {
+  font-size:clamp(1.8rem,4vw,2.5rem);
+  font-weight:900;
+  letter-spacing:-.04em;
+  margin-bottom:24px;
+  color:#fff;
+}
+
+.featured-text p {
+  color:rgba(255,255,255,.7);
+  font-size:1rem;
+  line-height:1.7;
+  margin-bottom:20px;
+}
+
+.featured-note {
+  display:inline-flex;
+  align-items:center;
+  gap:8px;
+  margin-bottom:18px;
+  padding:6px 12px;
+  border-radius:999px;
+  font-size:.64rem;
+  font-weight:700;
+  letter-spacing:.1em;
+  text-transform:uppercase;
+  color:#fff;
+  background:rgba(255,255,255,.07);
+  border:1px solid rgba(255,255,255,.16);
+}
+
+.featured-facts {
+  display:grid;
+  gap:18px;
+  margin-bottom:28px;
+}
+
+.featured-fact h4 {
+  margin:0 0 6px;
+  font-size:.72rem;
+  font-weight:700;
+  letter-spacing:.14em;
+  text-transform:uppercase;
+  color:var(--accent-2);
+}
+
+.featured-fact p { margin:0; font-size:.9rem; }
+
+.featured-tags {
+  display:flex;
+  flex-wrap:wrap;
+  gap:10px;
+  margin-bottom:26px;
+}
+
+.tech-chip {
+  padding:7px 14px;
+  border-radius:999px;
+  border:1px solid rgba(255,255,255,.16);
+  background:rgba(255,255,255,.06);
+  color:rgba(255,255,255,.8);
+  font-size:.75rem;
+  font-weight:600;
+}
+
+.featured-visual {
+  position:relative;
+  aspect-ratio:16/11;
+  border-radius:20px;
+  background:rgba(255,255,255,.04);
+  border:1px solid rgba(255,255,255,.1);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  padding:26px;
+  overflow:hidden;
+}
+
+.featured-visual::before {
+  content:"";
+  position:absolute;
+  inset:0;
+  background-image:
+    linear-gradient(rgba(37,99,235,.05) 1px,transparent 1px),
+    linear-gradient(90deg,rgba(37,99,235,.05) 1px,transparent 1px);
+  background-size:34px 34px;
+  mask-image:radial-gradient(ellipse at center,black 30%,transparent 75%);
+}
+
+.device {
+  position:relative;
+  z-index:2;
+  width:100%;
+  padding:10px;
+  border-radius:16px;
+  background:linear-gradient(160deg,rgba(255,255,255,.14),rgba(255,255,255,.05));
+  border:1px solid rgba(255,255,255,.2);
+  box-shadow:0 40px 80px rgba(0,0,0,.5);
+}
+
+.device-screen {
+  position:relative;
+  aspect-ratio:16/10;
+  border-radius:10px;
+  overflow:hidden;
+  background:linear-gradient(165deg,#0d2340,#071426);
+  border:1px solid rgba(255,255,255,.1);
+  display:flex;
+  flex-direction:column;
+}
+
+.device-float {
+  position:absolute;
+  right:-14px;
+  bottom:26px;
+  z-index:3;
+  display:grid;
+  gap:4px;
+  padding:12px 16px;
+  border-radius:12px;
+  background:rgba(7,20,38,.85);
+  border:1px solid rgba(255,255,255,.16);
+  backdrop-filter:blur(12px);
+  -webkit-backdrop-filter:blur(12px);
+  box-shadow:0 18px 40px rgba(0,0,0,.45);
+  animation:floatSoft 8s ease-in-out infinite;
+}
+
+.device-float b { color:#fff; font-size:.78rem; font-weight:800; }
+.device-float span { color:var(--accent-2); font-size:.64rem; font-weight:700; letter-spacing:.12em; text-transform:uppercase; }
+
+/* Capabilities Section */
+.capabilities-section {
+  background:linear-gradient(135deg,var(--bg) 0%,var(--bg-elevated) 100%);
+}
+
+.capabilities-grid {
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
+  gap:24px;
+}
+
+.capability-card {
+  padding:32px;
+  border:1px solid var(--line);
+  border-radius:18px;
+  background:var(--surface-solid);
+  transition:all var(--transition);
+}
+
+.capability-card:hover {
+  transform:translateY(-4px);
+  border-color:var(--accent);
+  box-shadow:var(--shadow-sm);
+}
+
+.capability-preview {
+  position:relative;
+  height:118px;
+  margin-bottom:22px;
+  border-radius:14px;
+  overflow:hidden;
+  border:1px solid var(--line);
+  background:linear-gradient(150deg,#0B1F3A 0%,#071426 100%);
+}
+
+.capability-preview .preview { padding:12px; }
+.capability-preview .pv-top { padding:7px 9px; }
+.capability-preview .pv-body { padding:9px; gap:7px; }
+
+.capability-icon {
+  width:56px;
+  height:56px;
+  border-radius:16px;
+  background:linear-gradient(135deg,var(--accent-soft),var(--accent));
+  color:#fff;
+  margin-bottom:20px;
+  display:grid;
+  place-items:center;
+}
+
+.capability-title {
+  font-size:1.15rem;
+  font-weight:800;
+  margin-bottom:12px;
+  color:var(--text);
+}
+
+.capability-description {
+  color:var(--muted);
+  font-size:.9rem;
+  line-height:1.6;
+  margin:0;
+}
+
+/* Process Section */
+.process-section {
+  background:var(--bg-elevated);
+}
+
+.process-steps {
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:32px;
+  position:relative;
+}
+
+.process-steps::before {
+  content:"";
+  position:absolute;
+  top:30px;
+  left:50px;
+  right:50px;
+  height:2px;
+  background:linear-gradient(90deg,transparent,var(--accent-2),transparent);
+  opacity:.3;
+}
+
+.process-step {
+  text-align:center;
+  position:relative;
+}
+
+.process-number {
+  width:60px;
+  height:60px;
+  border-radius:16px;
+  background:linear-gradient(135deg,var(--accent),var(--accent-2));
+  color:#fff;
+  display:grid;
+  place-items:center;
+  margin:0 auto 24px;
+  font-size:1.25rem;
+  font-weight:900;
+  position:relative;
+  z-index:2;
+}
+
+.process-icon {
+  position:absolute;
+  right:-9px;
+  bottom:-9px;
+  width:26px;
+  height:26px;
+  padding:6px;
+  border-radius:9px;
+  background:var(--hero-bg);
+  color:var(--accent-2);
+  border:1px solid rgba(255,255,255,.16);
+}
+
+.process-title {
+  font-size:1.1rem;
+  font-weight:800;
+  margin-bottom:12px;
+  color:var(--text);
+}
+
+.process-description {
+  color:var(--muted);
+  font-size:.9rem;
+  line-height:1.6;
+}
+
+/* Quality Section */
+.quality-section {
+  background:var(--bg);
+}
+
+.quality-grid {
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+  gap:32px;
+}
+
+.quality-card {
+  padding:32px;
+  border:1px solid var(--line);
+  border-radius:20px;
+  background:var(--surface-solid);
+  text-align:center;
+}
+
+.quality-icon {
+  width:56px;
+  height:56px;
+  border-radius:16px;
+  background:var(--accent-soft);
+  color:var(--accent);
+  margin:0 auto 20px;
+  display:grid;
+  place-items:center;
+}
+
+.quality-title {
+  font-size:1.15rem;
+  font-weight:800;
+  margin-bottom:12px;
+  color:var(--text);
+}
+
+.quality-description {
+  color:var(--muted);
+  font-size:.9rem;
+  line-height:1.6;
+  margin:0;
+}
+
+/* CTA Section */
+.cta-section {
+  padding:140px 34px;
+  background:linear-gradient(135deg,var(--hero-bg) 0%,var(--hero-bg-deep) 100%);
+  position:relative;
+  overflow:hidden;
+}
+
+.cta-bg {
+  position:absolute;
+  inset:0;
+  background-image:
+    radial-gradient(circle at 18% 28%,rgba(37,99,235,.22) 0%,transparent 45%),
+    radial-gradient(circle at 82% 72%,rgba(34,211,238,.14) 0%,transparent 45%);
+}
+
+.cta-grid {
+  position:absolute;
+  inset:0;
+  background-image:
+    linear-gradient(rgba(255,255,255,.03) 1px,transparent 1px),
+    linear-gradient(90deg,rgba(255,255,255,.03) 1px,transparent 1px);
+  background-size:56px 56px;
+  mask-image:radial-gradient(ellipse at center,black 25%,transparent 72%);
+}
+
+.cta-network {
+  position:absolute;
+  inset:0;
+  background-image:
+    radial-gradient(circle at 20% 30%,rgba(34,211,238,.1) 0,transparent 40%),
+    radial-gradient(circle at 80% 70%,rgba(37,99,235,.1) 0,transparent 40%);
+}
+
+.cta-nodes {
+  position:absolute;
+  inset:0;
+  width:100%;
+  height:100%;
+  opacity:.7;
+}
+
+.cta-nodes line { stroke:rgba(34,211,238,.16); stroke-width:1; }
+.cta-nodes circle { fill:var(--accent-2); opacity:.6; animation:nodePulse 6s ease-in-out infinite; }
+.cta-nodes circle:nth-child(2n) { animation-delay:1.5s; }
+.cta-nodes circle:nth-child(3n) { animation-delay:3s; }
+
+.cta-particles {
+  position:absolute;
+  inset:0;
+  background-image:
+    radial-gradient(2px 2px at 16% 36%,rgba(34,211,238,.7) 0,transparent 100%),
+    radial-gradient(1.5px 1.5px at 34% 74%,rgba(255,255,255,.45) 0,transparent 100%),
+    radial-gradient(2px 2px at 56% 26%,rgba(37,99,235,.7) 0,transparent 100%),
+    radial-gradient(1.5px 1.5px at 72% 62%,rgba(255,255,255,.4) 0,transparent 100%),
+    radial-gradient(2px 2px at 88% 34%,rgba(34,211,238,.55) 0,transparent 100%);
+  animation:particleDrift 30s ease-in-out infinite alternate;
+}
+
+.cta-content {
+  position:relative;
+  z-index:2;
+  max-width:900px;
+  margin:0 auto;
+  text-align:center;
+  color:#fff;
+}
+
+.cta-title {
+  font-size:clamp(2rem,5vw,3.5rem);
+  font-weight:900;
+  letter-spacing:-.04em;
+  margin-bottom:24px;
+}
+
+.cta-description {
+  font-size:1.2rem;
+  line-height:1.7;
+  color:rgba(255,255,255,.7);
+  margin-bottom:40px;
+  max-width:700px;
+  margin-left:auto;
+  margin-right:auto;
+}
+
+.cta-actions {
+  display:flex;
+  gap:16px;
+  justify-content:center;
+  flex-wrap:wrap;
+}
+
+/* Project detail modal */
+.modal {
+  position:fixed;
+  inset:0;
+  z-index:90;
+  display:none;
+  align-items:center;
+  justify-content:center;
+  padding:24px;
+}
+
+.modal.is-open { display:flex; }
+
+.modal-backdrop {
+  position:absolute;
+  inset:0;
+  background:rgba(7,20,38,.72);
+  backdrop-filter:blur(6px);
+  -webkit-backdrop-filter:blur(6px);
+  opacity:0;
+  transition:opacity var(--transition);
+}
+
+.modal.is-open .modal-backdrop { opacity:1; }
+
+.modal-panel {
+  position:relative;
+  z-index:2;
+  width:min(940px,100%);
+  max-height:88vh;
+  overflow:auto;
+  border-radius:22px;
+  background:var(--surface-solid);
+  border:1px solid var(--line);
+  box-shadow:var(--shadow);
+  opacity:0;
+  transform:translateY(14px);
+  transition:opacity var(--transition),transform var(--transition);
+}
+
+.modal.is-open .modal-panel { opacity:1; transform:none; }
+
+.modal-media {
+  position:relative;
+  aspect-ratio:16/8;
+  overflow:hidden;
+  border-bottom:1px solid var(--line);
+  background:linear-gradient(150deg,#0B1F3A 0%,#071426 100%);
+}
+
+.modal-media .preview { padding:26px; }
+
+.modal-close {
+  position:absolute;
+  top:16px;
+  right:16px;
+  z-index:5;
+  width:40px;
+  height:40px;
+  border-radius:12px;
+  display:grid;
+  place-items:center;
+  cursor:pointer;
+  color:var(--text);
+  background:var(--surface-solid);
+  border:1px solid var(--line);
+}
+
+.modal-close:hover { border-color:var(--accent); color:var(--accent); }
+
+.modal-body { padding:34px; }
+
+.modal-category {
+  display:inline-block;
+  color:var(--accent);
+  font-size:.75rem;
+  font-weight:700;
+  letter-spacing:.1em;
+  text-transform:uppercase;
+  margin-bottom:12px;
+}
+
+.modal-title {
+  margin:0 0 16px;
+  font-size:clamp(1.5rem,3vw,2rem);
+  font-weight:900;
+  letter-spacing:-.03em;
+  color:var(--text);
+}
+
+.modal-text {
+  margin:0 0 26px;
+  color:var(--muted);
+  font-size:.95rem;
+  line-height:1.7;
+}
+
+.modal-grid {
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
+  gap:22px;
+  margin-bottom:26px;
+}
+
+.modal-block h4 {
+  margin:0 0 8px;
+  font-size:.72rem;
+  font-weight:700;
+  letter-spacing:.14em;
+  text-transform:uppercase;
+  color:var(--accent);
+}
+
+.modal-block p { margin:0; color:var(--muted); font-size:.9rem; line-height:1.7; }
+
+.modal-tags { display:flex; flex-wrap:wrap; gap:10px; margin-bottom:28px; }
+
+.modal-tag {
+  padding:6px 14px;
+  border-radius:999px;
+  background:var(--surface-soft);
+  color:var(--muted);
+  font-size:.75rem;
+  font-weight:600;
+}
+
+.modal-actions { display:flex; flex-wrap:wrap; gap:18px; align-items:center; }
+
+body.modal-open { overflow:hidden; }
+
+/* Footer */
+footer {
+  background:var(--hero-bg);
+  color:#fff;
+  padding:60px 34px;
+  border-top:1px solid var(--line);
+}
+
+.footer-content {
+  max-width:1400px;
+  margin:0 auto;
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
+  gap:40px;
+  align-items:start;
+}
+
+.footer-brand {
+  font-weight:900;
+  font-size:1.1rem;
+  margin-bottom:16px;
+  letter-spacing:-.04em;
+}
+
+.footer-tagline {
+  color:rgba(255,255,255,.7);
+  font-size:.9rem;
+  margin:0 0 20px;
+  line-height:1.6;
+}
+
+.footer-copyright {
+  color:rgba(255,255,255,.5);
+  font-size:.85rem;
+}
+
+.footer-heading {
+  font-weight:700;
+  font-size:.9rem;
+  margin-bottom:16px;
+  color:rgba(255,255,255,.9);
+}
+
+.footer-links {
+  display:flex;
+  flex-direction:column;
+  gap:10px;
+}
+
+.footer-link {
+  color:rgba(255,255,255,.7);
+  font-size:.85rem;
+  text-decoration:none;
+}
+
+.footer-link:hover {
+  color:var(--accent-2);
+}
+
+/* Scroll Reveal */
+.reveal {
+  opacity:0;
+  transform:translateY(12px);
+  transition:opacity .55s ease,transform .55s ease;
+}
+
+.reveal.visible {
+  opacity:1;
+  transform:none;
+}
+
+/* Responsive */
+@media (max-width:1200px) {
+  .portfolio-hero-content {
+    grid-template-columns:1fr;
+    gap:60px;
+  }
+  .portfolio-hero-visual {
+    min-height:460px;
+  }
+  .showcase-stage {
+    margin:0 auto;
+  }
+  .intro-content {
+    grid-template-columns:1fr;
+    gap:48px;
+  }
+  .featured-content {
+    grid-template-columns:1fr;
+    gap:48px;
+  }
+  .project-grid {
+    grid-template-columns:repeat(4,1fr);
+  }
+  .project-card {
+    grid-column:span 2;
+  }
+  .project-card.is-wide {
+    grid-column:span 4;
+  }
+  .project-card.is-wide .project-media {
+    aspect-ratio:16/10;
+  }
+  .process-steps {
+    grid-template-columns:repeat(2,1fr);
+    row-gap:48px;
+  }
+  .process-steps::before {
+    display:none;
+  }
+}
+
+@media (max-width:768px) {
+  .portfolio-hero {
+    padding:100px 20px 80px;
+  }
+  .topbar {
+    padding:0 20px;
+  }
+  .topbar nav {
+    display:none;
+  }
+  .section {
+    padding:60px 20px;
+  }
+  .project-grid {
+    grid-template-columns:1fr;
+  }
+  .project-card,
+  .project-card.is-wide {
+    grid-column:span 1;
+  }
+  .project-card.is-wide .project-media {
+    aspect-ratio:16/11;
+  }
+  .portfolio-hero-visual {
+    min-height:380px;
+  }
+  .showcase-stage {
+    height:380px;
+  }
+  .filter-toolbar {
+    justify-content:flex-start;
+  }
+  .filter-container {
+    gap:8px;
+  }
+  .filter-btn {
+    padding:10px 16px;
+    font-size:.8rem;
+  }
+  .process-steps {
+    grid-template-columns:1fr;
+  }
+  .modal {
+    padding:0;
+    align-items:flex-end;
+  }
+  .modal-panel {
+    width:100%;
+    max-height:92vh;
+    border-radius:20px 20px 0 0;
+  }
+  .modal-media {
+    aspect-ratio:16/10;
+  }
+  .modal-body {
+    padding:24px;
+  }
+  .device-float {
+    right:10px;
+    bottom:10px;
+  }
+}
+
+@media (max-width:480px) {
+  .portfolio-hero-title {
+    font-size:2rem;
+  }
+  .portfolio-hero-actions {
+    flex-direction:column;
+  }
+  .portfolio-hero-actions .btn {
+    width:100%;
+  }
+  .cta-actions {
+    flex-direction:column;
+  }
+  .cta-actions .btn {
+    width:100%;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,*::before,*::after {
+    scroll-behavior:auto!important;
+    animation-duration:.01ms!important;
+    animation-iteration-count:1!important;
+    transition-duration:.01ms!important;
+  }
+  .reveal {
+    opacity:1;
+    transform:none;
+  }
+}
+  /* Back to Top Button */
+  .back-to-top {
+    position: fixed;
+    bottom: 28px;
+    right: 28px;
+    z-index: 90;
+    width: 48px;
+    height: 48px;
+    padding: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: none;
+    border-radius: 50%;
+    color: #fff;
+    cursor: pointer;
+    background: linear-gradient(135deg, var(--accent) 0%, #00D4FF 100%);
+    box-shadow: 0 10px 26px rgba(37,99,235,.32), inset 0 0 0 1px rgba(255,255,255,.16);
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(16px) scale(.92);
+    transition: opacity .35s cubic-bezier(.2,.8,.2,1), transform .35s cubic-bezier(.2,.8,.2,1), box-shadow .35s ease, visibility .35s;
+    -webkit-tap-highlight-color: transparent;
+  }
+  .back-to-top.visible {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0) scale(1);
+  }
+  .back-to-top:hover {
+    transform: translateY(-4px) scale(1.06);
+    background: linear-gradient(135deg, var(--accent) 0%, #22D3EE 100%);
+    box-shadow: 0 16px 36px rgba(37,99,235,.45), 0 0 22px rgba(0,212,255,.65);
+  }
+  .back-to-top:active {
+    transform: translateY(-1px) scale(1);
+  }
+  .back-to-top svg {
+    width: 22px;
+    height: 22px;
+    transition: transform var(--transition);
+  }
+  .back-to-top:hover svg {
+    transform: translateY(-2px);
+  }
+  html[data-mode="dark"] .back-to-top {
+    box-shadow: 0 10px 26px rgba(0,0,0,.5), 0 0 16px rgba(0,212,255,.35);
+  }
+  html[data-mode="dark"] .back-to-top:hover {
+    box-shadow: 0 16px 36px rgba(0,0,0,.55), 0 0 26px rgba(0,212,255,.6);
+  }
+  @media (max-width: 768px) {
+    .back-to-top {
+      bottom: 20px;
+      right: 20px;
+      width: 44px;
+      height: 44px;
+    }
+    .back-to-top svg {
+      width: 20px;
+      height: 20px;
+    }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .back-to-top {
+      transform: none;
+      transition: opacity .01ms linear, visibility .01ms linear;
+    }
+    .back-to-top.visible,
+    .back-to-top:hover,
+    .back-to-top:active {
+      transform: none;
+    }
+  }
+</style>
+</head>
+<body>
+<a class="skip-link" href="#main-content">Skip to content</a>
+
+<header class="topbar">
+  <a href="index.html" style="font-weight:900;font-size:1.2rem;letter-spacing:-.04em;color:var(--text)">CARE<span style="color:var(--accent)">.</span></a>
+  <div style="flex:1"></div>
+  <nav style="display:flex;gap:24px;align-items:center">
+    <a href="index.html" style="color:inherit;text-decoration:none;font-weight:600;font-size:.9rem;color:var(--muted)">Home</a>
+    <a href="services.html" style="color:inherit;text-decoration:none;font-weight:600;font-size:.9rem;color:var(--muted)">Services</a>
+    <a href="about.html" style="color:inherit;text-decoration:none;font-weight:600;font-size:.9rem;color:var(--muted)">About</a>
+    <a href="portfolio.html" style="color:inherit;text-decoration:none;font-weight:700;font-size:.9rem;color:var(--accent)">Portfolio</a>
+    <a href="contact.html" style="color:inherit;text-decoration:none;font-weight:600;font-size:.9rem;color:var(--muted)">Contact</a>
+  </nav>
+  <a href="contact.html" class="btn btn-primary" style="padding:10px 20px;font-size:.85rem">Start a Project</a>
+  <button id="themeToggle" style="background:transparent;border:none;cursor:pointer;padding:8px;border-radius:8px" aria-label="Toggle theme">
+    <svg class="icon" viewBox="0 0 24 24"><path d="M20.5 15.2A8.5 8.5 0 0 1 8.8 3.5 8.6 8.6 0 1 0 20.5 15.2Z"/></svg>
+  </button>
+</header>
+
+<div class="main-area">
+  <main id="main-content">
+    <!-- Portfolio Hero -->
+    <section class="portfolio-hero" aria-labelledby="portfolio-hero-title">
+      <div class="portfolio-hero-bg">
+        <div class="portfolio-hero-grid"></div>
+        <div class="portfolio-hero-glow"></div>
+        <div class="portfolio-hero-glow-2"></div>
+        <svg class="portfolio-hero-network" viewBox="0 0 1200 620" preserveAspectRatio="xMidYMid slice" aria-hidden="true" focusable="false">
+          <line x1="80" y1="90" x2="240" y2="180"/>
+          <line x1="240" y1="180" x2="420" y2="80"/>
+          <line x1="240" y1="180" x2="200" y2="420"/>
+          <line x1="420" y1="80" x2="560" y2="260"/>
+          <line x1="560" y1="260" x2="760" y2="140"/>
+          <line x1="560" y1="260" x2="520" y2="480"/>
+          <line x1="760" y1="140" x2="900" y2="300"/>
+          <line x1="900" y1="300" x2="1080" y2="180"/>
+          <line x1="900" y1="300" x2="860" y2="520"/>
+          <line x1="1080" y1="180" x2="1120" y2="430"/>
+          <line x1="200" y1="420" x2="520" y2="480"/>
+          <line x1="520" y1="480" x2="860" y2="520"/>
+          <line x1="860" y1="520" x2="1120" y2="430"/>
+          <circle cx="80" cy="90" r="3"/>
+          <circle cx="240" cy="180" r="4"/>
+          <circle cx="420" cy="80" r="3"/>
+          <circle cx="560" cy="260" r="4"/>
+          <circle cx="760" cy="140" r="3"/>
+          <circle cx="900" cy="300" r="4"/>
+          <circle cx="1080" cy="180" r="3"/>
+          <circle cx="200" cy="420" r="3"/>
+          <circle cx="520" cy="480" r="4"/>
+          <circle cx="860" cy="520" r="3"/>
+          <circle cx="1120" cy="430" r="3"/>
+        </svg>
+        <div class="portfolio-hero-particles"></div>
+        <div class="portfolio-hero-globe"></div>
+      </div>
+      <div class="portfolio-hero-content">
+        <div class="portfolio-hero-text reveal">
+          <div class="portfolio-hero-eyebrow">Our Portfolio</div>
+          <h1 id="portfolio-hero-title" class="portfolio-hero-title">Ideas Into Impact. Creativity Into Digital Experiences.</h1>
+          <p class="portfolio-hero-description">Explore the work, designs, and digital solutions that represent our approach to technology, creativity, and business growth. Every project is an opportunity to transform an idea into something meaningful.</p>
+          <div class="portfolio-hero-actions">
+            <a href="contact.html" class="btn btn-primary">Start Your Project <svg class="icon" viewBox="0 0 24 24"><path d="M7 17 17 7M7 7h10v10"/></svg></a>
+            <a href="#gallery" class="btn btn-secondary">Explore Our Work <svg class="icon" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+          </div>
+          <div class="portfolio-hero-trust">Digital Innovation • Creative Design • Business Solutions</div>
+        </div>
+        <div class="portfolio-hero-visual reveal" aria-hidden="true">
+          <div class="showcase-stage">
+            <div class="showcase-orb"></div>
+            <svg class="showcase-net" viewBox="0 0 560 520" aria-hidden="true" focusable="false">
+              <line x1="40" y1="120" x2="220" y2="60"/>
+              <line x1="220" y1="60" x2="470" y2="150"/>
+              <line x1="470" y1="150" x2="520" y2="360"/>
+              <line x1="520" y1="360" x2="300" y2="470"/>
+              <line x1="300" y1="470" x2="60" y2="380"/>
+              <line x1="60" y1="380" x2="40" y2="120"/>
+              <line x1="220" y1="60" x2="300" y2="470"/>
+              <circle cx="40" cy="120" r="3"/>
+              <circle cx="220" cy="60" r="4"/>
+              <circle cx="470" cy="150" r="3"/>
+              <circle cx="520" cy="360" r="4"/>
+              <circle cx="300" cy="470" r="3"/>
+              <circle cx="60" cy="380" r="3"/>
+            </svg>
+
+            <div class="mock-frame is-browser">
+              <div class="mock-bar">
+                <span class="mock-dot is-red"></span>
+                <span class="mock-dot is-amber"></span>
+                <span class="mock-dot is-green"></span>
+                <span class="mock-url">care-digital-solutions</span>
+              </div>
+              <div class="mock-body">
+                <div class="mock-hero-block"></div>
+                <div class="mock-row">
+                  <span class="mock-cell"></span>
+                  <span class="mock-cell"></span>
+                  <span class="mock-cell"></span>
+                </div>
+                <div class="mock-line"></div>
+                <div class="mock-line is-short"></div>
+              </div>
+            </div>
+
+            <div class="mock-frame is-code">
+              <div class="mock-bar">
+                <span class="mock-dot"></span>
+                <span class="mock-dot"></span>
+              </div>
+              <div class="mock-code">
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span>
+              </div>
+            </div>
+
+            <div class="mock-frame is-data">
+              <div class="mock-bar">
+                <span class="mock-dot"></span>
+                <span class="mock-dot"></span>
+              </div>
+              <div class="mock-chart">
+                <i style="height:42%"></i>
+                <i style="height:68%"></i>
+                <i style="height:34%"></i>
+                <i style="height:82%"></i>
+                <i style="height:56%"></i>
+              </div>
+              <div style="padding:10px 14px 14px">
+                <div class="mock-line is-accent" style="margin-top:0"></div>
+              </div>
+            </div>
+
+            <span class="stage-chip is-web">Web Design</span>
+            <span class="stage-chip is-brand">Branding</span>
+            <span class="stage-chip is-software">Software &amp; AI</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Portfolio Introduction -->
+    <section class="section intro-section" aria-labelledby="intro-title">
+      <div class="intro-bg"></div>
+      <div class="intro-content">
+        <div class="intro-text reveal">
+          <div class="section-eyebrow">Our Work</div>
+          <h3 id="intro-title" style="font-size:clamp(1.5rem,3vw,2rem);margin-bottom:20px">Work That Reflects Our Thinking</h3>
+          <p>Our portfolio represents the different ways technology and creativity can solve problems, strengthen brands, and communicate ideas. From websites and software concepts to graphic design, branding, printing, and multimedia, we approach each project with attention to purpose, quality, and presentation.</p>
+          <div class="intro-capabilities">
+            <span class="intro-chip">Web Design</span>
+            <span class="intro-chip">Software &amp; AI</span>
+            <span class="intro-chip">Graphic Design</span>
+            <span class="intro-chip">Branding &amp; Printing</span>
+            <span class="intro-chip">Multimedia</span>
+          </div>
+        </div>
+        <div class="intro-visual reveal">
+          <svg viewBox="0 0 400 400" role="img" aria-label="Abstract illustration of connected digital capability areas around a central hub">
+            <defs>
+              <linearGradient id="introAccent" x1="0" y1="0" x2="1" y2="1">
+                <stop offset="0%" stop-color="#2563EB"/>
+                <stop offset="100%" stop-color="#22D3EE"/>
+              </linearGradient>
+            </defs>
+            <g stroke="#ffffff" stroke-opacity=".04">
+              <line x1="0" y1="80" x2="400" y2="80"/>
+              <line x1="0" y1="160" x2="400" y2="160"/>
+              <line x1="0" y1="240" x2="400" y2="240"/>
+              <line x1="0" y1="320" x2="400" y2="320"/>
+              <line x1="80" y1="0" x2="80" y2="400"/>
+              <line x1="160" y1="0" x2="160" y2="400"/>
+              <line x1="240" y1="0" x2="240" y2="400"/>
+              <line x1="320" y1="0" x2="320" y2="400"/>
+            </g>
+            <circle cx="200" cy="180" r="128" fill="none" stroke="#ffffff" stroke-opacity=".07"/>
+            <circle cx="200" cy="180" r="92" fill="none" stroke="#2563EB" stroke-opacity=".4"/>
+            <circle cx="200" cy="180" r="56" fill="none" stroke="url(#introAccent)" stroke-width="1.5"/>
+            <g stroke="#22D3EE" stroke-opacity=".2">
+              <line x1="200" y1="180" x2="200" y2="52"/>
+              <line x1="200" y1="180" x2="328" y2="180"/>
+              <line x1="200" y1="180" x2="200" y2="308"/>
+              <line x1="200" y1="180" x2="72" y2="180"/>
+              <line x1="200" y1="180" x2="290" y2="90"/>
+              <line x1="200" y1="180" x2="290" y2="270"/>
+              <line x1="200" y1="180" x2="110" y2="270"/>
+              <line x1="200" y1="180" x2="110" y2="90"/>
+            </g>
+            <g fill="#22D3EE">
+              <circle cx="200" cy="52" r="4"/>
+              <circle cx="328" cy="180" r="4"/>
+              <circle cx="200" cy="308" r="4"/>
+              <circle cx="72" cy="180" r="4"/>
+              <circle cx="290" cy="90" r="3"/>
+              <circle cx="290" cy="270" r="3"/>
+              <circle cx="110" cy="270" r="3"/>
+              <circle cx="110" cy="90" r="3"/>
+            </g>
+            <circle cx="200" cy="180" r="18" fill="url(#introAccent)"/>
+            <circle cx="200" cy="180" r="34" fill="none" stroke="#22D3EE" stroke-opacity=".35"/>
+            <g fill="url(#introAccent)" opacity=".75">
+              <rect x="132" y="348" width="16" height="30" rx="4"/>
+              <rect x="156" y="332" width="16" height="46" rx="4"/>
+              <rect x="180" y="356" width="16" height="22" rx="4"/>
+              <rect x="204" y="322" width="16" height="56" rx="4"/>
+              <rect x="228" y="340" width="16" height="38" rx="4"/>
+              <rect x="252" y="352" width="16" height="26" rx="4"/>
+            </g>
+          </svg>
+          <span class="intro-badge">Technology meets creativity</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- Portfolio Filters -->
+    <section class="section filter-section" aria-labelledby="gallery-title">
+      <div class="section-header">
+        <div class="section-eyebrow">Project Gallery</div>
+        <h2 id="gallery-title" class="section-title">Our Creative Work</h2>
+        <p class="section-description">Explore projects across web design, software development, branding, and creative solutions.</p>
+      </div>
+      <div class="filter-toolbar">
+        <div class="filter-container" role="group" aria-label="Filter projects by category">
+          <button class="filter-btn" type="button" data-category="all" aria-pressed="true">All Projects</button>
+          <button class="filter-btn" type="button" data-category="web" aria-pressed="false">Web Design</button>
+          <button class="filter-btn" type="button" data-category="software" aria-pressed="false">Software &amp; AI</button>
+          <button class="filter-btn" type="button" data-category="design" aria-pressed="false">Graphic Design</button>
+          <button class="filter-btn" type="button" data-category="branding" aria-pressed="false">Branding &amp; Printing</button>
+          <button class="filter-btn" type="button" data-category="multimedia" aria-pressed="false">Multimedia</button>
+          <button class="filter-btn" type="button" data-category="other" aria-pressed="false">Other Creative Work</button>
+        </div>
+        <p class="filter-count" id="galleryCount" aria-live="polite">Showing <strong>7</strong> of 7 projects</p>
+      </div>
+    </section>
+
+    <!-- Project Gallery -->
+    <section id="gallery" class="section gallery-section" aria-label="Project gallery">
+      <div class="project-grid">
+        <!-- Concept Project 1 -->
+        <article class="project-card is-wide reveal" data-category="web"
+          data-title="Corporate Website Concept"
+          data-label="Web Design"
+          data-summary="A responsive corporate website concept built around clear structure, calm typography and a straightforward route to enquiry."
+          data-objective="Present a company's services clearly, build credibility in the first few seconds and make contact effortless on any device."
+          data-approach="A modular page system with generous white space, a restrained navy and blue palette and a content hierarchy that leads naturally to the enquiry form."
+          data-tags="Responsive Layout,Design System,Web Performance">
+          <div class="project-media">
+            <span class="project-badge">Concept Project</span>
+            <div class="preview">
+              <div class="pv-screen">
+                <div class="pv-top"><i></i><i></i><i></i><b></b></div>
+                <div class="pv-body">
+                  <div class="pv-hero"></div>
+                  <div class="pv-grid"><span></span><span></span><span></span></div>
+                </div>
+              </div>
+            </div>
+            <div class="project-overlay">
+              <p>Modular corporate layout with a clear journey from first impression to enquiry.</p>
+              <span>View details <svg class="icon" viewBox="0 0 24 24" style="width:16px;height:16px"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+            </div>
+          </div>
+          <div class="project-content">
+            <div class="project-category">Web Design</div>
+            <h3 class="project-title">Corporate Website Concept</h3>
+            <p class="project-description">A responsive corporate website concept featuring a modern layout, clean typography and an optimised user experience.</p>
+            <div class="project-meta">
+              <span class="project-tag">Responsive</span>
+              <span class="project-tag">Modern</span>
+            </div>
+            <button class="project-link" type="button">View project details <svg class="icon" viewBox="0 0 24 24" style="width:16px;height:16px"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button>
+          </div>
+        </article>
+
+        <!-- Concept Project 2 -->
+        <article class="project-card reveal" data-category="software"
+          data-title="Business System Dashboard"
+          data-label="Software &amp; AI"
+          data-summary="A dashboard concept for internal business systems, designed so decision makers can read performance at a glance."
+          data-objective="Turn scattered operational data into one calm, legible view that supports faster day-to-day decisions."
+          data-approach="A fixed navigation rail, prioritised data blocks and a chart language that stays readable on smaller laptop screens."
+          data-tags="Dashboard UI,Data Visualisation,Design System">
+          <div class="project-media">
+            <span class="project-badge">Concept Project</span>
+            <div class="preview">
+              <div class="pv-screen">
+                <div class="pv-top"><i></i><i></i><i></i><b></b></div>
+                <div class="pv-body">
+                  <div class="pv-split">
+                    <div class="pv-rail"></div>
+                    <div class="pv-main">
+                      <div class="pv-lines"><span></span><span></span></div>
+                      <div class="pv-bars">
+                        <i style="height:38%"></i>
+                        <i style="height:62%"></i>
+                        <i style="height:30%"></i>
+                        <i style="height:78%"></i>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="project-overlay">
+              <p>Operational data organised into one calm, legible view.</p>
+              <span>View details <svg class="icon" viewBox="0 0 24 24" style="width:16px;height:16px"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+            </div>
+          </div>
+          <div class="project-content">
+            <div class="project-category">Software &amp; AI</div>
+            <h3 class="project-title">Business System Dashboard</h3>
+            <p class="project-description">A dashboard concept for business management systems with clear data visualisation and an intuitive interface layout.</p>
+            <div class="project-meta">
+              <span class="project-tag">Dashboard</span>
+              <span class="project-tag">Analytics</span>
+            </div>
+            <button class="project-link" type="button">View project details <svg class="icon" viewBox="0 0 24 24" style="width:16px;height:16px"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button>
+          </div>
+        </article>
+
+        <!-- Concept Project 3 -->
+        <article class="project-card reveal" data-category="design"
+          data-title="Brand Identity Concept"
+          data-label="Graphic Design"
+          data-summary="A complete brand identity concept including logo design, colour palette, typography and brand guidelines."
+          data-objective="Give a growing business one consistent visual identity that works across both print and digital touchpoints."
+          data-approach="A structured identity system — a flexible primary mark, defined colour and type scales, and simple usage rules so the brand stays consistent as it grows."
+          data-tags="Logo Design,Colour System,Typography,Brand Guidelines">
+          <div class="project-media">
+            <span class="project-badge">Concept Project</span>
+            <div class="preview">
+              <div class="pv-screen">
+                <div class="pv-top"><i></i><i></i><i></i><b></b></div>
+                <div class="pv-body">
+                  <div class="pv-brand">
+                    <div class="pv-mark">CARE</div>
+                    <div class="pv-swatches">
+                      <i style="background:#2563EB"></i>
+                      <i style="background:#22D3EE"></i>
+                      <i style="background:#0B1F3A"></i>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="project-overlay">
+              <p>A structured identity system built to stay consistent.</p>
+              <span>View details <svg class="icon" viewBox="0 0 24 24" style="width:16px;height:16px"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+            </div>
+          </div>
+          <div class="project-content">
+            <div class="project-category">Graphic Design</div>
+            <h3 class="project-title">Brand Identity Concept</h3>
+            <p class="project-description">A complete brand identity concept including logo design, colour palette, typography, and brand guidelines.</p>
+            <div class="project-meta">
+              <span class="project-tag">Logo</span>
+              <span class="project-tag">Branding</span>
+            </div>
+            <button class="project-link" type="button">View project details <svg class="icon" viewBox="0 0 24 24" style="width:16px;height:16px"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button>
+          </div>
+        </article>
+
+        <!-- Concept Project 4 -->
+        <article class="project-card reveal" data-category="branding"
+          data-title="Print Materials Concept"
+          data-label="Branding &amp; Printing"
+          data-summary="A collection of branded print materials including business cards, brochures and promotional items."
+          data-objective="Extend the brand identity into physical touchpoints that feel considered, premium and unmistakably consistent."
+          data-approach="A compact print system with clear hierarchy, generous spacing and print-safe colour values so every item matches the digital brand."
+          data-tags="Stationery,Brochures,Print Production">
+          <div class="project-media">
+            <span class="project-badge">Concept Project</span>
+            <div class="preview">
+              <div class="pv-screen">
+                <div class="pv-top"><i></i><i></i><i></i><b></b></div>
+                <div class="pv-body">
+                  <div class="pv-cards"><i></i><i></i></div>
+                  <div class="pv-lines"><span></span><span></span></div>
+                </div>
+              </div>
+            </div>
+            <div class="project-overlay">
+              <p>Brand identity carried into premium print touchpoints.</p>
+              <span>View details <svg class="icon" viewBox="0 0 24 24" style="width:16px;height:16px"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+            </div>
+          </div>
+          <div class="project-content">
+            <div class="project-category">Branding &amp; Printing</div>
+            <h3 class="project-title">Print Materials Concept</h3>
+            <p class="project-description">A collection of branded print materials including business cards, brochures, and promotional items.</p>
+            <div class="project-meta">
+              <span class="project-tag">Print</span>
+              <span class="project-tag">Stationery</span>
+            </div>
+            <button class="project-link" type="button">View project details <svg class="icon" viewBox="0 0 24 24" style="width:16px;height:16px"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button>
+          </div>
+        </article>
+
+        <!-- Concept Project 5 -->
+        <article class="project-card reveal" data-category="multimedia"
+          data-title="Video Content Concept"
+          data-label="Multimedia"
+          data-summary="A promotional video concept featuring motion graphics, visual storytelling and professional editing."
+          data-objective="Explain a service clearly and quickly using a short, well-paced promotional video concept."
+          data-approach="A tight script, clean motion graphics and a consistent visual language that can be reused across social and web channels."
+          data-tags="Video Editing,Motion Graphics,Storyboarding">
+          <div class="project-media">
+            <span class="project-badge">Concept Project</span>
+            <div class="preview">
+              <div class="pv-screen">
+                <div class="pv-top"><i></i><i></i><i></i><b></b></div>
+                <div class="pv-body">
+                  <div class="pv-video">
+                    <div class="pv-play"><svg class="icon" viewBox="0 0 24 24" style="width:18px;height:18px"><path d="m6 4 14 8-14 8z"/></svg></div>
+                  </div>
+                  <div class="pv-timeline"></div>
+                </div>
+              </div>
+            </div>
+            <div class="project-overlay">
+              <p>Short, well-paced storytelling with clean motion graphics.</p>
+              <span>View details <svg class="icon" viewBox="0 0 24 24" style="width:16px;height:16px"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+            </div>
+          </div>
+          <div class="project-content">
+            <div class="project-category">Multimedia</div>
+            <h3 class="project-title">Video Content Concept</h3>
+            <p class="project-description">A promotional video concept featuring motion graphics, visual storytelling, and professional editing.</p>
+            <div class="project-meta">
+              <span class="project-tag">Video</span>
+              <span class="project-tag">Motion</span>
+            </div>
+            <button class="project-link" type="button">View project details <svg class="icon" viewBox="0 0 24 24" style="width:16px;height:16px"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button>
+          </div>
+        </article>
+
+        <!-- Concept Project 6 -->
+        <article class="project-card is-wide reveal" data-category="web"
+          data-title="E-commerce Concept"
+          data-label="Web Design"
+          data-summary="An e-commerce website concept focusing on product presentation, user experience and conversion-friendly structure."
+          data-objective="Present products clearly and reduce friction between browsing and checkout."
+          data-approach="A consistent product grid, strong imagery ratios and a simple browsing path supported by clear category structure."
+          data-tags="E-commerce,Product Grid,UX Structure">
+          <div class="project-media">
+            <span class="project-badge">Concept Project</span>
+            <div class="preview">
+              <div class="pv-screen">
+                <div class="pv-top"><i></i><i></i><i></i><b></b></div>
+                <div class="pv-body">
+                  <div class="pv-shop"><i></i><i></i><i></i><i></i></div>
+                  <div class="pv-lines"><span></span><span></span></div>
+                </div>
+              </div>
+            </div>
+            <div class="project-overlay">
+              <p>A calm product grid that keeps browsing and buying simple.</p>
+              <span>View details <svg class="icon" viewBox="0 0 24 24" style="width:16px;height:16px"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+            </div>
+          </div>
+          <div class="project-content">
+            <div class="project-category">Web Design</div>
+            <h3 class="project-title">E-commerce Concept</h3>
+            <p class="project-description">An e-commerce website concept focusing on product presentation, user experience, and conversion optimization.</p>
+            <div class="project-meta">
+              <span class="project-tag">E-commerce</span>
+              <span class="project-tag">UX</span>
+            </div>
+            <button class="project-link" type="button">View project details <svg class="icon" viewBox="0 0 24 24" style="width:16px;height:16px"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button>
+          </div>
+        </article>
+
+        <!-- Concept Project 7 -->
+        <article class="project-card reveal" data-category="other"
+          data-title="Event & Campaign Concept"
+          data-label="Other Creative Work"
+          data-summary="A visual concept for an event and campaign rollout, including posters, digital banners and promotional items."
+          data-objective="Give a single campaign one recognisable look that works consistently across screens and printed surfaces."
+          data-approach="A reusable layout system with a small set of strong visual rules, so new pieces can be produced quickly without losing consistency."
+          data-tags="Campaign Design,Banners,Promotional Print">
+          <div class="project-media">
+            <span class="project-badge">Concept Project</span>
+            <div class="preview">
+              <div class="pv-screen">
+                <div class="pv-top"><i></i><i></i><i></i><b></b></div>
+                <div class="pv-body">
+                  <div class="pv-banner">Campaign</div>
+                  <div class="pv-tickets"><i></i><i></i><i></i></div>
+                </div>
+              </div>
+            </div>
+            <div class="project-overlay">
+              <p>One campaign look, reused consistently across every surface.</p>
+              <span>View details <svg class="icon" viewBox="0 0 24 24" style="width:16px;height:16px"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+            </div>
+          </div>
+          <div class="project-content">
+            <div class="project-category">Other Creative Work</div>
+            <h3 class="project-title">Event &amp; Campaign Concept</h3>
+            <p class="project-description">A creative campaign concept covering event visuals, digital banners, and promotional print materials.</p>
+            <div class="project-meta">
+              <span class="project-tag">Campaign</span>
+              <span class="project-tag">Print</span>
+            </div>
+            <button class="project-link" type="button">View project details <svg class="icon" viewBox="0 0 24 24" style="width:16px;height:16px"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- Featured Project -->
+    <section class="section featured-section" aria-labelledby="featured-title">
+      <div class="featured-bg"></div>
+      <div class="featured-content">
+        <div class="featured-text reveal">
+          <div class="section-eyebrow" style="color:var(--accent-2)">Featured Work</div>
+          <div class="featured-note">Concept Project</div>
+          <h3 id="featured-title" style="margin-bottom:20px">Digital Transformation Initiative</h3>
+          <p>A comprehensive digital solution concept that demonstrates how technology and creative design can work together to solve business challenges and create meaningful user experiences.</p>
+          <div class="featured-facts">
+            <div class="featured-fact">
+              <h4>Challenge</h4>
+              <p>Fragmented tools and an inconsistent visual presence made it difficult to present a clear, credible digital identity.</p>
+            </div>
+            <div class="featured-fact">
+              <h4>Approach</h4>
+              <p>One responsive platform, a shared design language and a user-centred structure designed to scale alongside the business.</p>
+            </div>
+          </div>
+          <div class="featured-tags">
+            <span class="tech-chip">Responsive Web</span>
+            <span class="tech-chip">Design System</span>
+            <span class="tech-chip">Brand Identity</span>
+            <span class="tech-chip">UX Structure</span>
+          </div>
+          <a href="contact.html" class="btn btn-primary">Discuss Similar Project <svg class="icon" viewBox="0 0 24 24"><path d="M7 17 17 7M7 7h10v10"/></svg></a>
+        </div>
+        <div class="featured-visual reveal">
+          <div class="device">
+            <div class="device-screen">
+              <div class="preview">
+                <div class="pv-screen">
+                  <div class="pv-top"><i></i><i></i><i></i><b></b></div>
+                  <div class="pv-body">
+                    <div class="pv-hero"></div>
+                    <div class="pv-lines"><span></span><span></span><span></span></div>
+                    <div class="pv-grid"><span></span><span></span><span></span></div>
+                    <div class="pv-bars">
+                      <i style="height:34%"></i><i style="height:58%"></i><i style="height:26%"></i><i style="height:74%"></i><i style="height:46%"></i>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="device-float"><span>Status</span><b>Concept Project</b></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Capabilities -->
+    <section class="section capabilities-section" aria-labelledby="capabilities-title">
+      <div class="section-header">
+        <div class="section-eyebrow">Our Expertise</div>
+        <h2 id="capabilities-title" class="section-title">Different Skills. One Creative Vision.</h2>
+        <p class="section-description">The main categories of work we can present for your projects.</p>
+      </div>
+      <div class="capabilities-grid">
+        <div class="capability-card reveal">
+          <div class="capability-preview">
+            <div class="preview">
+              <div class="pv-screen">
+                <div class="pv-top"><i></i><i></i><i></i><b></b></div>
+                <div class="pv-body">
+                  <div class="pv-hero"></div>
+                  <div class="pv-grid"><span></span><span></span><span></span></div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="capability-icon">
+            <svg class="icon" viewBox="0 0 24 24" style="width:28px;height:28px"><rect x="3" y="4" width="18" height="15" rx="2"/><path d="M8 22h8M12 19v3M7 9h10M7 13h6"/></svg>
+          </div>
+          <h3 class="capability-title">Websites &amp; Digital Experiences</h3>
+          <p class="capability-description">Website interfaces, landing pages, responsive layouts, and digital user experiences.</p>
+        </div>
+        <div class="capability-card reveal">
+          <div class="capability-preview">
+            <div class="preview">
+              <div class="pv-screen">
+                <div class="pv-top"><i></i><i></i><i></i><b></b></div>
+                <div class="pv-body">
+                  <div class="pv-split">
+                    <div class="pv-rail"></div>
+                    <div class="pv-main">
+                      <div class="pv-lines"><span></span><span></span></div>
+                      <div class="pv-bars"><i style="height:42%"></i><i style="height:70%"></i><i style="height:32%"></i></div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="capability-icon">
+            <svg class="icon" viewBox="0 0 24 24" style="width:28px;height:28px"><path d="M12 20V10M18 20V4M6 20v-4"/></svg>
+          </div>
+          <h3 class="capability-title">Software &amp; AI Solutions</h3>
+          <p class="capability-description">Software interfaces, dashboards, workflow concepts, and AI-enabled applications.</p>
+        </div>
+        <div class="capability-card reveal">
+          <div class="capability-preview">
+            <div class="preview">
+              <div class="pv-screen">
+                <div class="pv-top"><i></i><i></i><i></i><b></b></div>
+                <div class="pv-body">
+                  <div class="pv-brand">
+                    <div class="pv-mark">CARE</div>
+                    <div class="pv-swatches">
+                      <i style="background:#2563EB"></i>
+                      <i style="background:#22D3EE"></i>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="capability-icon">
+            <svg class="icon" viewBox="0 0 24 24" style="width:28px;height:28px"><path d="M12 3v18M3 12h18"/><circle cx="12" cy="12" r="8"/><path d="m8 8 8 8m0-8-8 8"/></svg>
+          </div>
+          <h3 class="capability-title">Graphic Design &amp; Branding</h3>
+          <p class="capability-description">Logos, brand identities, posters, flyers, business cards, and creative designs.</p>
+        </div>
+        <div class="capability-card reveal">
+          <div class="capability-preview">
+            <div class="preview">
+              <div class="pv-screen">
+                <div class="pv-top"><i></i><i></i><i></i><b></b></div>
+                <div class="pv-body">
+                  <div class="pv-cards"><i></i><i></i></div>
+                  <div class="pv-lines"><span></span><span></span></div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="capability-icon">
+            <svg class="icon" viewBox="0 0 24 24" style="width:28px;height:28px"><path d="M6 9V2h12V9"/><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><path d="M6 14h12v8H6z"/></svg>
+          </div>
+          <h3 class="capability-title">Printing &amp; Branded Materials</h3>
+          <p class="capability-description">Branded products, business stationery, banners, and promotional print materials.</p>
+        </div>
+        <div class="capability-card reveal">
+          <div class="capability-preview">
+            <div class="preview">
+              <div class="pv-screen">
+                <div class="pv-top"><i></i><i></i><i></i><b></b></div>
+                <div class="pv-body">
+                  <div class="pv-video">
+                    <div class="pv-play"><svg class="icon" viewBox="0 0 24 24" style="width:16px;height:16px"><path d="m6 4 14 8-14 8z"/></svg></div>
+                  </div>
+                  <div class="pv-timeline"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="capability-icon">
+            <svg class="icon" viewBox="0 0 24 24" style="width:28px;height:28px"><rect x="2" y="2" width="20" height="20" rx="2.18" ry="2.18"/><line x1="7" y1="2" x2="7" y2="22"/><line x1="17" y1="2" x2="17" y2="22"/><line x1="2" y1="12" x2="22" y2="12"/><line x1="2" y1="7" x2="7" y2="7"/><line x1="2" y1="17" x2="7" y2="17"/><line x1="17" y1="17" x2="22" y2="17"/><line x1="17" y1="7" x2="22" y2="7"/></svg>
+          </div>
+          <h3 class="capability-title">Multimedia &amp; Video</h3>
+          <p class="capability-description">Video editing, promotional content, motion graphics, and multimedia presentations.</p>
+        </div>
+        <div class="capability-card reveal">
+          <div class="capability-preview">
+            <div class="preview">
+              <div class="pv-screen">
+                <div class="pv-top"><i></i><i></i><i></i><b></b></div>
+                <div class="pv-body">
+                  <div class="pv-banner">Concept</div>
+                  <div class="pv-tickets"><i></i><i></i><i></i></div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="capability-icon">
+            <svg class="icon" viewBox="0 0 24 24" style="width:28px;height:28px"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2Z"/></svg>
+          </div>
+          <h3 class="capability-title">Other Creative Projects</h3>
+          <p class="capability-description">Additional creative and digital projects tailored to specific client needs.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Process -->
+    <section class="section process-section" aria-labelledby="process-title">
+      <div class="section-header">
+        <div class="section-eyebrow">Our Process</div>
+        <h2 id="process-title" class="section-title">From Concept to Creation</h2>
+        <p class="section-description">A structured approach to delivering quality creative work.</p>
+      </div>
+      <div class="process-steps">
+        <div class="process-step reveal">
+          <div class="process-number">01
+            <span class="process-icon"><svg class="icon" viewBox="0 0 24 24" style="width:14px;height:14px"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg></span>
+          </div>
+          <h3 class="process-title">Discover</h3>
+          <p class="process-description">Understand the project's goals, audience, and requirements.</p>
+        </div>
+        <div class="process-step reveal">
+          <div class="process-number">02
+            <span class="process-icon"><svg class="icon" viewBox="0 0 24 24" style="width:14px;height:14px"><path d="M9 18h6M10 21h4"/><path d="M12 3a6 6 0 0 0-3.5 10.9c.4.3.5.7.5 1.1v1h6v-1c0-.4.1-.8.5-1.1A6 6 0 0 0 12 3Z"/></svg></span>
+          </div>
+          <h3 class="process-title">Conceptualize</h3>
+          <p class="process-description">Develop a clear creative direction and practical solution.</p>
+        </div>
+        <div class="process-step reveal">
+          <div class="process-number">03
+            <span class="process-icon"><svg class="icon" viewBox="0 0 24 24" style="width:14px;height:14px"><path d="M12 19l7-7a2.8 2.8 0 0 0-4-4l-7 7-1 5 5-1Z"/><path d="M12 8l4 4"/></svg></span>
+          </div>
+          <h3 class="process-title">Create</h3>
+          <p class="process-description">Design, develop, or produce the agreed work with attention to quality.</p>
+        </div>
+        <div class="process-step reveal">
+          <div class="process-number">04
+            <span class="process-icon"><svg class="icon" viewBox="0 0 24 24" style="width:14px;height:14px"><path d="m5 13 4 4L19 7"/></svg></span>
+          </div>
+          <h3 class="process-title">Refine</h3>
+          <p class="process-description">Review the work, apply feedback, and prepare the final deliverable.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Quality Commitment -->
+    <section class="section quality-section" aria-labelledby="quality-title">
+      <div class="section-header">
+        <div class="section-eyebrow">Our Standards</div>
+        <h2 id="quality-title" class="section-title">Every Detail Has a Purpose</h2>
+        <p class="section-description">The principles that guide our commitment to quality and excellence.</p>
+      </div>
+      <div class="quality-grid">
+        <div class="quality-card reveal">
+          <div class="quality-icon">
+            <svg class="icon" viewBox="0 0 24 24" style="width:28px;height:28px"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2Z"/></svg>
+          </div>
+          <h3 class="quality-title">Purposeful Design</h3>
+          <p class="quality-description">Every visual and functional decision should support the project's objectives.</p>
+        </div>
+        <div class="quality-card reveal">
+          <div class="quality-icon">
+            <svg class="icon" viewBox="0 0 24 24" style="width:28px;height:28px"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2Z"/></svg>
+          </div>
+          <h3 class="quality-title">Professional Execution</h3>
+          <p class="quality-description">We value consistency, detail, usability, and a polished final presentation.</p>
+        </div>
+        <div class="quality-card reveal">
+          <div class="quality-icon">
+            <svg class="icon" viewBox="0 0 24 24" style="width:28px;height:28px"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2Z"/></svg>
+          </div>
+          <h3 class="quality-title">Continuous Improvement</h3>
+          <p class="quality-description">We welcome constructive feedback and look for ways to refine the final result.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section id="contact" class="cta-section">
+      <div class="cta-bg"></div>
+      <div class="cta-grid"></div>
+      <div class="cta-network"></div>
+      <svg class="cta-nodes" viewBox="0 0 1440 600" preserveAspectRatio="xMidYMid slice" aria-hidden="true" focusable="false">
+        <line x1="120" y1="120" x2="360" y2="250"/>
+        <line x1="360" y1="250" x2="620" y2="140"/>
+        <line x1="620" y1="140" x2="880" y2="300"/>
+        <line x1="880" y1="300" x2="1140" y2="180"/>
+        <line x1="1140" y1="180" x2="1340" y2="330"/>
+        <line x1="360" y1="250" x2="300" y2="470"/>
+        <line x1="620" y1="140" x2="700" y2="470"/>
+        <line x1="880" y1="300" x2="1010" y2="500"/>
+        <line x1="120" y1="120" x2="300" y2="470"/>
+        <line x1="1340" y1="330" x2="1010" y2="500"/>
+        <circle cx="120" cy="120" r="4"/>
+        <circle cx="360" cy="250" r="5"/>
+        <circle cx="620" cy="140" r="4"/>
+        <circle cx="880" cy="300" r="5"/>
+        <circle cx="1140" cy="180" r="4"/>
+        <circle cx="1340" cy="330" r="4"/>
+        <circle cx="300" cy="470" r="4"/>
+        <circle cx="700" cy="470" r="5"/>
+        <circle cx="1010" cy="500" r="4"/>
+      </svg>
+      <div class="cta-particles"></div>
+      <div class="cta-content">
+        <h2 class="cta-title">Have an Idea Worth Bringing to Life?</h2>
+        <p class="cta-description">Let's discuss your next website, software solution, branding project, or creative idea and explore how CARE Digital Solutions can help make it happen.</p>
+        <div class="cta-actions">
+          <a href="contact.html" class="btn btn-primary">Start Your Project <svg class="icon" viewBox="0 0 24 24"><path d="M7 17 17 7M7 7h10v10"/></svg></a>
+          <a href="contact.html" class="btn btn-secondary">Contact Us <svg class="icon" viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><path d="M22 6l-10 7L2 6"/></svg></a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer>
+    <div class="footer-content">
+      <div>
+        <div class="footer-brand">CARE Digital Solutions</div>
+        <p class="footer-tagline">Connecting Ideas, Empowering Businesses.</p>
+        <div class="footer-copyright">© <span class="year"></span> All rights reserved.</div>
+      </div>
+      <div>
+        <div class="footer-heading">Quick Links</div>
+        <div class="footer-links">
+          <a href="index.html" class="footer-link">Home</a>
+          <a href="services.html" class="footer-link">Services</a>
+          <a href="about.html" class="footer-link">About</a>
+          <a href="portfolio.html" class="footer-link">Portfolio</a>
+          <a href="contact.html" class="footer-link">Contact</a>
+        </div>
+      </div>
+      <div>
+        <div class="footer-heading">Services</div>
+        <div class="footer-links">
+          <a href="services.html" class="footer-link">Website Design</a>
+          <a href="services.html" class="footer-link">Software Development</a>
+          <a href="services.html" class="footer-link">Branding & Design</a>
+          <a href="services.html" class="footer-link">ICT Support</a>
+        </div>
+      </div>
+      <div>
+        <div class="footer-heading">Contact</div>
+        <div class="footer-links">
+          <a href="mailto:info@caredigitalsolutions.co.tz" class="footer-link" style="color:var(--accent-2);font-weight:600">info@caredigitalsolutions.co.tz</a>
+          <a href="https://wa.me/255613516832" class="footer-link">WhatsApp: 0613 516 832</a>
+          <a href="https://wa.me/255743939008" class="footer-link">WhatsApp: 0743 939 008</a>
+          <span class="footer-link" style="color:rgba(255,255,255,.7)">Tanzania</span>
+        </div>
+      </div>
+    </div>
+  </footer>
+</div>
+
+<!-- Project detail modal -->
+<div class="modal" id="projectModal" role="dialog" aria-modal="true" aria-labelledby="modalTitle" aria-hidden="true">
+  <div class="modal-backdrop" data-modal-close></div>
+  <div class="modal-panel" role="document">
+    <button class="modal-close" type="button" data-modal-close aria-label="Close project details">
+      <svg class="icon" viewBox="0 0 24 24"><path d="M6 6l12 12M18 6 6 18"/></svg>
+    </button>
+    <div class="modal-media">
+      <div class="preview" id="modalPreview"></div>
+    </div>
+    <div class="modal-body">
+      <div class="modal-category" id="modalCategory"></div>
+      <h2 class="modal-title" id="modalTitle"></h2>
+      <p class="modal-text" id="modalSummary"></p>
+      <div class="modal-grid">
+        <div class="modal-block">
+          <h4>Objective</h4>
+          <p id="modalObjective"></p>
+        </div>
+        <div class="modal-block">
+          <h4>Approach</h4>
+          <p id="modalApproach"></p>
+        </div>
+      </div>
+      <div class="modal-tags" id="modalTags"></div>
+      <div class="modal-actions">
+        <a href="contact.html" class="btn btn-primary" data-modal-close>Discuss a Similar Project <svg class="icon" viewBox="0 0 24 24"><path d="M7 17 17 7M7 7h10v10"/></svg></a>
+        <span style="color:var(--muted);font-size:.85rem">Concept project — sample work created for demonstration.</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<button class="back-to-top" id="backToTop" type="button" aria-label="Back to top" title="Back to top">
+    <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 19V5M5 12l7-7 7 7"/></svg>
+  </button>
+
+  <script>
+(() => {
+  "use strict";
+  const root = document.documentElement;
+  const themeToggle = document.getElementById("themeToggle");
+  
+  // Theme toggle
+  themeToggle.addEventListener("click", () => {
+    const currentMode = root.dataset.mode;
+    const newMode = currentMode === "dark" ? "light" : "dark";
+    root.dataset.mode = newMode;
+    localStorage.setItem("care-theme", newMode);
+  });
+  
+  // Load saved theme
+  const savedTheme = localStorage.getItem("care-theme");
+  if (savedTheme && (savedTheme === "light" || savedTheme === "dark")) {
+    root.dataset.mode = savedTheme;
+  }
+  
+  // Sticky header
+  let lastScroll = 0;
+  window.addEventListener("scroll", () => {
+    const topbar = document.querySelector(".topbar");
+    const currentScroll = window.pageYOffset;
+    if (currentScroll > 50) {
+      topbar.classList.add("scrolled");
+    } else {
+      topbar.classList.remove("scrolled");
+    }
+    lastScroll = currentScroll;
+  }, { passive: true });
+  
+  // Scroll reveal
+  if ("IntersectionObserver" in window) {
+    const observer = new IntersectionObserver(entries => entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add("visible");
+        observer.unobserve(entry.target);
+      }
+    }), { threshold: 0.1 });
+    document.querySelectorAll(".reveal").forEach(el => observer.observe(el));
+  } else {
+    document.querySelectorAll(".reveal").forEach(el => el.classList.add("visible"));
+  }
+  
+  // Category filtering + live project count
+  const filterBtns = Array.from(document.querySelectorAll(".filter-btn"));
+  const projectCards = Array.from(document.querySelectorAll(".project-card"));
+  const galleryCount = document.getElementById("galleryCount");
+  const projectGrid = document.querySelector(".project-grid");
+  const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+  const updateCount = () => {
+    if (!galleryCount) return;
+    const shown = projectCards.filter(card => !card.classList.contains("is-hidden")).length;
+    galleryCount.innerHTML = "Showing <strong>" + shown + "</strong> of " + projectCards.length + " projects";
+  };
+
+  if (projectGrid) {
+    projectGrid.addEventListener("animationend", event => {
+      if (event.target.classList.contains("project-card")) {
+        event.target.classList.remove("is-entering");
+      }
+    });
+  }
+
+  filterBtns.forEach(btn => {
+    btn.addEventListener("click", () => {
+      const category = btn.dataset.category;
+
+      filterBtns.forEach(b => b.setAttribute("aria-pressed", String(b === btn)));
+
+      projectCards.forEach(card => {
+        const matches = category === "all" || card.dataset.category === category;
+        card.classList.toggle("is-hidden", !matches);
+        card.classList.remove("is-entering");
+
+        if (matches) {
+          card.classList.add("visible");
+          if (!reduceMotion) {
+            void card.offsetWidth;
+            card.classList.add("is-entering");
+          }
+        }
+      });
+
+      updateCount();
+    });
+  });
+
+  // Project detail modal
+  const modal = document.getElementById("projectModal");
+  const modalPreview = document.getElementById("modalPreview");
+  const modalCategory = document.getElementById("modalCategory");
+  const modalTitle = document.getElementById("modalTitle");
+  const modalSummary = document.getElementById("modalSummary");
+  const modalObjective = document.getElementById("modalObjective");
+  const modalApproach = document.getElementById("modalApproach");
+  const modalTags = document.getElementById("modalTags");
+  const modalCloseBtn = modal.querySelector(".modal-close");
+  let lastFocused = null;
+
+  const openModal = card => {
+    const data = card.dataset;
+    const preview = card.querySelector(".project-media .preview");
+
+    modalPreview.innerHTML = preview ? preview.innerHTML : "";
+    modalCategory.textContent = data.label || "";
+    modalTitle.textContent = data.title || "";
+    modalSummary.textContent = data.summary || "";
+    modalObjective.textContent = data.objective || "";
+    modalApproach.textContent = data.approach || "";
+
+    modalTags.innerHTML = "";
+    (data.tags || "").split(",").forEach(tag => {
+      const name = tag.trim();
+      if (!name) return;
+      const chip = document.createElement("span");
+      chip.className = "modal-tag";
+      chip.textContent = name;
+      modalTags.appendChild(chip);
+    });
+
+    lastFocused = document.activeElement;
+    modal.classList.add("is-open");
+    modal.setAttribute("aria-hidden", "false");
+    document.body.classList.add("modal-open");
+    modalCloseBtn.focus();
+  };
+
+  const closeModal = () => {
+    if (!modal.classList.contains("is-open")) return;
+    modal.classList.remove("is-open");
+    modal.setAttribute("aria-hidden", "true");
+    document.body.classList.remove("modal-open");
+    if (lastFocused && document.contains(lastFocused)) lastFocused.focus();
+  };
+
+  projectCards.forEach(card => {
+    const trigger = card.querySelector(".project-link");
+    if (trigger) trigger.addEventListener("click", () => openModal(card));
+  });
+
+  modal.querySelectorAll("[data-modal-close]").forEach(el => {
+    el.addEventListener("click", closeModal);
+  });
+
+  document.addEventListener("keydown", event => {
+    if (!modal.classList.contains("is-open")) return;
+
+    if (event.key === "Escape") {
+      event.preventDefault();
+      closeModal();
+      return;
+    }
+
+    if (event.key !== "Tab") return;
+
+    const focusable = Array.from(modal.querySelectorAll('button, a[href], [tabindex]:not([tabindex="-1"])'))
+      .filter(el => el.offsetParent !== null);
+    if (!focusable.length) return;
+
+    const first = focusable[0];
+    const last = focusable[focusable.length - 1];
+
+    if (event.shiftKey && document.activeElement === first) {
+      event.preventDefault();
+      last.focus();
+    } else if (!event.shiftKey && document.activeElement === last) {
+      event.preventDefault();
+      first.focus();
+    }
+  });
+  
+  // Dynamic year
+    document.querySelectorAll(".year").forEach(el => {
+      el.textContent = new Date().getFullYear();
+    });
+
+    // Back to Top functionality
+    const backToTop = document.getElementById("backToTop");
+    if (backToTop) {
+      const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
+
+      const toggleBackToTop = () => {
+        backToTop.classList.toggle("visible", window.scrollY > 300);
+      };
+
+      window.addEventListener("scroll", toggleBackToTop, { passive: true });
+      toggleBackToTop();
+
+      backToTop.addEventListener("click", () => {
+        window.scrollTo({ top: 0, behavior: reduceMotion.matches ? "auto" : "smooth" });
+      });
+    }
+  })();
+</script>
+</body>
+</html>

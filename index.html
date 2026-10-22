@@ -1,0 +1,953 @@
+<!DOCTYPE html>
+<html lang="en" data-mode="light">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#071426">
+<meta name="description" content="CARE Digital Solutions — Connecting Ideas, Empowering Businesses. Professional website design, software development, branding, ICT support and digital solutions for businesses in Tanzania and beyond.">
+<meta name="keywords" content="website design, software development, branding, ICT support, digital solutions, Tanzania, CARE Digital Solutions">
+<meta name="author" content="CARE Digital Solutions">
+<meta name="robots" content="index, follow">
+<meta property="og:title" content="CARE Digital Solutions — Connecting Ideas, Empowering Businesses">
+<meta property="og:description" content="Professional digital solutions including website design, software development, branding, and ICT support.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://caredigitalsolutions.co.tz">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="CARE Digital Solutions — Connecting Ideas, Empowering Businesses">
+<meta name="twitter:description" content="Professional digital solutions including website design, software development, branding, and ICT support.">
+<link rel="canonical" href="https://caredigitalsolutions.co.tz">
+<title>CARE Digital Solutions — Connecting Ideas, Empowering Businesses</title>
+<style>
+/* ==========================================================
+   CARE Digital Solutions — Premium Futuristic Homepage
+   Vanilla HTML + CSS + JS | No framework or build step needed
+   ========================================================== */
+:root {
+  color-scheme: light;
+  --bg: #F4F7FB;
+  --bg-elevated: #ffffff;
+  --surface: rgba(255,255,255,.76);
+  --surface-solid: #fff;
+  --surface-soft: #eef2f8;
+  --text: #071426;
+  --muted: #64748B;
+  --line: rgba(7,20,38,.08);
+  --accent: #2563EB;
+  --accent-2: #22D3EE;
+  --accent-soft: rgba(37,99,235,.08);
+  --hero-bg: #071426;
+  --hero-bg-deep: #0B1F3A;
+  --shadow: 0 18px 50px rgba(7,20,38,.12);
+  --shadow-sm: 0 8px 24px rgba(7,20,38,.08);
+  --header-height: 80px;
+  --radius-xl: 24px;
+  --radius-lg: 18px;
+  --radius-md: 14px;
+  --radius-sm: 10px;
+  --transition: 280ms cubic-bezier(.2,.8,.2,1);
+  --font: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+}
+html[data-mode="dark"] {
+  color-scheme: dark;
+  --bg:#071426;
+  --bg-elevated:#0B1F3A;
+  --surface:rgba(11,31,58,.78);
+  --surface-solid:#0B1F3A;
+  --surface-soft:#0d2847;
+  --text:#f8fafc;
+  --muted:#94a3b8;
+  --line:rgba(255,255,255,.08);
+  --accent-soft:rgba(37,99,235,.15);
+  --shadow:0 18px 50px rgba(0,0,0,.3);
+  --shadow-sm:0 8px 24px rgba(0,0,0,.2);
+}
+* { box-sizing:border-box; }
+html { scroll-behavior:smooth; }
+body {
+  margin:0; min-height:100vh; font-family:var(--font); color:var(--text);
+  background:var(--bg);
+  line-height:1.6; transition:background-color var(--transition),color var(--transition);
+}
+button, input, select, textarea { font:inherit; }
+button { color:inherit; }
+a { color:inherit; text-decoration:none; }
+button:focus-visible, a:focus-visible, input:focus-visible { outline:3px solid var(--accent-2); outline-offset:3px; }
+.icon { width:20px; height:20px; display:inline-block; flex:none; fill:none; stroke:currentColor; stroke-width:1.8; stroke-linecap:round; stroke-linejoin:round; }
+.skip-link { position:fixed; left:12px; top:-60px; z-index:999; padding:10px 14px; border-radius:10px; background:var(--surface-solid); }
+.skip-link:focus { top:12px; }
+
+/* Premium Hero Section */
+.hero-section {
+  position:relative;
+  min-height:100vh;
+  display:flex;
+  align-items:center;
+  background:linear-gradient(135deg,var(--hero-bg) 0%,var(--hero-bg-deep) 100%);
+  overflow:hidden;
+  padding:120px 34px 80px;
+}
+
+.hero-bg-effects {
+  position:absolute;
+  inset:0;
+  overflow:hidden;
+  pointer-events:none;
+}
+
+.hero-grid {
+  position:absolute;
+  inset:0;
+  background-image:
+    linear-gradient(rgba(37,99,235,.03) 1px,transparent 1px),
+    linear-gradient(90deg,rgba(37,99,235,.03) 1px,transparent 1px);
+  background-size:60px 60px;
+  mask-image:radial-gradient(ellipse at center,black 30%,transparent 70%);
+}
+
+.hero-glow {
+  position:absolute;
+  width:600px;
+  height:600px;
+  border-radius:50%;
+  background:radial-gradient(circle,rgba(37,99,235,.15) 0%,transparent 70%);
+  top:-200px;
+  right:-200px;
+  filter:blur(80px);
+}
+
+.hero-glow-2 {
+  position:absolute;
+  width:400px;
+  height:400px;
+  border-radius:50%;
+  background:radial-gradient(circle,rgba(34,211,238,.1) 0%,transparent 70%);
+  bottom:-100px;
+  left:-100px;
+  filter:blur(60px);
+}
+
+.hero-content {
+  position:relative;
+  z-index:2;
+  max-width:1400px;
+  margin:0 auto;
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:60px;
+  align-items:center;
+}
+
+.hero-text {
+  color:#fff;
+}
+
+.hero-eyebrow {
+  display:inline-flex;
+  align-items:center;
+  gap:10px;
+  color:var(--accent-2);
+  font-size:.75rem;
+  font-weight:700;
+  text-transform:uppercase;
+  letter-spacing:.2em;
+  margin-bottom:24px;
+}
+
+.hero-eyebrow::before {
+  content:"";
+  width:24px;
+  height:1px;
+  background:var(--accent-2);
+}
+
+.hero-title {
+  font-size:clamp(2.5rem,5vw,4rem);
+  font-weight:900;
+  letter-spacing:-.04em;
+  line-height:1.1;
+  margin-bottom:24px;
+}
+
+.hero-title-gradient {
+  background:linear-gradient(135deg,var(--accent) 0%,var(--accent-2) 100%);
+  -webkit-background-clip:text;
+  -webkit-text-fill-color:transparent;
+  background-clip:text;
+}
+
+.hero-description {
+  font-size:1.1rem;
+  line-height:1.7;
+  color:rgba(255,255,255,.7);
+  margin-bottom:32px;
+  max-width:540px;
+}
+
+.hero-actions {
+  display:flex;
+  gap:16px;
+  flex-wrap:wrap;
+  margin-bottom:32px;
+}
+
+.hero-support {
+  font-size:.85rem;
+  color:rgba(255,255,255,.5);
+  font-weight:600;
+  letter-spacing:.01em;
+}
+
+.hero-visual {
+  position:relative;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+}
+
+.hero-sphere {
+  position:relative;
+  width:400px;
+  height:400px;
+}
+
+.sphere-outer {
+  position:absolute;
+  inset:0;
+  border-radius:50%;
+  border:1px solid rgba(37,99,235,.2);
+  animation:rotate 20s linear infinite;
+}
+
+.sphere-inner {
+  position:absolute;
+  inset:40px;
+  border-radius:50%;
+  border:1px solid rgba(34,211,238,.3);
+  animation:rotate 15s linear infinite reverse;
+}
+
+.sphere-core {
+  position:absolute;
+  inset:80px;
+  border-radius:50%;
+  background:radial-gradient(circle at 30% 30%,rgba(37,99,235,.4) 0%,rgba(7,20,38,.8) 70%);
+  box-shadow:0 0 60px rgba(37,99,235,.3),inset 0 0 60px rgba(34,211,238,.2);
+}
+
+.sphere-node {
+  position:absolute;
+  width:12px;
+  height:12px;
+  border-radius:50%;
+  background:var(--accent-2);
+  box-shadow:0 0 20px var(--accent-2);
+}
+
+.sphere-node:nth-child(1) { top:20%;left:50%;animation:float 3s ease-in-out infinite; }
+.sphere-node:nth-child(2) { top:50%;right:20%;animation:float 3s ease-in-out infinite 1s; }
+.sphere-node:nth-child(3) { bottom:20%;left:30%;animation:float 3s ease-in-out infinite 2s; }
+
+@keyframes rotate {
+  from { transform:rotate(0deg); }
+  to { transform:rotate(360deg); }
+}
+
+@keyframes float {
+  0%,100% { transform:translateY(0); }
+  50% { transform:translateY(-10px); }
+}
+
+.glass-card {
+  position:absolute;
+  padding:16px 20px;
+  border-radius:16px;
+  background:rgba(255,255,255,.05);
+  backdrop-filter:blur(20px);
+  -webkit-backdrop-filter:blur(20px);
+  border:1px solid rgba(255,255,255,.1);
+  color:#fff;
+  font-size:.85rem;
+  font-weight:600;
+  display:flex;
+  align-items:center;
+  gap:10px;
+  box-shadow:0 8px 32px rgba(0,0,0,.2);
+}
+
+.glass-card-icon {
+  width:36px;
+  height:36px;
+  border-radius:10px;
+  background:rgba(37,99,235,.2);
+  display:grid;
+  place-items:center;
+  color:var(--accent-2);
+}
+
+.glass-card:nth-child(1) { top:10%;right:-40px;animation:float 4s ease-in-out infinite; }
+.glass-card:nth-child(2) { bottom:20%;right:-60px;animation:float 4s ease-in-out infinite 1.5s; }
+.glass-card:nth-child(3) { top:50%;left:-50px;animation:float 4s ease-in-out infinite 3s; }
+
+/* Trust Strip */
+.trust-strip {
+  background:var(--bg-elevated);
+  padding:32px 34px;
+  border-bottom:1px solid var(--line);
+}
+
+.trust-content {
+  max-width:1400px;
+  margin:0 auto;
+  display:flex;
+  justify-content:space-around;
+  align-items:center;
+  gap:40px;
+  flex-wrap:wrap;
+}
+
+.trust-item {
+  display:flex;
+  align-items:center;
+  gap:12px;
+  color:var(--text);
+  font-weight:700;
+  font-size:.9rem;
+}
+
+.trust-item svg {
+  width:24px;
+  height:24px;
+  color:var(--accent);
+}
+
+.trust-divider {
+  width:1px;
+  height:24px;
+  background:var(--line);
+}
+
+/* Premium Buttons */
+.btn {
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  gap:10px;
+  padding:14px 28px;
+  border-radius:12px;
+  font-size:.9rem;
+  font-weight:700;
+  cursor:pointer;
+  transition:all var(--transition);
+  white-space:nowrap;
+  text-decoration:none;
+}
+
+.btn-primary {
+  background:linear-gradient(135deg,var(--accent) 0%,var(--accent-2) 100%);
+  color:#fff;
+  border:none;
+  box-shadow:0 8px 24px rgba(37,99,235,.3);
+}
+
+.btn-primary:hover {
+  transform:translateY(-2px);
+  box-shadow:0 12px 32px rgba(37,99,235,.4);
+}
+
+.btn-secondary {
+  background:rgba(255,255,255,.1);
+  color:#fff;
+  border:1px solid rgba(255,255,255,.2);
+  backdrop-filter:blur(10px);
+}
+
+.btn-secondary:hover {
+  background:rgba(255,255,255,.15);
+  border-color:rgba(255,255,255,.3);
+}
+
+.btn-outline {
+  background:transparent;
+  color:var(--accent);
+  border:2px solid var(--accent);
+}
+
+.btn-outline:hover {
+  background:var(--accent);
+  color:#fff;
+}
+
+/* Premium Header */
+.topbar {
+  height:var(--header-height);
+  position:fixed;
+  top:0;
+  left:0;
+  right:0;
+  z-index:40;
+  display:flex;
+  align-items:center;
+  gap:20px;
+  padding:0 34px;
+  background:transparent;
+  backdrop-filter:blur(20px);
+  -webkit-backdrop-filter:blur(20px);
+  transition:all var(--transition);
+}
+
+.topbar.scrolled {
+  background:rgba(255,255,255,.95);
+  border-bottom:1px solid var(--line);
+  box-shadow:var(--shadow-sm);
+}
+
+html[data-mode="dark"] .topbar.scrolled {
+  background:rgba(7,20,38,.95);
+}
+
+.main-area {
+  min-height:100vh;
+  display:flex;
+  flex-direction:column;
+}
+
+main {
+  width:100%;
+  max-width:100%;
+  margin:0 auto;
+  flex:1;
+}
+
+/* Grid Layouts */
+.grid { display:grid;gap:24px; }
+.services-grid { grid-template-columns:repeat(3,minmax(0,1fr));gap:24px; }
+
+/* Cards */
+.card {
+  border:1px solid var(--line);
+  border-radius:var(--radius-lg);
+  background:var(--surface-solid);
+  box-shadow:var(--shadow-sm);
+  transition:all var(--transition);
+}
+
+.card:hover {
+  transform:translateY(-6px);
+  border-color:var(--accent);
+  box-shadow:var(--shadow);
+}
+
+/* Scroll Reveal */
+.reveal { opacity:0;transform:translateY(12px);transition:opacity .55s ease,transform .55s ease; }
+.reveal.visible { opacity:1;transform:none; }
+
+/* Responsive */
+@media (max-width:1200px) {
+  .hero-content { grid-template-columns:1fr;gap:40px; }
+  .hero-visual { display:none; }
+  .services-grid { grid-template-columns:repeat(2,minmax(0,1fr)); }
+  .trust-content { gap:24px; }
+}
+
+@media (max-width:768px) {
+  .hero-section { padding:100px 20px 60px; }
+  .topbar { padding:0 20px; }
+  .topbar nav { display:none; }
+  .services-grid { grid-template-columns:1fr; }
+  .trust-content { flex-direction:column;gap:20px; }
+  .trust-divider { display:none; }
+}
+
+@media (max-width:480px) {
+  .hero-title { font-size:2rem; }
+  .hero-actions { flex-direction:column; }
+  .hero-actions .btn { width:100%; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,*::before,*::after { scroll-behavior:auto!important;animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important; }
+  .reveal { opacity:1;transform:none; }
+}
+  /* Back to Top Button */
+  .back-to-top {
+    position: fixed;
+    bottom: 28px;
+    right: 28px;
+    z-index: 90;
+    width: 48px;
+    height: 48px;
+    padding: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: none;
+    border-radius: 50%;
+    color: #fff;
+    cursor: pointer;
+    background: linear-gradient(135deg, var(--accent) 0%, #00D4FF 100%);
+    box-shadow: 0 10px 26px rgba(37,99,235,.32), inset 0 0 0 1px rgba(255,255,255,.16);
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(16px) scale(.92);
+    transition: opacity .35s cubic-bezier(.2,.8,.2,1), transform .35s cubic-bezier(.2,.8,.2,1), box-shadow .35s ease, visibility .35s;
+    -webkit-tap-highlight-color: transparent;
+  }
+  .back-to-top.visible {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0) scale(1);
+  }
+  .back-to-top:hover {
+    transform: translateY(-4px) scale(1.06);
+    background: linear-gradient(135deg, var(--accent) 0%, #22D3EE 100%);
+    box-shadow: 0 16px 36px rgba(37,99,235,.45), 0 0 22px rgba(0,212,255,.65);
+  }
+  .back-to-top:active {
+    transform: translateY(-1px) scale(1);
+  }
+  .back-to-top svg {
+    width: 22px;
+    height: 22px;
+    transition: transform var(--transition);
+  }
+  .back-to-top:hover svg {
+    transform: translateY(-2px);
+  }
+  html[data-mode="dark"] .back-to-top {
+    box-shadow: 0 10px 26px rgba(0,0,0,.5), 0 0 16px rgba(0,212,255,.35);
+  }
+  html[data-mode="dark"] .back-to-top:hover {
+    box-shadow: 0 16px 36px rgba(0,0,0,.55), 0 0 26px rgba(0,212,255,.6);
+  }
+  @media (max-width: 768px) {
+    .back-to-top {
+      bottom: 20px;
+      right: 20px;
+      width: 44px;
+      height: 44px;
+    }
+    .back-to-top svg {
+      width: 20px;
+      height: 20px;
+    }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .back-to-top {
+      transform: none;
+      transition: opacity .01ms linear, visibility .01ms linear;
+    }
+    .back-to-top.visible,
+    .back-to-top:hover,
+    .back-to-top:active {
+      transform: none;
+    }
+  }
+</style>
+</head>
+<body>
+<a class="skip-link" href="#main-content">Skip to content</a>
+
+<header class="topbar">
+  <div style="font-weight:900;font-size:1.2rem;letter-spacing:-.04em;color:var(--text)">CARE<span style="color:var(--accent)">.</span></div>
+  <div style="flex:1"></div>
+  <nav style="display:flex;gap:24px;align-items:center">
+    <a href="#home" style="color:inherit;text-decoration:none;font-weight:700;font-size:.9rem">Home</a>
+    <a href="services.html" style="color:inherit;text-decoration:none;font-weight:600;font-size:.9rem;color:var(--muted)">Services</a>
+    <a href="about.html" style="color:inherit;text-decoration:none;font-weight:600;font-size:.9rem;color:var(--muted)">About</a>
+    <a href="portfolio.html" style="color:inherit;text-decoration:none;font-weight:600;font-size:.9rem;color:var(--muted)">Portfolio</a>
+    <a href="contact.html" style="color:inherit;text-decoration:none;font-weight:600;font-size:.9rem;color:var(--muted)">Contact</a>
+  </nav>
+  <a href="contact.html" class="btn btn-primary" style="padding:10px 20px;font-size:.85rem">Start a Project</a>
+  <button id="themeToggle" style="background:transparent;border:none;cursor:pointer;padding:8px;border-radius:8px" aria-label="Toggle theme">
+    <svg class="icon" viewBox="0 0 24 24"><path d="M20.5 15.2A8.5 8.5 0 0 1 8.8 3.5 8.6 8.6 0 1 0 20.5 15.2Z"/></svg>
+  </button>
+</header>
+
+<div class="main-area">
+  <main id="main-content">
+    <!-- Premium Hero Section -->
+    <section id="home" class="hero-section" aria-labelledby="hero-title">
+      <div class="hero-bg-effects">
+        <div class="hero-grid"></div>
+        <div class="hero-glow"></div>
+        <div class="hero-glow-2"></div>
+      </div>
+      <div class="hero-content">
+        <div class="hero-text reveal">
+          <div class="hero-eyebrow">Digital Innovation • Creative Technology</div>
+          <h1 id="hero-title" class="hero-title">
+            Connecting Ideas,<br>
+            <span class="hero-title-gradient">Empowering Businesses.</span>
+          </h1>
+          <p class="hero-description">We transform ideas into meaningful digital experiences through creative design, modern technology, and business-focused solutions that help brands grow.</p>
+          <div class="hero-actions">
+            <a href="#services" class="btn btn-primary">Explore Our Services <svg class="icon" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+            <a href="contact.html" class="btn btn-secondary">Start a Project <svg class="icon" viewBox="0 0 24 24"><path d="M7 17 17 7M7 7h10v10"/></svg></a>
+          </div>
+          <div class="hero-support">Creative Thinking. Smart Technology. Lasting Value.</div>
+        </div>
+        <div class="hero-visual reveal">
+          <div class="hero-sphere">
+            <div class="sphere-outer"></div>
+            <div class="sphere-inner"></div>
+            <div class="sphere-core"></div>
+            <div class="sphere-node"></div>
+            <div class="sphere-node"></div>
+            <div class="sphere-node"></div>
+          </div>
+          <div class="glass-card">
+            <div class="glass-card-icon"><svg class="icon" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="15" rx="2"/><path d="M8 22h8M12 19v3M7 9h10M7 13h6"/></svg></div>
+            Web Development
+          </div>
+          <div class="glass-card">
+            <div class="glass-card-icon"><svg class="icon" viewBox="0 0 24 24"><path d="M12 2a10 10 0 1 0 10 10 4 4 0 0 1-5-5 4 4 0 0 1-5-5"/><path d="M8.5 8.5v.01M16 15.5v.01M12 12v.01"/></svg></div>
+            AI & Software
+          </div>
+          <div class="glass-card">
+            <div class="glass-card-icon"><svg class="icon" viewBox="0 0 24 24"><path d="M12 3v18M3 12h18"/><circle cx="12" cy="12" r="8"/><path d="m8 8 8 8m0-8-8 8"/></svg></div>
+            Creative Design
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Trust Strip -->
+    <div class="trust-strip">
+      <div class="trust-content">
+        <div class="trust-item">
+          <svg class="icon" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2Z"/></svg>
+          Creative Thinking
+        </div>
+        <div class="trust-divider"></div>
+        <div class="trust-item">
+          <svg class="icon" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2Z"/></svg>
+          Smart Technology
+        </div>
+        <div class="trust-divider"></div>
+        <div class="trust-item">
+          <svg class="icon" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2Z"/></svg>
+          Business Solutions
+        </div>
+        <div class="trust-divider"></div>
+        <div class="trust-item">
+          <svg class="icon" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2Z"/></svg>
+          Digital Growth
+        </div>
+      </div>
+    </div>
+
+    <!-- Services Section -->
+    <section id="services" style="padding:100px 34px;max-width:1400px;margin:0 auto" aria-labelledby="services-heading">
+      <div style="text-align:center;margin-bottom:60px">
+        <div style="display:inline-block;color:var(--accent);font-size:.75rem;font-weight:700;text-transform:uppercase;letter-spacing:.2em;margin-bottom:16px">Our Expertise</div>
+        <h2 id="services-heading" style="font-size:clamp(2rem,4vw,3rem);font-weight:900;letter-spacing:-.04em;margin-bottom:16px;color:var(--text)">Digital Solutions Built Around Your Ambition</h2>
+        <p style="color:var(--muted);font-size:1.1rem;max-width:700px;margin:0 auto;line-height:1.7">From establishing your digital presence to developing creative and technical solutions, we help turn business ideas into meaningful experiences.</p>
+        <a href="services.html" style="display:inline-flex;align-items:center;gap:8px;color:var(--accent);font-weight:700;font-size:.85rem;margin-top:16px;text-decoration:none">View All Services <svg class="icon" viewBox="0 0 24 24" style="width:16px;height:16px"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+      </div>
+      <div class="grid services-grid">
+        <article class="card reveal" style="padding:32px">
+          <div style="width:56px;height:56px;border-radius:16px;background:linear-gradient(135deg,var(--accent-soft),var(--accent));color:#fff;margin-bottom:24px;display:grid;place-items:center"><svg class="icon" viewBox="0 0 24 24" style="width:28px;height:28px"><rect x="3" y="4" width="18" height="15" rx="2"/><path d="M8 22h8M12 19v3M7 9h10M7 13h6"/></svg></div>
+          <h3 style="font-size:1.15rem;font-weight:800;margin-bottom:12px;letter-spacing:-.02em">Website Design & Development</h3>
+          <p style="color:var(--muted);font-size:.9rem;line-height:1.6;margin-bottom:20px">Professional, mobile-friendly corporate websites, landing pages and portfolio websites designed to build trust and attract customers.</p>
+          <a href="contact.html" style="color:var(--accent);font-weight:700;font-size:.85rem;text-decoration:none;display:inline-flex;align-items:center;gap:6px">Learn More <svg class="icon" viewBox="0 0 24 24" style="width:16px;height:16px"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+        </article>
+        <article class="card reveal" style="padding:32px">
+          <div style="width:56px;height:56px;border-radius:16px;background:linear-gradient(135deg,var(--accent-soft),var(--accent));color:#fff;margin-bottom:24px;display:grid;place-items:center"><svg class="icon" viewBox="0 0 24 24" style="width:28px;height:28px"><path d="M12 20V10M18 20V4M6 20v-4"/></svg></div>
+          <h3 style="font-size:1.15rem;font-weight:800;margin-bottom:12px;letter-spacing:-.02em">Software Development & AI</h3>
+          <p style="color:var(--muted);font-size:.9rem;line-height:1.6;margin-bottom:20px">Custom management systems, databases, business automation tools and scalable software solutions tailored to your operations.</p>
+          <a href="contact.html" style="color:var(--accent);font-weight:700;font-size:.85rem;text-decoration:none;display:inline-flex;align-items:center;gap:6px">Learn More <svg class="icon" viewBox="0 0 24 24" style="width:16px;height:16px"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+        </article>
+        <article class="card reveal" style="padding:32px">
+          <div style="width:56px;height:56px;border-radius:16px;background:linear-gradient(135deg,var(--accent-soft),var(--accent));color:#fff;margin-bottom:24px;display:grid;place-items:center"><svg class="icon" viewBox="0 0 24 24" style="width:28px;height:28px"><path d="M12 3v18M3 12h18"/><circle cx="12" cy="12" r="8"/><path d="m8 8 8 8m0-8-8 8"/></svg></div>
+          <h3 style="font-size:1.15rem;font-weight:800;margin-bottom:12px;letter-spacing:-.02em">Graphic Design & Branding</h3>
+          <p style="color:var(--muted);font-size:.9rem;line-height:1.6;margin-bottom:20px">Logos, brand identity, posters, flyers, banners, business cards, social media graphics and print-ready designs.</p>
+          <a href="contact.html" style="color:var(--accent);font-weight:700;font-size:.85rem;text-decoration:none;display:inline-flex;align-items:center;gap:6px">Learn More <svg class="icon" viewBox="0 0 24 24" style="width:16px;height:16px"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+        </article>
+        <article class="card reveal" style="padding:32px">
+          <div style="width:56px;height:56px;border-radius:16px;background:linear-gradient(135deg,var(--accent-soft),var(--accent));color:#fff;margin-bottom:24px;display:grid;place-items:center"><svg class="icon" viewBox="0 0 24 24" style="width:28px;height:28px"><path d="M6 9V2h12V9"/><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><path d="M6 14h12v8H6z"/></svg></div>
+          <h3 style="font-size:1.15rem;font-weight:800;margin-bottom:12px;letter-spacing:-.02em">Printing & Branding Services</h3>
+          <p style="color:var(--muted);font-size:.9rem;line-height:1.6;margin-bottom:20px">High-quality printing services including business cards, brochures, banners, flyers and branded materials.</p>
+          <a href="contact.html" style="color:var(--accent);font-weight:700;font-size:.85rem;text-decoration:none;display:inline-flex;align-items:center;gap:6px">Learn More <svg class="icon" viewBox="0 0 24 24" style="width:16px;height:16px"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+        </article>
+        <article class="card reveal" style="padding:32px">
+          <div style="width:56px;height:56px;border-radius:16px;background:linear-gradient(135deg,var(--accent-soft),var(--accent));color:#fff;margin-bottom:24px;display:grid;place-items:center"><svg class="icon" viewBox="0 0 24 24" style="width:28px;height:28px"><path d="M18 10h-1.26A8 8 0 1 0 9 20h9a5 5 0 0 0 0-10z"/></svg></div>
+          <h3 style="font-size:1.15rem;font-weight:800;margin-bottom:12px;letter-spacing:-.02em">ICT Support & Consultancy</h3>
+          <p style="color:var(--muted);font-size:.9rem;line-height:1.6;margin-bottom:20px">Technical support, network infrastructure, hardware maintenance and strategic digital consultancy for businesses.</p>
+          <a href="contact.html" style="color:var(--accent);font-weight:700;font-size:.85rem;text-decoration:none;display:inline-flex;align-items:center;gap:6px">Learn More <svg class="icon" viewBox="0 0 24 24" style="width:16px;height:16px"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+        </article>
+      </div>
+    </section>
+
+    <!-- Company Introduction -->
+    <section id="about" style="padding:100px 34px;max-width:1400px;margin:0 auto;background:var(--bg-elevated)" aria-labelledby="about-heading">
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center">
+        <div>
+          <div style="display:inline-block;color:var(--accent);font-size:.75rem;font-weight:700;text-transform:uppercase;letter-spacing:.2em;margin-bottom:16px">About Us</div>
+          <h2 id="about-heading" style="font-size:clamp(2rem,4vw,3rem);font-weight:900;letter-spacing:-.04em;margin-bottom:24px;color:var(--text)">Where Creativity Meets Technology</h2>
+          <p style="color:var(--muted);font-size:1.1rem;line-height:1.7;margin-bottom:32px">CARE Digital Solutions connects creative thinking with modern technology to help businesses communicate effectively, strengthen their brands, and explore new digital opportunities.</p>
+          <div style="display:grid;gap:24px">
+            <div style="display:flex;gap:16px;align-items:flex-start">
+              <div style="width:48px;height:48px;border-radius:12px;background:var(--accent-soft);color:var(--accent);display:grid;place-items:center;flex:none"><svg class="icon" viewBox="0 0 24 24" style="width:24px;height:24px"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2Z"/></svg></div>
+              <div>
+                <h3 style="font-size:1.1rem;font-weight:800;margin-bottom:8px">Innovation with Purpose</h3>
+                <p style="color:var(--muted);font-size:.9rem;line-height:1.6;margin:0">Every solution we create is designed with clear business objectives and measurable impact.</p>
+              </div>
+            </div>
+            <div style="display:flex;gap:16px;align-items:flex-start">
+              <div style="width:48px;height:48px;border-radius:12px;background:var(--accent-soft);color:var(--accent);display:grid;place-items:center;flex:none"><svg class="icon" viewBox="0 0 24 24" style="width:24px;height:24px"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2Z"/></svg></div>
+              <div>
+                <h3 style="font-size:1.1rem;font-weight:800;margin-bottom:8px">Quality by Design</h3>
+                <p style="color:var(--muted);font-size:.9rem;line-height:1.6;margin:0">We prioritize excellence in every detail, from initial concept to final delivery.</p>
+              </div>
+            </div>
+            <div style="display:flex;gap:16px;align-items:flex-start">
+              <div style="width:48px;height:48px;border-radius:12px;background:var(--accent-soft);color:var(--accent);display:grid;place-items:center;flex:none"><svg class="icon" viewBox="0 0 24 24" style="width:24px;height:24px"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2Z"/></svg></div>
+              <div>
+                <h3 style="font-size:1.1rem;font-weight:800;margin-bottom:8px">Technology for Growth</h3>
+                <p style="color:var(--muted);font-size:.9rem;line-height:1.6;margin:0">Solutions designed to scale with your business and adapt to future needs.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div style="position:relative">
+          <div style="aspect-ratio:1;border-radius:24px;background:linear-gradient(135deg,var(--accent-soft),var(--bg));border:1px solid var(--line);display:grid;place-items:center;overflow:hidden">
+            <div style="width:80%;height:80%;border-radius:50%;background:radial-gradient(circle at 30% 30%,var(--accent) 0%,var(--hero-bg) 70%);opacity:.2"></div>
+          </div>
+          <div style="position:absolute;bottom:-20px;right:-20px;width:120px;height:120px;border-radius:20px;background:var(--surface-solid);border:1px solid var(--line);padding:20px;box-shadow:var(--shadow)">
+            <div style="font-size:2rem;font-weight:900;color:var(--accent)">8+</div>
+            <div style="font-size:.8rem;color:var(--muted);font-weight:600">Years of Excellence</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section style="padding:120px 34px;background:linear-gradient(135deg,var(--hero-bg) 0%,var(--hero-bg-deep) 100%);position:relative;overflow:hidden">
+      <div style="position:absolute;inset:0;background-image:radial-gradient(circle at 20% 50%,rgba(37,99,235,.1) 0%,transparent 50%)"></div>
+      <div style="position:relative;max-width:900px;margin:0 auto;text-align:center;color:#fff">
+        <h2 style="font-size:clamp(2rem,5vw,3.5rem);font-weight:900;letter-spacing:-.04em;margin-bottom:24px">Let's Turn Your Next Idea Into Reality.</h2>
+        <p style="font-size:1.2rem;line-height:1.7;color:rgba(255,255,255,.7);margin-bottom:40px;max-width:700px;margin-left:auto;margin-right:auto">Have a website, branding project, or digital solution in mind? Let's explore how CARE Digital Solutions can help bring your vision to life.</p>
+        <div style="display:flex;gap:16px;justify-content:center;flex-wrap:wrap">
+          <a href="contact.html" class="btn btn-primary" style="padding:16px 32px;font-size:1rem">Start a Project <svg class="icon" viewBox="0 0 24 24"><path d="M7 17 17 7M7 7h10v10"/></svg></a>
+          <a href="contact.html" class="btn btn-secondary" style="padding:16px 32px;font-size:1rem">Contact Us <svg class="icon" viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><path d="M22 6l-10 7L2 6"/></svg></a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" style="padding:100px 34px;max-width:1400px;margin:0 auto" aria-labelledby="contact-heading">
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:start">
+        <div>
+          <div style="display:inline-block;color:var(--accent);font-size:.75rem;font-weight:700;text-transform:uppercase;letter-spacing:.2em;margin-bottom:16px">Contact Us</div>
+          <h2 id="contact-heading" style="font-size:clamp(2rem,4vw,3rem);font-weight:900;letter-spacing:-.04em;margin-bottom:24px;color:var(--text)">Let's Discuss Your Project</h2>
+          <p style="color:var(--muted);font-size:1.1rem;line-height:1.7;margin-bottom:40px">Ready to transform your digital presence? Fill out the form and we'll get back to you within 24 hours.</p>
+          <div style="display:grid;gap:20px">
+            <div style="display:flex;gap:16px;align-items:center">
+              <div style="width:48px;height:48px;border-radius:12px;background:var(--accent-soft);color:var(--accent);display:grid;place-items:center"><svg class="icon" viewBox="0 0 24 24" style="width:24px;height:24px"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><path d="M22 6l-10 7L2 6"/></svg></div>
+              <div>
+                <h3 style="font-size:1rem;font-weight:800;margin-bottom:4px">Email</h3>
+                <a href="mailto:info@caredigitalsolutions.co.tz" style="color:var(--accent);font-weight:600;text-decoration:none">info@caredigitalsolutions.co.tz</a>
+              </div>
+            </div>
+            <div style="display:flex;gap:16px;align-items:center">
+              <div style="width:48px;height:48px;border-radius:12px;background:var(--accent-soft);color:var(--accent);display:grid;place-items:center"><svg class="icon" viewBox="0 0 24 24" style="width:24px;height:24px"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg></div>
+              <div>
+                <h3 style="font-size:1rem;font-weight:800;margin-bottom:4px">Phone & WhatsApp</h3>
+                <div style="display:flex;flex-direction:column;gap:4px">
+                  <a href="tel:+255613516832" style="color:var(--accent);font-weight:600;text-decoration:none;font-size:.9rem">0613516832</a>
+                  <a href="tel:+255743939008" style="color:var(--accent);font-weight:600;text-decoration:none;font-size:.9rem">0743939008</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div style="padding:32px;border:1px solid var(--line);border-radius:24px;background:var(--surface-solid)">
+          <form id="contactForm" style="display:grid;gap:20px">
+            <div>
+              <label for="contactName" style="display:block;font-size:.85rem;font-weight:700;margin-bottom:8px;color:var(--text)">Name *</label>
+              <input type="text" id="contactName" name="name" required style="width:100%;padding:12px 16px;border:1px solid var(--line);border-radius:12px;background:var(--bg);color:var(--text);font-size:.95rem;font-family:inherit;transition:border-color var(--transition)" placeholder="Your full name">
+            </div>
+            <div>
+              <label for="contactEmail" style="display:block;font-size:.85rem;font-weight:700;margin-bottom:8px;color:var(--text)">Email *</label>
+              <input type="email" id="contactEmail" name="email" required style="width:100%;padding:12px 16px;border:1px solid var(--line);border-radius:12px;background:var(--bg);color:var(--text);font-size:.95rem;font-family:inherit;transition:border-color var(--transition)" placeholder="your@email.com">
+            </div>
+            <div>
+              <label for="contactService" style="display:block;font-size:.85rem;font-weight:700;margin-bottom:8px;color:var(--text)">Service of Interest</label>
+              <select id="contactService" name="service" style="width:100%;padding:12px 16px;border:1px solid var(--line);border-radius:12px;background:var(--bg);color:var(--text);font-size:.95rem;font-family:inherit;transition:border-color var(--transition)">
+                <option value="">Select a service</option>
+                <option value="website">Website Design & Development</option>
+                <option value="software">Software Development & AI</option>
+                <option value="branding">Graphic Design & Branding</option>
+                <option value="printing">Printing & Branding Services</option>
+                <option value="ict">ICT Support & Consultancy</option>
+                <option value="multimedia">Multimedia & Video Editing</option>
+                <option value="other">Other</option>
+              </select>
+            </div>
+            <div>
+              <label for="contactMessage" style="display:block;font-size:.85rem;font-weight:700;margin-bottom:8px;color:var(--text)">Project Description *</label>
+              <textarea id="contactMessage" name="message" required rows="4" style="width:100%;padding:12px 16px;border:1px solid var(--line);border-radius:12px;background:var(--bg);color:var(--text);font-size:.95rem;font-family:inherit;resize:vertical;transition:border-color var(--transition)" placeholder="Tell us about your project..."></textarea>
+            </div>
+            <button type="submit" class="btn btn-primary" style="width:100%;padding:14px;font-size:1rem">Submit Inquiry</button>
+            <div id="formFeedback" style="display:none;padding:16px;border-radius:12px;font-size:.9rem;font-weight:600"></div>
+          </form>
+          <p style="color:var(--muted);font-size:.8rem;margin-top:16px;line-height:1.5"><strong>Note:</strong> This form requires backend integration to send emails. Configure your email service or contact directly at info@caredigitalsolutions.co.tz</p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer style="background:var(--hero-bg);color:#fff;padding:60px 34px;border-top:1px solid var(--line)">
+    <div style="max-width:1400px;margin:0 auto;display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:40px;align-items:start">
+      <div>
+        <div style="font-weight:900;font-size:1.1rem;margin-bottom:16px;letter-spacing:-.04em">CARE Digital Solutions</div>
+        <p style="color:rgba(255,255,255,.7);font-size:.9rem;margin:0 0 20px;line-height:1.6">Connecting Ideas, Empowering Businesses.</p>
+        <div style="color:rgba(255,255,255,.5);font-size:.85rem">© <span class="year"></span> All rights reserved.</div>
+      </div>
+      <div>
+        <div style="font-weight:700;font-size:.9rem;margin-bottom:16px;color:rgba(255,255,255,.9)">Quick Links</div>
+        <div style="display:flex;flex-direction:column;gap:10px">
+          <a href="#home" style="color:rgba(255,255,255,.7);font-size:.85rem;text-decoration:none">Home</a>
+          <a href="services.html" style="color:rgba(255,255,255,.7);font-size:.85rem;text-decoration:none">Services</a>
+          <a href="about.html" style="color:rgba(255,255,255,.7);font-size:.85rem;text-decoration:none">About</a>
+          <a href="portfolio.html" style="color:rgba(255,255,255,.7);font-size:.85rem;text-decoration:none">Portfolio</a>
+          <a href="contact.html" style="color:rgba(255,255,255,.7);font-size:.85rem;text-decoration:none">Contact</a>
+        </div>
+      </div>
+      <div>
+        <div style="font-weight:700;font-size:.9rem;margin-bottom:16px;color:rgba(255,255,255,.9)">Services</div>
+        <div style="display:flex;flex-direction:column;gap:10px">
+          <a href="services.html" style="color:rgba(255,255,255,.7);font-size:.85rem;text-decoration:none">Website Design</a>
+          <a href="services.html" style="color:rgba(255,255,255,.7);font-size:.85rem;text-decoration:none">Software Development</a>
+          <a href="services.html" style="color:rgba(255,255,255,.7);font-size:.85rem;text-decoration:none">Branding & Design</a>
+          <a href="services.html" style="color:rgba(255,255,255,.7);font-size:.85rem;text-decoration:none">ICT Support</a>
+        </div>
+      </div>
+      <div>
+        <div style="font-weight:700;font-size:.9rem;margin-bottom:16px;color:rgba(255,255,255,.9)">Contact</div>
+        <div style="display:flex;flex-direction:column;gap:10px">
+          <a href="mailto:info@caredigitalsolutions.co.tz" style="color:var(--accent-2);font-weight:600;text-decoration:none">info@caredigitalsolutions.co.tz</a>
+          <a href="https://wa.me/255613516832" style="color:rgba(255,255,255,.7);font-size:.85rem;text-decoration:none">WhatsApp: 0613 516 832</a>
+          <a href="https://wa.me/255743939008" style="color:rgba(255,255,255,.7);font-size:.85rem;text-decoration:none">WhatsApp: 0743 939 008</a>
+          <span style="color:rgba(255,255,255,.7);font-size:.85rem">Tanzania</span>
+        </div>
+      </div>
+    </div>
+  </footer>
+</div>
+
+<button class="back-to-top" id="backToTop" type="button" aria-label="Back to top" title="Back to top">
+    <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 19V5M5 12l7-7 7 7"/></svg>
+  </button>
+
+  <script>
+(() => {
+  "use strict";
+  const root = document.documentElement;
+  const themeToggle = document.getElementById("themeToggle");
+  
+  // Theme toggle
+  themeToggle.addEventListener("click", () => {
+    const currentMode = root.dataset.mode;
+    const newMode = currentMode === "dark" ? "light" : "dark";
+    root.dataset.mode = newMode;
+    localStorage.setItem("care-theme", newMode);
+  });
+  
+  // Load saved theme
+  const savedTheme = localStorage.getItem("care-theme");
+  if (savedTheme && (savedTheme === "light" || savedTheme === "dark")) {
+    root.dataset.mode = savedTheme;
+  }
+  
+  // Sticky header
+  let lastScroll = 0;
+  window.addEventListener("scroll", () => {
+    const topbar = document.querySelector(".topbar");
+    const currentScroll = window.pageYOffset;
+    if (currentScroll > 50) {
+      topbar.classList.add("scrolled");
+    } else {
+      topbar.classList.remove("scrolled");
+    }
+    lastScroll = currentScroll;
+  }, { passive: true });
+  
+  // Scroll reveal
+  if ("IntersectionObserver" in window) {
+    const observer = new IntersectionObserver(entries => entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add("visible");
+        observer.unobserve(entry.target);
+      }
+    }), { threshold: 0.1 });
+    document.querySelectorAll(".reveal").forEach(el => observer.observe(el));
+  } else {
+    document.querySelectorAll(".reveal").forEach(el => el.classList.add("visible"));
+  }
+  
+  // Contact form validation
+  const contactForm = document.getElementById("contactForm");
+  const formFeedback = document.getElementById("formFeedback");
+  
+  if (contactForm) {
+    contactForm.addEventListener("submit", (e) => {
+      e.preventDefault();
+      const name = document.getElementById("contactName").value.trim();
+      const email = document.getElementById("contactEmail").value.trim();
+      const message = document.getElementById("contactMessage").value.trim();
+      
+      if (!name || !email || !message) {
+        formFeedback.style.display = "block";
+        formFeedback.style.background = "rgba(220,38,38,.1)";
+        formFeedback.style.color = "#dc2626";
+        formFeedback.textContent = "Please fill in all required fields.";
+        return;
+      }
+      
+      const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      if (!emailRegex.test(email)) {
+        formFeedback.style.display = "block";
+        formFeedback.style.background = "rgba(220,38,38,.1)";
+        formFeedback.style.color = "#dc2626";
+        formFeedback.textContent = "Please enter a valid email address.";
+        return;
+      }
+      
+      formFeedback.style.display = "block";
+      formFeedback.style.background = "rgba(22,132,91,.1)";
+      formFeedback.style.color = "#16845b";
+      formFeedback.textContent = "Thank you for your message! This form requires backend integration to send emails. Please contact us directly at info@caredigitalsolutions.co.tz";
+      contactForm.reset();
+      setTimeout(() => {
+        formFeedback.style.display = "none";
+      }, 8000);
+    });
+  }
+  
+  // Dynamic year
+    document.querySelectorAll(".year").forEach(el => {
+      el.textContent = new Date().getFullYear();
+    });
+
+    // Back to Top functionality
+    const backToTop = document.getElementById("backToTop");
+    if (backToTop) {
+      const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
+
+      const toggleBackToTop = () => {
+        backToTop.classList.toggle("visible", window.scrollY > 300);
+      };
+
+      window.addEventListener("scroll", toggleBackToTop, { passive: true });
+      toggleBackToTop();
+
+      backToTop.addEventListener("click", () => {
+        window.scrollTo({ top: 0, behavior: reduceMotion.matches ? "auto" : "smooth" });
+      });
+    }
+  })();
+</script>
+</body>
+</html>
