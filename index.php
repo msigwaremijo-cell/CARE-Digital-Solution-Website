@@ -1,3 +1,26 @@
+<?php
+declare(strict_types=1);
+
+require __DIR__ . '/src/bootstrap.php';
+require __DIR__ . '/src/render.php';
+require __DIR__ . '/src/contact-form.php';
+
+$highlights = care_published_services(6);
+$posts = care_published_posts(3);
+
+/**
+ * The homepage enquiry form posts back to this page. On success we redirect
+ * so a refresh does not resend the message.
+ */
+if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['contact_form'])) {
+    verify_csrf();
+    $result = care_submit_inquiry($_POST);
+    flash($result['message'], $result['ok'] ? 'success' : 'error');
+    redirect('index.php#contact');
+}
+
+$feedback = flash();
+?>
 <!DOCTYPE html>
 <html lang="en" data-mode="light">
 <head>
@@ -844,12 +867,12 @@ html[data-mode="dark"] .tech-stage {
   <div style="flex:1"></div>
   <nav style="display:flex;gap:24px;align-items:center">
     <a href="#home" style="color:inherit;text-decoration:none;font-weight:700;font-size:.9rem">Home</a>
-    <a href="services.html" style="color:inherit;text-decoration:none;font-weight:600;font-size:.9rem;color:var(--muted)">Services</a>
-    <a href="about.html" style="color:inherit;text-decoration:none;font-weight:600;font-size:.9rem;color:var(--muted)">About</a>
-    <a href="portfolio.html" style="color:inherit;text-decoration:none;font-weight:600;font-size:.9rem;color:var(--muted)">Portfolio</a>
-    <a href="contact.html" style="color:inherit;text-decoration:none;font-weight:600;font-size:.9rem;color:var(--muted)">Contact</a>
+    <a href="services.php" style="color:inherit;text-decoration:none;font-weight:600;font-size:.9rem;color:var(--muted)">Services</a>
+    <a href="about.php" style="color:inherit;text-decoration:none;font-weight:600;font-size:.9rem;color:var(--muted)">About</a>
+    <a href="portfolio.php" style="color:inherit;text-decoration:none;font-weight:600;font-size:.9rem;color:var(--muted)">Portfolio</a>
+    <a href="contact.php" style="color:inherit;text-decoration:none;font-weight:600;font-size:.9rem;color:var(--muted)">Contact</a>
   </nav>
-  <a href="contact.html" class="btn btn-primary" style="padding:10px 20px;font-size:.85rem">Start a Project</a>
+  <a href="contact.php" class="btn btn-primary" style="padding:10px 20px;font-size:.85rem">Start a Project</a>
   <button id="themeToggle" style="background:transparent;border:none;cursor:pointer;padding:8px;border-radius:8px" aria-label="Toggle theme">
     <svg class="icon" viewBox="0 0 24 24"><path d="M20.5 15.2A8.5 8.5 0 0 1 8.8 3.5 8.6 8.6 0 1 0 20.5 15.2Z"/></svg>
   </button>
@@ -874,7 +897,7 @@ html[data-mode="dark"] .tech-stage {
           <p class="hero-description">We transform ideas into meaningful digital experiences through creative design, modern technology, and business-focused solutions that help brands grow.</p>
           <div class="hero-actions">
             <a href="#services" class="btn btn-primary">Explore Our Services <svg class="icon" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
-            <a href="contact.html" class="btn btn-secondary">Start a Project <svg class="icon" viewBox="0 0 24 24"><path d="M7 17 17 7M7 7h10v10"/></svg></a>
+            <a href="contact.php" class="btn btn-secondary">Start a Project <svg class="icon" viewBox="0 0 24 24"><path d="M7 17 17 7M7 7h10v10"/></svg></a>
           </div>
           <div class="hero-support">Creative Thinking. Smart Technology. Lasting Value.</div>
         </div>
@@ -934,41 +957,29 @@ html[data-mode="dark"] .tech-stage {
         <div style="display:inline-block;color:var(--accent);font-size:.75rem;font-weight:700;text-transform:uppercase;letter-spacing:.2em;margin-bottom:16px">Our Expertise</div>
         <h2 id="services-heading" style="font-size:clamp(2rem,4vw,3rem);font-weight:900;letter-spacing:-.04em;margin-bottom:16px;color:var(--text)">Digital Solutions Built Around Your Ambition</h2>
         <p style="color:var(--muted);font-size:1.1rem;max-width:700px;margin:0 auto;line-height:1.7">From establishing your digital presence to developing creative and technical solutions, we help turn business ideas into meaningful experiences.</p>
-        <a href="services.html" style="display:inline-flex;align-items:center;gap:8px;color:var(--accent);font-weight:700;font-size:.85rem;margin-top:16px;text-decoration:none">View All Services <svg class="icon" viewBox="0 0 24 24" style="width:16px;height:16px"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+        <a href="services.php" style="display:inline-flex;align-items:center;gap:8px;color:var(--accent);font-weight:700;font-size:.85rem;margin-top:16px;text-decoration:none">View All Services <svg class="icon" viewBox="0 0 24 24" style="width:16px;height:16px"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
       </div>
       <div class="grid services-grid">
-        <article class="card reveal" style="padding:32px">
-          <div style="width:56px;height:56px;border-radius:16px;background:linear-gradient(135deg,var(--accent-soft),var(--accent));color:#fff;margin-bottom:24px;display:grid;place-items:center"><svg class="icon" viewBox="0 0 24 24" style="width:28px;height:28px"><rect x="3" y="4" width="18" height="15" rx="2"/><path d="M8 22h8M12 19v3M7 9h10M7 13h6"/></svg></div>
-          <h3 style="font-size:1.15rem;font-weight:800;margin-bottom:12px;letter-spacing:-.02em">Website Design & Development</h3>
-          <p style="color:var(--muted);font-size:.9rem;line-height:1.6;margin-bottom:20px">Professional, mobile-friendly corporate websites, landing pages and portfolio websites designed to build trust and attract customers.</p>
-          <a href="contact.html" style="color:var(--accent);font-weight:700;font-size:.85rem;text-decoration:none;display:inline-flex;align-items:center;gap:6px">Learn More <svg class="icon" viewBox="0 0 24 24" style="width:16px;height:16px"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
-        </article>
-        <article class="card reveal" style="padding:32px">
-          <div style="width:56px;height:56px;border-radius:16px;background:linear-gradient(135deg,var(--accent-soft),var(--accent));color:#fff;margin-bottom:24px;display:grid;place-items:center"><svg class="icon" viewBox="0 0 24 24" style="width:28px;height:28px"><path d="M12 20V10M18 20V4M6 20v-4"/></svg></div>
-          <h3 style="font-size:1.15rem;font-weight:800;margin-bottom:12px;letter-spacing:-.02em">Software Development & AI</h3>
-          <p style="color:var(--muted);font-size:.9rem;line-height:1.6;margin-bottom:20px">Custom management systems, databases, business automation tools and scalable software solutions tailored to your operations.</p>
-          <a href="contact.html" style="color:var(--accent);font-weight:700;font-size:.85rem;text-decoration:none;display:inline-flex;align-items:center;gap:6px">Learn More <svg class="icon" viewBox="0 0 24 24" style="width:16px;height:16px"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
-        </article>
-        <article class="card reveal" style="padding:32px">
-          <div style="width:56px;height:56px;border-radius:16px;background:linear-gradient(135deg,var(--accent-soft),var(--accent));color:#fff;margin-bottom:24px;display:grid;place-items:center"><svg class="icon" viewBox="0 0 24 24" style="width:28px;height:28px"><path d="M12 3v18M3 12h18"/><circle cx="12" cy="12" r="8"/><path d="m8 8 8 8m0-8-8 8"/></svg></div>
-          <h3 style="font-size:1.15rem;font-weight:800;margin-bottom:12px;letter-spacing:-.02em">Graphic Design & Branding</h3>
-          <p style="color:var(--muted);font-size:.9rem;line-height:1.6;margin-bottom:20px">Logos, brand identity, posters, flyers, banners, business cards, social media graphics and print-ready designs.</p>
-          <a href="contact.html" style="color:var(--accent);font-weight:700;font-size:.85rem;text-decoration:none;display:inline-flex;align-items:center;gap:6px">Learn More <svg class="icon" viewBox="0 0 24 24" style="width:16px;height:16px"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
-        </article>
-        <article class="card reveal" style="padding:32px">
-          <div style="width:56px;height:56px;border-radius:16px;background:linear-gradient(135deg,var(--accent-soft),var(--accent));color:#fff;margin-bottom:24px;display:grid;place-items:center"><svg class="icon" viewBox="0 0 24 24" style="width:28px;height:28px"><path d="M6 9V2h12V9"/><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><path d="M6 14h12v8H6z"/></svg></div>
-          <h3 style="font-size:1.15rem;font-weight:800;margin-bottom:12px;letter-spacing:-.02em">Printing & Branding Services</h3>
-          <p style="color:var(--muted);font-size:.9rem;line-height:1.6;margin-bottom:20px">High-quality printing services including business cards, brochures, banners, flyers and branded materials.</p>
-          <a href="contact.html" style="color:var(--accent);font-weight:700;font-size:.85rem;text-decoration:none;display:inline-flex;align-items:center;gap:6px">Learn More <svg class="icon" viewBox="0 0 24 24" style="width:16px;height:16px"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
-        </article>
-        <article class="card reveal" style="padding:32px">
-          <div style="width:56px;height:56px;border-radius:16px;background:linear-gradient(135deg,var(--accent-soft),var(--accent));color:#fff;margin-bottom:24px;display:grid;place-items:center"><svg class="icon" viewBox="0 0 24 24" style="width:28px;height:28px"><path d="M18 10h-1.26A8 8 0 1 0 9 20h9a5 5 0 0 0 0-10z"/></svg></div>
-          <h3 style="font-size:1.15rem;font-weight:800;margin-bottom:12px;letter-spacing:-.02em">ICT Support & Consultancy</h3>
-          <p style="color:var(--muted);font-size:.9rem;line-height:1.6;margin-bottom:20px">Technical support, network infrastructure, hardware maintenance and strategic digital consultancy for businesses.</p>
-          <a href="contact.html" style="color:var(--accent);font-weight:700;font-size:.85rem;text-decoration:none;display:inline-flex;align-items:center;gap:6px">Learn More <svg class="icon" viewBox="0 0 24 24" style="width:16px;height:16px"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
-        </article>
+        <?php care_render_service_highlights($highlights); ?>
+      </div>
+      <?php if (!$highlights): ?>
+        <p style="color:var(--muted);text-align:center">Our service list is being updated. Please check back shortly.</p>
+      <?php endif; ?>
+    </section>
+
+    <?php if ($posts): ?>
+    <!-- News & Updates Section -->
+    <section id="news" style="padding:100px 34px;max-width:1400px;margin:0 auto" aria-labelledby="news-heading">
+      <div style="text-align:center;margin-bottom:60px">
+        <div style="display:inline-block;color:var(--accent);font-size:.75rem;font-weight:700;text-transform:uppercase;letter-spacing:.2em;margin-bottom:16px">Latest Updates</div>
+        <h2 id="news-heading" style="font-size:clamp(2rem,4vw,3rem);font-weight:900;letter-spacing:-.04em;margin-bottom:16px;color:var(--text)">News &amp; Insights</h2>
+        <p style="color:var(--muted);font-size:1.1rem;max-width:700px;margin:0 auto;line-height:1.7">Announcements, project notes and digital insights from the CARE Digital Solutions team.</p>
+      </div>
+      <div class="grid services-grid">
+        <?php care_render_post_cards($posts); ?>
       </div>
     </section>
+    <?php endif; ?>
 
     <!-- Company Introduction -->
     <section id="about" class="about-section" aria-labelledby="about-heading">
@@ -1132,8 +1143,8 @@ html[data-mode="dark"] .tech-stage {
         <h2 style="font-size:clamp(2rem,5vw,3.5rem);font-weight:900;letter-spacing:-.04em;margin-bottom:24px">Let's Turn Your Next Idea Into Reality.</h2>
         <p style="font-size:1.2rem;line-height:1.7;color:rgba(255,255,255,.7);margin-bottom:40px;max-width:700px;margin-left:auto;margin-right:auto">Have a website, branding project, or digital solution in mind? Let's explore how CARE Digital Solutions can help bring your vision to life.</p>
         <div style="display:flex;gap:16px;justify-content:center;flex-wrap:wrap">
-          <a href="contact.html" class="btn btn-primary" style="padding:16px 32px;font-size:1rem">Start a Project <svg class="icon" viewBox="0 0 24 24"><path d="M7 17 17 7M7 7h10v10"/></svg></a>
-          <a href="contact.html" class="btn btn-secondary" style="padding:16px 32px;font-size:1rem">Contact Us <svg class="icon" viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><path d="M22 6l-10 7L2 6"/></svg></a>
+          <a href="contact.php" class="btn btn-primary" style="padding:16px 32px;font-size:1rem">Start a Project <svg class="icon" viewBox="0 0 24 24"><path d="M7 17 17 7M7 7h10v10"/></svg></a>
+          <a href="contact.php" class="btn btn-secondary" style="padding:16px 32px;font-size:1rem">Contact Us <svg class="icon" viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><path d="M22 6l-10 7L2 6"/></svg></a>
         </div>
       </div>
     </section>
@@ -1150,7 +1161,7 @@ html[data-mode="dark"] .tech-stage {
               <div style="width:48px;height:48px;border-radius:12px;background:var(--accent-soft);color:var(--accent);display:grid;place-items:center"><svg class="icon" viewBox="0 0 24 24" style="width:24px;height:24px"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><path d="M22 6l-10 7L2 6"/></svg></div>
               <div>
                 <h3 style="font-size:1rem;font-weight:800;margin-bottom:4px">Email</h3>
-                <a href="mailto:info@caredigitalsolutions.co.tz" style="color:var(--accent);font-weight:600;text-decoration:none">info@caredigitalsolutions.co.tz</a>
+                <a href="mailto:<?= e(setting('site_email')) ?>" style="color:var(--accent);font-weight:600;text-decoration:none"><?= e(setting('site_email')) ?></a>
               </div>
             </div>
             <div style="display:flex;gap:16px;align-items:center">
@@ -1158,15 +1169,17 @@ html[data-mode="dark"] .tech-stage {
               <div>
                 <h3 style="font-size:1rem;font-weight:800;margin-bottom:4px">Phone & WhatsApp</h3>
                 <div style="display:flex;flex-direction:column;gap:4px">
-                  <a href="tel:+255613516832" style="color:var(--accent);font-weight:600;text-decoration:none;font-size:.9rem">0613516832</a>
-                  <a href="tel:+255743939008" style="color:var(--accent);font-weight:600;text-decoration:none;font-size:.9rem">0743939008</a>
+                  <a href="tel:+<?= e(preg_replace('/\D+/', '', setting('whatsapp_1'))) ?>" style="color:var(--accent);font-weight:600;text-decoration:none;font-size:.9rem"><?= e(phone_display(setting('site_phone_1'))) ?></a>
+                  <a href="tel:+<?= e(preg_replace('/\D+/', '', setting('whatsapp_2'))) ?>" style="color:var(--accent);font-weight:600;text-decoration:none;font-size:.9rem"><?= e(phone_display(setting('site_phone_2'))) ?></a>
                 </div>
               </div>
             </div>
           </div>
         </div>
         <div style="padding:32px;border:1px solid var(--line);border-radius:24px;background:var(--surface-solid)">
-          <form id="contactForm" style="display:grid;gap:20px">
+          <form id="contactForm" method="post" action="index.php#contact" style="display:grid;gap:20px">
+            <?= csrf_field() ?>
+            <input type="hidden" name="contact_form" value="1">
             <div>
               <label for="contactName" style="display:block;font-size:.85rem;font-weight:700;margin-bottom:8px;color:var(--text)">Name *</label>
               <input type="text" id="contactName" name="name" required style="width:100%;padding:12px 16px;border:1px solid var(--line);border-radius:12px;background:var(--bg);color:var(--text);font-size:.95rem;font-family:inherit;transition:border-color var(--transition)" placeholder="Your full name">
@@ -1179,13 +1192,13 @@ html[data-mode="dark"] .tech-stage {
               <label for="contactService" style="display:block;font-size:.85rem;font-weight:700;margin-bottom:8px;color:var(--text)">Service of Interest</label>
               <select id="contactService" name="service" style="width:100%;padding:12px 16px;border:1px solid var(--line);border-radius:12px;background:var(--bg);color:var(--text);font-size:.95rem;font-family:inherit;transition:border-color var(--transition)">
                 <option value="">Select a service</option>
-                <option value="website">Website Design & Development</option>
-                <option value="software">Software Development & AI</option>
-                <option value="branding">Graphic Design & Branding</option>
-                <option value="printing">Printing & Branding Services</option>
-                <option value="ict">ICT Support & Consultancy</option>
-                <option value="multimedia">Multimedia & Video Editing</option>
-                <option value="other">Other</option>
+                <option value="Website Design & Development">Website Design & Development</option>
+                <option value="Software Development & AI">Software Development & AI</option>
+                <option value="Graphic Design & Branding">Graphic Design & Branding</option>
+                <option value="Printing & Branding Services">Printing & Branding Services</option>
+                <option value="ICT Support & Consultancy">ICT Support & Consultancy</option>
+                <option value="Multimedia & Video Editing">Multimedia & Video Editing</option>
+                <option value="Other">Other</option>
               </select>
             </div>
             <div>
@@ -1193,9 +1206,11 @@ html[data-mode="dark"] .tech-stage {
               <textarea id="contactMessage" name="message" required rows="4" style="width:100%;padding:12px 16px;border:1px solid var(--line);border-radius:12px;background:var(--bg);color:var(--text);font-size:.95rem;font-family:inherit;resize:vertical;transition:border-color var(--transition)" placeholder="Tell us about your project..."></textarea>
             </div>
             <button type="submit" class="btn btn-primary" style="width:100%;padding:14px;font-size:1rem">Submit Inquiry</button>
-            <div id="formFeedback" style="display:none;padding:16px;border-radius:12px;font-size:.9rem;font-weight:600"></div>
+            <?php if ($feedback): ?>
+              <div id="formFeedback" style="padding:16px;border-radius:12px;font-size:.9rem;font-weight:600;background:<?= $feedback['type'] === 'success' ? 'rgba(22,132,91,.1)' : 'rgba(220,38,38,.1)' ?>;color:<?= $feedback['type'] === 'success' ? '#16845b' : '#dc2626' ?>"><?= e($feedback['message']) ?></div>
+            <?php endif; ?>
           </form>
-          <p style="color:var(--muted);font-size:.8rem;margin-top:16px;line-height:1.5"><strong>Note:</strong> This form requires backend integration to send emails. Configure your email service or contact directly at info@caredigitalsolutions.co.tz</p>
+          <p style="color:var(--muted);font-size:.8rem;margin-top:16px;line-height:1.5">Your information is only used to respond to your inquiry.</p>
         </div>
       </div>
     </section>
@@ -1213,27 +1228,27 @@ html[data-mode="dark"] .tech-stage {
         <div style="font-weight:700;font-size:.9rem;margin-bottom:16px;color:rgba(255,255,255,.9)">Quick Links</div>
         <div style="display:flex;flex-direction:column;gap:10px">
           <a href="#home" style="color:rgba(255,255,255,.7);font-size:.85rem;text-decoration:none">Home</a>
-          <a href="services.html" style="color:rgba(255,255,255,.7);font-size:.85rem;text-decoration:none">Services</a>
-          <a href="about.html" style="color:rgba(255,255,255,.7);font-size:.85rem;text-decoration:none">About</a>
-          <a href="portfolio.html" style="color:rgba(255,255,255,.7);font-size:.85rem;text-decoration:none">Portfolio</a>
-          <a href="contact.html" style="color:rgba(255,255,255,.7);font-size:.85rem;text-decoration:none">Contact</a>
+          <a href="services.php" style="color:rgba(255,255,255,.7);font-size:.85rem;text-decoration:none">Services</a>
+          <a href="about.php" style="color:rgba(255,255,255,.7);font-size:.85rem;text-decoration:none">About</a>
+          <a href="portfolio.php" style="color:rgba(255,255,255,.7);font-size:.85rem;text-decoration:none">Portfolio</a>
+          <a href="contact.php" style="color:rgba(255,255,255,.7);font-size:.85rem;text-decoration:none">Contact</a>
         </div>
       </div>
       <div>
         <div style="font-weight:700;font-size:.9rem;margin-bottom:16px;color:rgba(255,255,255,.9)">Services</div>
         <div style="display:flex;flex-direction:column;gap:10px">
-          <a href="services.html" style="color:rgba(255,255,255,.7);font-size:.85rem;text-decoration:none">Website Design</a>
-          <a href="services.html" style="color:rgba(255,255,255,.7);font-size:.85rem;text-decoration:none">Software Development</a>
-          <a href="services.html" style="color:rgba(255,255,255,.7);font-size:.85rem;text-decoration:none">Branding & Design</a>
-          <a href="services.html" style="color:rgba(255,255,255,.7);font-size:.85rem;text-decoration:none">ICT Support</a>
+          <a href="services.php" style="color:rgba(255,255,255,.7);font-size:.85rem;text-decoration:none">Website Design</a>
+          <a href="services.php" style="color:rgba(255,255,255,.7);font-size:.85rem;text-decoration:none">Software Development</a>
+          <a href="services.php" style="color:rgba(255,255,255,.7);font-size:.85rem;text-decoration:none">Branding & Design</a>
+          <a href="services.php" style="color:rgba(255,255,255,.7);font-size:.85rem;text-decoration:none">ICT Support</a>
         </div>
       </div>
       <div>
         <div style="font-weight:700;font-size:.9rem;margin-bottom:16px;color:rgba(255,255,255,.9)">Contact</div>
         <div style="display:flex;flex-direction:column;gap:10px">
-          <a href="mailto:info@caredigitalsolutions.co.tz" style="color:var(--accent-2);font-weight:600;text-decoration:none">info@caredigitalsolutions.co.tz</a>
-          <a href="https://wa.me/255613516832" style="color:rgba(255,255,255,.7);font-size:.85rem;text-decoration:none">WhatsApp: 0613 516 832</a>
-          <a href="https://wa.me/255743939008" style="color:rgba(255,255,255,.7);font-size:.85rem;text-decoration:none">WhatsApp: 0743 939 008</a>
+          <a href="mailto:<?= e(setting('site_email')) ?>" style="color:var(--accent-2);font-weight:600;text-decoration:none"><?= e(setting('site_email')) ?></a>
+          <a href="<?= e(whatsapp_link(setting('whatsapp_1'))) ?>" style="color:rgba(255,255,255,.7);font-size:.85rem;text-decoration:none">WhatsApp: <?= e(phone_display(setting('site_phone_1'))) ?></a>
+          <a href="<?= e(whatsapp_link(setting('whatsapp_2'))) ?>" style="color:rgba(255,255,255,.7);font-size:.85rem;text-decoration:none">WhatsApp: <?= e(phone_display(setting('site_phone_2'))) ?></a>
           <span style="color:rgba(255,255,255,.7);font-size:.85rem">Tanzania</span>
         </div>
       </div>
@@ -1289,45 +1304,6 @@ html[data-mode="dark"] .tech-stage {
     document.querySelectorAll(".reveal").forEach(el => observer.observe(el));
   } else {
     document.querySelectorAll(".reveal").forEach(el => el.classList.add("visible"));
-  }
-  
-  // Contact form validation
-  const contactForm = document.getElementById("contactForm");
-  const formFeedback = document.getElementById("formFeedback");
-  
-  if (contactForm) {
-    contactForm.addEventListener("submit", (e) => {
-      e.preventDefault();
-      const name = document.getElementById("contactName").value.trim();
-      const email = document.getElementById("contactEmail").value.trim();
-      const message = document.getElementById("contactMessage").value.trim();
-      
-      if (!name || !email || !message) {
-        formFeedback.style.display = "block";
-        formFeedback.style.background = "rgba(220,38,38,.1)";
-        formFeedback.style.color = "#dc2626";
-        formFeedback.textContent = "Please fill in all required fields.";
-        return;
-      }
-      
-      const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-      if (!emailRegex.test(email)) {
-        formFeedback.style.display = "block";
-        formFeedback.style.background = "rgba(220,38,38,.1)";
-        formFeedback.style.color = "#dc2626";
-        formFeedback.textContent = "Please enter a valid email address.";
-        return;
-      }
-      
-      formFeedback.style.display = "block";
-      formFeedback.style.background = "rgba(22,132,91,.1)";
-      formFeedback.style.color = "#16845b";
-      formFeedback.textContent = "Thank you for your message! This form requires backend integration to send emails. Please contact us directly at info@caredigitalsolutions.co.tz";
-      contactForm.reset();
-      setTimeout(() => {
-        formFeedback.style.display = "none";
-      }, 8000);
-    });
   }
   
   // Dynamic year

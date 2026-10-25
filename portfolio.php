@@ -1,3 +1,11 @@
+<?php
+declare(strict_types=1);
+
+require __DIR__ . '/src/bootstrap.php';
+require __DIR__ . '/src/render.php';
+
+$projects = care_published_projects();
+?>
 <!DOCTYPE html>
 <html lang="en" data-mode="light">
 <head>
@@ -1857,16 +1865,16 @@ footer {
 <a class="skip-link" href="#main-content">Skip to content</a>
 
 <header class="topbar">
-  <a href="index.html" style="font-weight:900;font-size:1.2rem;letter-spacing:-.04em;color:var(--text)">CARE<span style="color:var(--accent)">.</span></a>
+  <a href="index.php" style="font-weight:900;font-size:1.2rem;letter-spacing:-.04em;color:var(--text)">CARE<span style="color:var(--accent)">.</span></a>
   <div style="flex:1"></div>
   <nav style="display:flex;gap:24px;align-items:center">
-    <a href="index.html" style="color:inherit;text-decoration:none;font-weight:600;font-size:.9rem;color:var(--muted)">Home</a>
-    <a href="services.html" style="color:inherit;text-decoration:none;font-weight:600;font-size:.9rem;color:var(--muted)">Services</a>
-    <a href="about.html" style="color:inherit;text-decoration:none;font-weight:600;font-size:.9rem;color:var(--muted)">About</a>
-    <a href="portfolio.html" style="color:inherit;text-decoration:none;font-weight:700;font-size:.9rem;color:var(--accent)">Portfolio</a>
-    <a href="contact.html" style="color:inherit;text-decoration:none;font-weight:600;font-size:.9rem;color:var(--muted)">Contact</a>
+    <a href="index.php" style="color:inherit;text-decoration:none;font-weight:600;font-size:.9rem;color:var(--muted)">Home</a>
+    <a href="services.php" style="color:inherit;text-decoration:none;font-weight:600;font-size:.9rem;color:var(--muted)">Services</a>
+    <a href="about.php" style="color:inherit;text-decoration:none;font-weight:600;font-size:.9rem;color:var(--muted)">About</a>
+    <a href="portfolio.php" style="color:inherit;text-decoration:none;font-weight:700;font-size:.9rem;color:var(--accent)">Portfolio</a>
+    <a href="contact.php" style="color:inherit;text-decoration:none;font-weight:600;font-size:.9rem;color:var(--muted)">Contact</a>
   </nav>
-  <a href="contact.html" class="btn btn-primary" style="padding:10px 20px;font-size:.85rem">Start a Project</a>
+  <a href="contact.php" class="btn btn-primary" style="padding:10px 20px;font-size:.85rem">Start a Project</a>
   <button id="themeToggle" style="background:transparent;border:none;cursor:pointer;padding:8px;border-radius:8px" aria-label="Toggle theme">
     <svg class="icon" viewBox="0 0 24 24"><path d="M20.5 15.2A8.5 8.5 0 0 1 8.8 3.5 8.6 8.6 0 1 0 20.5 15.2Z"/></svg>
   </button>
@@ -1915,7 +1923,7 @@ footer {
           <h1 id="portfolio-hero-title" class="portfolio-hero-title">Ideas Into Impact. Creativity Into Digital Experiences.</h1>
           <p class="portfolio-hero-description">Explore the work, designs, and digital solutions that represent our approach to technology, creativity, and business growth. Every project is an opportunity to transform an idea into something meaningful.</p>
           <div class="portfolio-hero-actions">
-            <a href="contact.html" class="btn btn-primary">Start Your Project <svg class="icon" viewBox="0 0 24 24"><path d="M7 17 17 7M7 7h10v10"/></svg></a>
+            <a href="contact.php" class="btn btn-primary">Start Your Project <svg class="icon" viewBox="0 0 24 24"><path d="M7 17 17 7M7 7h10v10"/></svg></a>
             <a href="#gallery" class="btn btn-secondary">Explore Our Work <svg class="icon" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
           </div>
           <div class="portfolio-hero-trust">Digital Innovation • Creative Design • Business Solutions</div>
@@ -2087,283 +2095,19 @@ footer {
           <button class="filter-btn" type="button" data-category="multimedia" aria-pressed="false">Multimedia</button>
           <button class="filter-btn" type="button" data-category="other" aria-pressed="false">Other Creative Work</button>
         </div>
-        <p class="filter-count" id="galleryCount" aria-live="polite">Showing <strong>7</strong> of 7 projects</p>
+        <p class="filter-count" id="galleryCount" aria-live="polite">Showing <strong><?= count($projects) ?></strong> of <?= count($projects) ?> project<?= count($projects) === 1 ? '' : 's' ?></p>
       </div>
     </section>
 
     <!-- Project Gallery -->
     <section id="gallery" class="section gallery-section" aria-label="Project gallery">
       <div class="project-grid">
-        <!-- Concept Project 1 -->
-        <article class="project-card is-wide reveal" data-category="web"
-          data-title="Corporate Website Concept"
-          data-label="Web Design"
-          data-summary="A responsive corporate website concept built around clear structure, calm typography and a straightforward route to enquiry."
-          data-objective="Present a company's services clearly, build credibility in the first few seconds and make contact effortless on any device."
-          data-approach="A modular page system with generous white space, a restrained navy and blue palette and a content hierarchy that leads naturally to the enquiry form."
-          data-tags="Responsive Layout,Design System,Web Performance">
-          <div class="project-media">
-            <span class="project-badge">Concept Project</span>
-            <div class="preview">
-              <div class="pv-screen">
-                <div class="pv-top"><i></i><i></i><i></i><b></b></div>
-                <div class="pv-body">
-                  <div class="pv-hero"></div>
-                  <div class="pv-grid"><span></span><span></span><span></span></div>
-                </div>
-              </div>
-            </div>
-            <div class="project-overlay">
-              <p>Modular corporate layout with a clear journey from first impression to enquiry.</p>
-              <span>View details <svg class="icon" viewBox="0 0 24 24" style="width:16px;height:16px"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
-            </div>
-          </div>
-          <div class="project-content">
-            <div class="project-category">Web Design</div>
-            <h3 class="project-title">Corporate Website Concept</h3>
-            <p class="project-description">A responsive corporate website concept featuring a modern layout, clean typography and an optimised user experience.</p>
-            <div class="project-meta">
-              <span class="project-tag">Responsive</span>
-              <span class="project-tag">Modern</span>
-            </div>
-            <button class="project-link" type="button">View project details <svg class="icon" viewBox="0 0 24 24" style="width:16px;height:16px"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button>
-          </div>
-        </article>
-
-        <!-- Concept Project 2 -->
-        <article class="project-card reveal" data-category="software"
-          data-title="Business System Dashboard"
-          data-label="Software &amp; AI"
-          data-summary="A dashboard concept for internal business systems, designed so decision makers can read performance at a glance."
-          data-objective="Turn scattered operational data into one calm, legible view that supports faster day-to-day decisions."
-          data-approach="A fixed navigation rail, prioritised data blocks and a chart language that stays readable on smaller laptop screens."
-          data-tags="Dashboard UI,Data Visualisation,Design System">
-          <div class="project-media">
-            <span class="project-badge">Concept Project</span>
-            <div class="preview">
-              <div class="pv-screen">
-                <div class="pv-top"><i></i><i></i><i></i><b></b></div>
-                <div class="pv-body">
-                  <div class="pv-split">
-                    <div class="pv-rail"></div>
-                    <div class="pv-main">
-                      <div class="pv-lines"><span></span><span></span></div>
-                      <div class="pv-bars">
-                        <i style="height:38%"></i>
-                        <i style="height:62%"></i>
-                        <i style="height:30%"></i>
-                        <i style="height:78%"></i>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="project-overlay">
-              <p>Operational data organised into one calm, legible view.</p>
-              <span>View details <svg class="icon" viewBox="0 0 24 24" style="width:16px;height:16px"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
-            </div>
-          </div>
-          <div class="project-content">
-            <div class="project-category">Software &amp; AI</div>
-            <h3 class="project-title">Business System Dashboard</h3>
-            <p class="project-description">A dashboard concept for business management systems with clear data visualisation and an intuitive interface layout.</p>
-            <div class="project-meta">
-              <span class="project-tag">Dashboard</span>
-              <span class="project-tag">Analytics</span>
-            </div>
-            <button class="project-link" type="button">View project details <svg class="icon" viewBox="0 0 24 24" style="width:16px;height:16px"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button>
-          </div>
-        </article>
-
-        <!-- Concept Project 3 -->
-        <article class="project-card reveal" data-category="design"
-          data-title="Brand Identity Concept"
-          data-label="Graphic Design"
-          data-summary="A complete brand identity concept including logo design, colour palette, typography and brand guidelines."
-          data-objective="Give a growing business one consistent visual identity that works across both print and digital touchpoints."
-          data-approach="A structured identity system — a flexible primary mark, defined colour and type scales, and simple usage rules so the brand stays consistent as it grows."
-          data-tags="Logo Design,Colour System,Typography,Brand Guidelines">
-          <div class="project-media">
-            <span class="project-badge">Concept Project</span>
-            <div class="preview">
-              <div class="pv-screen">
-                <div class="pv-top"><i></i><i></i><i></i><b></b></div>
-                <div class="pv-body">
-                  <div class="pv-brand">
-                    <div class="pv-mark">CARE</div>
-                    <div class="pv-swatches">
-                      <i style="background:#2563EB"></i>
-                      <i style="background:#22D3EE"></i>
-                      <i style="background:#0B1F3A"></i>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="project-overlay">
-              <p>A structured identity system built to stay consistent.</p>
-              <span>View details <svg class="icon" viewBox="0 0 24 24" style="width:16px;height:16px"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
-            </div>
-          </div>
-          <div class="project-content">
-            <div class="project-category">Graphic Design</div>
-            <h3 class="project-title">Brand Identity Concept</h3>
-            <p class="project-description">A complete brand identity concept including logo design, colour palette, typography, and brand guidelines.</p>
-            <div class="project-meta">
-              <span class="project-tag">Logo</span>
-              <span class="project-tag">Branding</span>
-            </div>
-            <button class="project-link" type="button">View project details <svg class="icon" viewBox="0 0 24 24" style="width:16px;height:16px"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button>
-          </div>
-        </article>
-
-        <!-- Concept Project 4 -->
-        <article class="project-card reveal" data-category="branding"
-          data-title="Print Materials Concept"
-          data-label="Branding &amp; Printing"
-          data-summary="A collection of branded print materials including business cards, brochures and promotional items."
-          data-objective="Extend the brand identity into physical touchpoints that feel considered, premium and unmistakably consistent."
-          data-approach="A compact print system with clear hierarchy, generous spacing and print-safe colour values so every item matches the digital brand."
-          data-tags="Stationery,Brochures,Print Production">
-          <div class="project-media">
-            <span class="project-badge">Concept Project</span>
-            <div class="preview">
-              <div class="pv-screen">
-                <div class="pv-top"><i></i><i></i><i></i><b></b></div>
-                <div class="pv-body">
-                  <div class="pv-cards"><i></i><i></i></div>
-                  <div class="pv-lines"><span></span><span></span></div>
-                </div>
-              </div>
-            </div>
-            <div class="project-overlay">
-              <p>Brand identity carried into premium print touchpoints.</p>
-              <span>View details <svg class="icon" viewBox="0 0 24 24" style="width:16px;height:16px"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
-            </div>
-          </div>
-          <div class="project-content">
-            <div class="project-category">Branding &amp; Printing</div>
-            <h3 class="project-title">Print Materials Concept</h3>
-            <p class="project-description">A collection of branded print materials including business cards, brochures, and promotional items.</p>
-            <div class="project-meta">
-              <span class="project-tag">Print</span>
-              <span class="project-tag">Stationery</span>
-            </div>
-            <button class="project-link" type="button">View project details <svg class="icon" viewBox="0 0 24 24" style="width:16px;height:16px"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button>
-          </div>
-        </article>
-
-        <!-- Concept Project 5 -->
-        <article class="project-card reveal" data-category="multimedia"
-          data-title="Video Content Concept"
-          data-label="Multimedia"
-          data-summary="A promotional video concept featuring motion graphics, visual storytelling and professional editing."
-          data-objective="Explain a service clearly and quickly using a short, well-paced promotional video concept."
-          data-approach="A tight script, clean motion graphics and a consistent visual language that can be reused across social and web channels."
-          data-tags="Video Editing,Motion Graphics,Storyboarding">
-          <div class="project-media">
-            <span class="project-badge">Concept Project</span>
-            <div class="preview">
-              <div class="pv-screen">
-                <div class="pv-top"><i></i><i></i><i></i><b></b></div>
-                <div class="pv-body">
-                  <div class="pv-video">
-                    <div class="pv-play"><svg class="icon" viewBox="0 0 24 24" style="width:18px;height:18px"><path d="m6 4 14 8-14 8z"/></svg></div>
-                  </div>
-                  <div class="pv-timeline"></div>
-                </div>
-              </div>
-            </div>
-            <div class="project-overlay">
-              <p>Short, well-paced storytelling with clean motion graphics.</p>
-              <span>View details <svg class="icon" viewBox="0 0 24 24" style="width:16px;height:16px"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
-            </div>
-          </div>
-          <div class="project-content">
-            <div class="project-category">Multimedia</div>
-            <h3 class="project-title">Video Content Concept</h3>
-            <p class="project-description">A promotional video concept featuring motion graphics, visual storytelling, and professional editing.</p>
-            <div class="project-meta">
-              <span class="project-tag">Video</span>
-              <span class="project-tag">Motion</span>
-            </div>
-            <button class="project-link" type="button">View project details <svg class="icon" viewBox="0 0 24 24" style="width:16px;height:16px"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button>
-          </div>
-        </article>
-
-        <!-- Concept Project 6 -->
-        <article class="project-card is-wide reveal" data-category="web"
-          data-title="E-commerce Concept"
-          data-label="Web Design"
-          data-summary="An e-commerce website concept focusing on product presentation, user experience and conversion-friendly structure."
-          data-objective="Present products clearly and reduce friction between browsing and checkout."
-          data-approach="A consistent product grid, strong imagery ratios and a simple browsing path supported by clear category structure."
-          data-tags="E-commerce,Product Grid,UX Structure">
-          <div class="project-media">
-            <span class="project-badge">Concept Project</span>
-            <div class="preview">
-              <div class="pv-screen">
-                <div class="pv-top"><i></i><i></i><i></i><b></b></div>
-                <div class="pv-body">
-                  <div class="pv-shop"><i></i><i></i><i></i><i></i></div>
-                  <div class="pv-lines"><span></span><span></span></div>
-                </div>
-              </div>
-            </div>
-            <div class="project-overlay">
-              <p>A calm product grid that keeps browsing and buying simple.</p>
-              <span>View details <svg class="icon" viewBox="0 0 24 24" style="width:16px;height:16px"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
-            </div>
-          </div>
-          <div class="project-content">
-            <div class="project-category">Web Design</div>
-            <h3 class="project-title">E-commerce Concept</h3>
-            <p class="project-description">An e-commerce website concept focusing on product presentation, user experience, and conversion optimization.</p>
-            <div class="project-meta">
-              <span class="project-tag">E-commerce</span>
-              <span class="project-tag">UX</span>
-            </div>
-            <button class="project-link" type="button">View project details <svg class="icon" viewBox="0 0 24 24" style="width:16px;height:16px"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button>
-          </div>
-        </article>
-
-        <!-- Concept Project 7 -->
-        <article class="project-card reveal" data-category="other"
-          data-title="Event & Campaign Concept"
-          data-label="Other Creative Work"
-          data-summary="A visual concept for an event and campaign rollout, including posters, digital banners and promotional items."
-          data-objective="Give a single campaign one recognisable look that works consistently across screens and printed surfaces."
-          data-approach="A reusable layout system with a small set of strong visual rules, so new pieces can be produced quickly without losing consistency."
-          data-tags="Campaign Design,Banners,Promotional Print">
-          <div class="project-media">
-            <span class="project-badge">Concept Project</span>
-            <div class="preview">
-              <div class="pv-screen">
-                <div class="pv-top"><i></i><i></i><i></i><b></b></div>
-                <div class="pv-body">
-                  <div class="pv-banner">Campaign</div>
-                  <div class="pv-tickets"><i></i><i></i><i></i></div>
-                </div>
-              </div>
-            </div>
-            <div class="project-overlay">
-              <p>One campaign look, reused consistently across every surface.</p>
-              <span>View details <svg class="icon" viewBox="0 0 24 24" style="width:16px;height:16px"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
-            </div>
-          </div>
-          <div class="project-content">
-            <div class="project-category">Other Creative Work</div>
-            <h3 class="project-title">Event &amp; Campaign Concept</h3>
-            <p class="project-description">A creative campaign concept covering event visuals, digital banners, and promotional print materials.</p>
-            <div class="project-meta">
-              <span class="project-tag">Campaign</span>
-              <span class="project-tag">Print</span>
-            </div>
-            <button class="project-link" type="button">View project details <svg class="icon" viewBox="0 0 24 24" style="width:16px;height:16px"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button>
-          </div>
-        </article>
+        <?php care_render_project_cards($projects); ?>
       </div>
+
+      <?php if (!$projects): ?>
+        <p class="section-description" style="text-align:center">Our portfolio is being updated. Please check back shortly.</p>
+      <?php endif; ?>
     </section>
 
     <!-- Featured Project -->
@@ -2391,7 +2135,7 @@ footer {
             <span class="tech-chip">Brand Identity</span>
             <span class="tech-chip">UX Structure</span>
           </div>
-          <a href="contact.html" class="btn btn-primary">Discuss Similar Project <svg class="icon" viewBox="0 0 24 24"><path d="M7 17 17 7M7 7h10v10"/></svg></a>
+          <a href="contact.php" class="btn btn-primary">Discuss Similar Project <svg class="icon" viewBox="0 0 24 24"><path d="M7 17 17 7M7 7h10v10"/></svg></a>
         </div>
         <div class="featured-visual reveal">
           <div class="device">
@@ -2649,8 +2393,8 @@ footer {
         <h2 class="cta-title">Have an Idea Worth Bringing to Life?</h2>
         <p class="cta-description">Let's discuss your next website, software solution, branding project, or creative idea and explore how CARE Digital Solutions can help make it happen.</p>
         <div class="cta-actions">
-          <a href="contact.html" class="btn btn-primary">Start Your Project <svg class="icon" viewBox="0 0 24 24"><path d="M7 17 17 7M7 7h10v10"/></svg></a>
-          <a href="contact.html" class="btn btn-secondary">Contact Us <svg class="icon" viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><path d="M22 6l-10 7L2 6"/></svg></a>
+          <a href="contact.php" class="btn btn-primary">Start Your Project <svg class="icon" viewBox="0 0 24 24"><path d="M7 17 17 7M7 7h10v10"/></svg></a>
+          <a href="contact.php" class="btn btn-secondary">Contact Us <svg class="icon" viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><path d="M22 6l-10 7L2 6"/></svg></a>
         </div>
       </div>
     </section>
@@ -2667,28 +2411,28 @@ footer {
       <div>
         <div class="footer-heading">Quick Links</div>
         <div class="footer-links">
-          <a href="index.html" class="footer-link">Home</a>
-          <a href="services.html" class="footer-link">Services</a>
-          <a href="about.html" class="footer-link">About</a>
-          <a href="portfolio.html" class="footer-link">Portfolio</a>
-          <a href="contact.html" class="footer-link">Contact</a>
+          <a href="index.php" class="footer-link">Home</a>
+          <a href="services.php" class="footer-link">Services</a>
+          <a href="about.php" class="footer-link">About</a>
+          <a href="portfolio.php" class="footer-link">Portfolio</a>
+          <a href="contact.php" class="footer-link">Contact</a>
         </div>
       </div>
       <div>
         <div class="footer-heading">Services</div>
         <div class="footer-links">
-          <a href="services.html" class="footer-link">Website Design</a>
-          <a href="services.html" class="footer-link">Software Development</a>
-          <a href="services.html" class="footer-link">Branding & Design</a>
-          <a href="services.html" class="footer-link">ICT Support</a>
+          <a href="services.php" class="footer-link">Website Design</a>
+          <a href="services.php" class="footer-link">Software Development</a>
+          <a href="services.php" class="footer-link">Branding & Design</a>
+          <a href="services.php" class="footer-link">ICT Support</a>
         </div>
       </div>
       <div>
         <div class="footer-heading">Contact</div>
         <div class="footer-links">
-          <a href="mailto:info@caredigitalsolutions.co.tz" class="footer-link" style="color:var(--accent-2);font-weight:600">info@caredigitalsolutions.co.tz</a>
-          <a href="https://wa.me/255613516832" class="footer-link">WhatsApp: 0613 516 832</a>
-          <a href="https://wa.me/255743939008" class="footer-link">WhatsApp: 0743 939 008</a>
+          <a href="mailto:<?= e(setting('site_email')) ?>" class="footer-link" style="color:var(--accent-2);font-weight:600"><?= e(setting('site_email')) ?></a>
+          <a href="<?= e(whatsapp_link(setting('whatsapp_1'))) ?>" class="footer-link">WhatsApp: <?= e(phone_display(setting('site_phone_1'))) ?></a>
+          <a href="<?= e(whatsapp_link(setting('whatsapp_2'))) ?>" class="footer-link">WhatsApp: <?= e(phone_display(setting('site_phone_2'))) ?></a>
           <span class="footer-link" style="color:rgba(255,255,255,.7)">Tanzania</span>
         </div>
       </div>
@@ -2722,7 +2466,7 @@ footer {
       </div>
       <div class="modal-tags" id="modalTags"></div>
       <div class="modal-actions">
-        <a href="contact.html" class="btn btn-primary" data-modal-close>Discuss a Similar Project <svg class="icon" viewBox="0 0 24 24"><path d="M7 17 17 7M7 7h10v10"/></svg></a>
+        <a href="contact.php" class="btn btn-primary" data-modal-close>Discuss a Similar Project <svg class="icon" viewBox="0 0 24 24"><path d="M7 17 17 7M7 7h10v10"/></svg></a>
         <span style="color:var(--muted);font-size:.85rem">Concept project — sample work created for demonstration.</span>
       </div>
     </div>

@@ -1,3 +1,21 @@
+<?php
+declare(strict_types=1);
+
+require __DIR__ . '/src/bootstrap.php';
+require __DIR__ . '/src/contact-form.php';
+
+/** Pre-filled WhatsApp message used by every chat button on this page. */
+$waMessage = 'Hello CARE Digital Solutions, I would like to inquire about your services.';
+
+if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['contact_form'])) {
+    verify_csrf();
+    $result = care_submit_inquiry($_POST);
+    flash($result['message'], $result['ok'] ? 'success' : 'error');
+    redirect('contact.php#inquiry-form');
+}
+
+$feedback = flash();
+?>
 <!DOCTYPE html>
 <html lang="en" data-mode="light">
 <head>
@@ -398,19 +416,19 @@ html[data-mode="dark"] .back-to-top:hover {
 <a class="skip-link" href="#main-content">Skip to content</a>
 
 <header class="topbar">
-  <a href="index.html" style="font-weight:900;font-size:1.2rem;letter-spacing:-.04em;color:var(--text)">CARE<span style="color:var(--accent)">.</span></a>
+  <a href="index.php" style="font-weight:900;font-size:1.2rem;letter-spacing:-.04em;color:var(--text)">CARE<span style="color:var(--accent)">.</span></a>
   <div style="flex:1"></div>
   <nav style="display:flex;gap:24px;align-items:center">
-    <a href="index.html" style="color:inherit;text-decoration:none;font-weight:600;font-size:.9rem;color:var(--muted)">Home</a>
-    <a href="services.html" style="color:inherit;text-decoration:none;font-weight:600;font-size:.9rem;color:var(--muted)">Services</a>
-    <a href="about.html" style="color:inherit;text-decoration:none;font-weight:600;font-size:.9rem;color:var(--muted)">About</a>
-    <a href="portfolio.html" style="color:inherit;text-decoration:none;font-weight:600;font-size:.9rem;color:var(--muted)">Portfolio</a>
-    <a href="contact.html" style="color:inherit;text-decoration:none;font-weight:700;font-size:.9rem;color:var(--accent)">Contact</a>
+    <a href="index.php" style="color:inherit;text-decoration:none;font-weight:600;font-size:.9rem;color:var(--muted)">Home</a>
+    <a href="services.php" style="color:inherit;text-decoration:none;font-weight:600;font-size:.9rem;color:var(--muted)">Services</a>
+    <a href="about.php" style="color:inherit;text-decoration:none;font-weight:600;font-size:.9rem;color:var(--muted)">About</a>
+    <a href="portfolio.php" style="color:inherit;text-decoration:none;font-weight:600;font-size:.9rem;color:var(--muted)">Portfolio</a>
+    <a href="contact.php" style="color:inherit;text-decoration:none;font-weight:700;font-size:.9rem;color:var(--accent)">Contact</a>
     <button id="themeToggle" style="background:none;border:none;cursor:pointer;padding:8px;color:var(--text)" aria-label="Toggle theme">
       <svg class="icon" viewBox="0 0 24 24"><path d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364-6.364l-.707.707M6.343 17.657l-.707.707m0-12.728l.707.707m11.314 11.314l.707.707M12 5a7 7 0 100 14 7 7 0 000-14z"/></svg>
     </button>
   </nav>
-  <a href="contact.html" class="btn btn-primary" style="padding:10px 20px;font-size:.85rem">Start a Project</a>
+  <a href="contact.php" class="btn btn-primary" style="padding:10px 20px;font-size:.85rem">Start a Project</a>
 </header>
 
 <div class="main-area">
@@ -438,7 +456,7 @@ html[data-mode="dark"] .back-to-top:hover {
           <h1 class="contact-hero-title">Let's Talk About Your Next Big Idea.</h1>
           <p class="contact-hero-description">Have a project in mind, need a digital solution, or want to strengthen your brand? Get in touch with CARE Digital Solutions. We're ready to hear your ideas and discuss how we can help.</p>
           <div class="contact-hero-actions">
-            <a href="https://wa.me/255613516832?text=Hello%20CARE%20Digital%20Solutions%2C%20I%20would%20like%20to%20inquire%20about%20your%20services." class="btn btn-whatsapp">
+            <a href="<?= e(whatsapp_link(setting('whatsapp_1'), $waMessage)) ?>" class="btn btn-whatsapp">
               <svg class="icon" viewBox="0 0 24 24" style="fill:currentColor;stroke:none"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
               Chat on WhatsApp
             </a>
@@ -480,8 +498,8 @@ html[data-mode="dark"] .back-to-top:hover {
           <h3>Call Us</h3>
           <p>Prefer to speak with us directly? Give us a call on one of our official numbers.</p>
           <div class="info-links">
-            <a href="tel:+255613516832" class="info-link">0613516832</a>
-            <a href="tel:+255743939008" class="info-link">0743939008</a>
+            <a href="tel:+<?= e(preg_replace('/\D+/', '', setting('whatsapp_1'))) ?>" class="info-link"><?= e(phone_display(setting('site_phone_1'))) ?></a>
+            <a href="tel:+<?= e(preg_replace('/\D+/', '', setting('whatsapp_2'))) ?>" class="info-link"><?= e(phone_display(setting('site_phone_2'))) ?></a>
           </div>
         </div>
         <!-- WhatsApp -->
@@ -490,8 +508,8 @@ html[data-mode="dark"] .back-to-top:hover {
           <h3>Chat on WhatsApp</h3>
           <p>Have a quick question or want to discuss a project? Send us a message directly on WhatsApp.</p>
           <div class="info-links">
-            <a href="https://wa.me/255613516832?text=Hello%20CARE%20Digital%20Solutions%2C%20I%20would%20like%20to%20inquire%20about%20your%20services." class="btn btn-whatsapp" style="padding:12px 24px;font-size:.9rem">Message 0613516832</a>
-            <a href="https://wa.me/255743939008?text=Hello%20CARE%20Digital%20Solutions%2C%20I%20would%20like%20to%20inquire%20about%20your%20services." class="btn btn-whatsapp" style="padding:12px 24px;font-size:.9rem">Message 0743939008</a>
+            <a href="<?= e(whatsapp_link(setting('whatsapp_1'), $waMessage)) ?>" class="btn btn-whatsapp" style="padding:12px 24px;font-size:.9rem">Message <?= e(phone_display(setting('site_phone_1'))) ?></a>
+            <a href="<?= e(whatsapp_link(setting('whatsapp_2'), $waMessage)) ?>" class="btn btn-whatsapp" style="padding:12px 24px;font-size:.9rem">Message <?= e(phone_display(setting('site_phone_2'))) ?></a>
           </div>
         </div>
         <!-- Social Media -->
@@ -516,7 +534,11 @@ html[data-mode="dark"] .back-to-top:hover {
         <p class="section-description" style="margin-left:auto;margin-right:auto">Share a few details about what you need. We'll use your inquiry to understand your goals and identify the next steps.</p>
       </div>
       <div class="form-container reveal">
-        <form class="contact-form" id="contactForm">
+        <form class="contact-form" id="contactForm" method="post" action="contact.php#inquiry-form">
+          <div style="display:none">
+            <?= csrf_field() ?>
+            <input type="hidden" name="contact_form" value="1">
+          </div>
           <div class="form-group">
             <label for="name">Full Name</label>
             <input type="text" id="name" name="name" placeholder="Enter your full name" required>
@@ -537,15 +559,15 @@ html[data-mode="dark"] .back-to-top:hover {
             <label for="service">Service Required</label>
             <select id="service" name="service" required>
               <option value="" disabled selected>Select a service</option>
-              <option value="web">Website Design & Development</option>
-              <option value="software">Software Development</option>
-              <option value="ai">AI & Automation</option>
-              <option value="branding">Graphic Design & Branding</option>
-              <option value="printing">Printing & Branded Materials</option>
-              <option value="stationery">Stationery Services</option>
-              <option value="multimedia">Multimedia & Video Editing</option>
-              <option value="ict">ICT Support</option>
-              <option value="other">Other / Not Sure Yet</option>
+              <option value="Website Design & Development">Website Design & Development</option>
+              <option value="Software Development">Software Development</option>
+              <option value="AI & Automation">AI & Automation</option>
+              <option value="Graphic Design & Branding">Graphic Design & Branding</option>
+              <option value="Printing & Branded Materials">Printing & Branded Materials</option>
+              <option value="Stationery Services">Stationery Services</option>
+              <option value="Multimedia & Video Editing">Multimedia & Video Editing</option>
+              <option value="ICT Support">ICT Support</option>
+              <option value="Other / Not Sure Yet">Other / Not Sure Yet</option>
             </select>
           </div>
           <div class="form-group">
@@ -563,6 +585,9 @@ html[data-mode="dark"] .back-to-top:hover {
             <textarea id="message" name="message" rows="5" placeholder="Tell us more about your project goals..." required></textarea>
           </div>
           <div class="form-group full" style="text-align:center;margin-top:20px">
+            <?php if ($feedback): ?>
+              <p role="status" style="padding:14px 16px;border-radius:12px;font-weight:600;font-size:.9rem;margin-bottom:16px;background:<?= $feedback['type'] === 'success' ? 'rgba(22,132,91,.1)' : 'rgba(220,38,38,.1)' ?>;color:<?= $feedback['type'] === 'success' ? '#16845b' : '#dc2626' ?>"><?= e($feedback['message']) ?></p>
+            <?php endif; ?>
             <button type="submit" class="btn btn-primary" style="width:100%;max-width:300px">Send Project Inquiry</button>
             <p class="form-privacy">Your information should only be used to respond to your inquiry.</p>
           </div>
@@ -580,13 +605,13 @@ html[data-mode="dark"] .back-to-top:hover {
       <div class="whatsapp-grid">
         <div class="whatsapp-box reveal">
           <h4>WhatsApp 1</h4>
-          <span class="num">0613516832</span>
-          <a href="https://wa.me/255613516832?text=Hello%20CARE%20Digital%20Solutions%2C%20I%20would%20like%20to%20inquire%20about%20your%20services." class="btn btn-whatsapp">Start WhatsApp Chat</a>
+          <span class="num"><?= e(phone_display(setting('site_phone_1'))) ?></span>
+          <a href="<?= e(whatsapp_link(setting('whatsapp_1'), $waMessage)) ?>" class="btn btn-whatsapp">Start WhatsApp Chat</a>
         </div>
         <div class="whatsapp-box reveal" style="animation-delay:.2s">
           <h4>WhatsApp 2</h4>
-          <span class="num">0743939008</span>
-          <a href="https://wa.me/255743939008?text=Hello%20CARE%20Digital%20Solutions%2C%20I%20would%20like%20to%20inquire%20about%20your%20services." class="btn btn-whatsapp">Start WhatsApp Chat</a>
+          <span class="num"><?= e(phone_display(setting('site_phone_2'))) ?></span>
+          <a href="<?= e(whatsapp_link(setting('whatsapp_2'), $waMessage)) ?>" class="btn btn-whatsapp">Start WhatsApp Chat</a>
         </div>
       </div>
     </section>
@@ -632,37 +657,37 @@ html[data-mode="dark"] .back-to-top:hover {
           <svg class="icon" viewBox="0 0 24 24" style="width:32px;height:32px"><rect x="3" y="4" width="18" height="15" rx="2"/><path d="M8 22h8M12 19v3M7 9h10M7 13h6"/></svg>
           <h4>Websites & Digital Experiences</h4>
           <p>Responsive websites and digital interfaces built for modern users.</p>
-          <a href="services.html" class="link">Learn More <svg class="icon" viewBox="0 0 24 24" style="width:14px;height:14px"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+          <a href="services.php" class="link">Learn More <svg class="icon" viewBox="0 0 24 24" style="width:14px;height:14px"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
         </div>
         <div class="service-item reveal">
           <svg class="icon" viewBox="0 0 24 24" style="width:32px;height:32px"><path d="M12 20V10M18 20V4M6 20v-4"/></svg>
           <h4>Software & AI Solutions</h4>
           <p>Custom software and automation tools to streamline your business.</p>
-          <a href="services.html" class="link">Learn More <svg class="icon" viewBox="0 0 24 24" style="width:14px;height:14px"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+          <a href="services.php" class="link">Learn More <svg class="icon" viewBox="0 0 24 24" style="width:14px;height:14px"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
         </div>
         <div class="service-item reveal">
           <svg class="icon" viewBox="0 0 24 24" style="width:32px;height:32px"><path d="M12 3v18M3 12h18"/><circle cx="12" cy="12" r="8"/><path d="m8 8 8 8m0-8-8 8"/></svg>
           <h4>Graphic Design & Branding</h4>
           <p>Strong visual identities and creative designs that make an impact.</p>
-          <a href="services.html" class="link">Learn More <svg class="icon" viewBox="0 0 24 24" style="width:14px;height:14px"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+          <a href="services.php" class="link">Learn More <svg class="icon" viewBox="0 0 24 24" style="width:14px;height:14px"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
         </div>
         <div class="service-item reveal">
           <svg class="icon" viewBox="0 0 24 24" style="width:32px;height:32px"><path d="M6 9V2h12V9"/><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><path d="M6 14h12v8H6z"/></svg>
           <h4>Printing & Branded Materials</h4>
           <p>High-quality print services for all your business branding needs.</p>
-          <a href="services.html" class="link">Learn More <svg class="icon" viewBox="0 0 24 24" style="width:14px;height:14px"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+          <a href="services.php" class="link">Learn More <svg class="icon" viewBox="0 0 24 24" style="width:14px;height:14px"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
         </div>
         <div class="service-item reveal">
           <svg class="icon" viewBox="0 0 24 24" style="width:32px;height:32px"><rect x="2" y="2" width="20" height="20" rx="2.18" ry="2.18"/><line x1="7" y1="2" x2="7" y2="22"/><line x1="17" y1="2" x2="17" y2="22"/><line x1="2" y1="12" x2="22" y2="12"/></svg>
           <h4>Multimedia & Video</h4>
           <p>Professional video editing and multimedia content production.</p>
-          <a href="services.html" class="link">Learn More <svg class="icon" viewBox="0 0 24 24" style="width:14px;height:14px"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+          <a href="services.php" class="link">Learn More <svg class="icon" viewBox="0 0 24 24" style="width:14px;height:14px"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
         </div>
         <div class="service-item reveal">
           <svg class="icon" viewBox="0 0 24 24" style="width:32px;height:32px"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2Z"/></svg>
           <h4>ICT Support & Services</h4>
           <p>Reliable technical support and ICT consulting for businesses.</p>
-          <a href="services.html" class="link">Learn More <svg class="icon" viewBox="0 0 24 24" style="width:14px;height:14px"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+          <a href="services.php" class="link">Learn More <svg class="icon" viewBox="0 0 24 24" style="width:14px;height:14px"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
         </div>
       </div>
     </section>
@@ -673,8 +698,8 @@ html[data-mode="dark"] .back-to-top:hover {
         <h2 class="cta-title">Your Next Idea Starts With a Conversation.</h2>
         <p class="cta-desc">Whether you need a website, a software solution, professional branding, or creative digital services, CARE Digital Solutions is ready to discuss your goals.</p>
         <div class="contact-hero-actions" style="justify-content:center">
-          <a href="https://wa.me/255613516832?text=Hello%20CARE%20Digital%20Solutions%2C%20I%20would%20like%20to%20inquire%20about%20your%20services." class="btn btn-whatsapp">Chat on WhatsApp</a>
-          <a href="tel:+255613516832" class="btn btn-secondary">Call Us Directly</a>
+          <a href="<?= e(whatsapp_link(setting('whatsapp_1'), $waMessage)) ?>" class="btn btn-whatsapp">Chat on WhatsApp</a>
+          <a href="tel:+<?= e(preg_replace('/\D+/', '', setting('whatsapp_1'))) ?>" class="btn btn-secondary">Call Us Directly</a>
         </div>
       </div>
     </section>
@@ -691,28 +716,28 @@ html[data-mode="dark"] .back-to-top:hover {
       <div>
         <div class="footer-heading">Quick Links</div>
         <div class="footer-links">
-          <a href="index.html" class="footer-link">Home</a>
-          <a href="services.html" class="footer-link">Services</a>
-          <a href="about.html" class="footer-link">About</a>
-          <a href="portfolio.html" class="footer-link">Portfolio</a>
-          <a href="contact.html" class="footer-link">Contact</a>
+          <a href="index.php" class="footer-link">Home</a>
+          <a href="services.php" class="footer-link">Services</a>
+          <a href="about.php" class="footer-link">About</a>
+          <a href="portfolio.php" class="footer-link">Portfolio</a>
+          <a href="contact.php" class="footer-link">Contact</a>
         </div>
       </div>
       <div>
         <div class="footer-heading">Services</div>
         <div class="footer-links">
-          <a href="services.html" class="footer-link">Website Design</a>
-          <a href="services.html" class="footer-link">Software Development</a>
-          <a href="services.html" class="footer-link">Branding & Design</a>
-          <a href="services.html" class="footer-link">ICT Support</a>
+          <a href="services.php" class="footer-link">Website Design</a>
+          <a href="services.php" class="footer-link">Software Development</a>
+          <a href="services.php" class="footer-link">Branding & Design</a>
+          <a href="services.php" class="footer-link">ICT Support</a>
         </div>
       </div>
       <div>
         <div class="footer-heading">Contact</div>
         <div class="footer-links">
-          <a href="mailto:info@caredigitalsolutions.co.tz" class="footer-link" style="color:var(--accent-2);font-weight:600">info@caredigitalsolutions.co.tz</a>
-          <a href="https://wa.me/255613516832" class="footer-link">WhatsApp: 0613 516 832</a>
-          <a href="https://wa.me/255743939008" class="footer-link">WhatsApp: 0743 939 008</a>
+          <a href="mailto:<?= e(setting('site_email')) ?>" class="footer-link" style="color:var(--accent-2);font-weight:600"><?= e(setting('site_email')) ?></a>
+          <a href="<?= e(whatsapp_link(setting('whatsapp_1'))) ?>" class="footer-link">WhatsApp: <?= e(phone_display(setting('site_phone_1'))) ?></a>
+          <a href="<?= e(whatsapp_link(setting('whatsapp_2'))) ?>" class="footer-link">WhatsApp: <?= e(phone_display(setting('site_phone_2'))) ?></a>
           <span class="footer-link" style="color:rgba(255,255,255,.4)">Tanzania</span>
         </div>
       </div>
@@ -765,16 +790,6 @@ html[data-mode="dark"] .back-to-top:hover {
     document.querySelectorAll(".reveal").forEach(el => observer.observe(el));
   } else {
     document.querySelectorAll(".reveal").forEach(el => el.classList.add("visible"));
-  }
-  
-  // Form submission handling
-  const contactForm = document.getElementById("contactForm");
-  if (contactForm) {
-    contactForm.addEventListener("submit", (e) => {
-      e.preventDefault();
-      // Placeholder for backend integration
-      alert("Thank you for your inquiry. This is a demonstration of the contact form. Please use the WhatsApp button for a direct inquiry.");
-    });
   }
   
   // Dynamic year

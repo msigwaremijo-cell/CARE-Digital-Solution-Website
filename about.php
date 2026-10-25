@@ -1,3 +1,8 @@
+<?php
+declare(strict_types=1);
+
+require __DIR__ . '/src/bootstrap.php';
+?>
 <!DOCTYPE html>
 <html lang="en" data-mode="light">
 <head>
@@ -1371,16 +1376,16 @@ footer {
 <a class="skip-link" href="#main-content">Skip to content</a>
 
 <header class="topbar">
-  <a href="index.html" style="font-weight:900;font-size:1.2rem;letter-spacing:-.04em;color:var(--text)">CARE<span style="color:var(--accent)">.</span></a>
+  <a href="index.php" style="font-weight:900;font-size:1.2rem;letter-spacing:-.04em;color:var(--text)">CARE<span style="color:var(--accent)">.</span></a>
   <div style="flex:1"></div>
   <nav style="display:flex;gap:24px;align-items:center">
-    <a href="index.html" style="color:inherit;text-decoration:none;font-weight:600;font-size:.9rem;color:var(--muted)">Home</a>
-    <a href="services.html" style="color:inherit;text-decoration:none;font-weight:600;font-size:.9rem;color:var(--muted)">Services</a>
-    <a href="about.html" style="color:inherit;text-decoration:none;font-weight:700;font-size:.9rem;color:var(--accent)">About</a>
-    <a href="portfolio.html" style="color:inherit;text-decoration:none;font-weight:600;font-size:.9rem;color:var(--muted)">Portfolio</a>
-    <a href="contact.html" style="color:inherit;text-decoration:none;font-weight:600;font-size:.9rem;color:var(--muted)">Contact</a>
+    <a href="index.php" style="color:inherit;text-decoration:none;font-weight:600;font-size:.9rem;color:var(--muted)">Home</a>
+    <a href="services.php" style="color:inherit;text-decoration:none;font-weight:600;font-size:.9rem;color:var(--muted)">Services</a>
+    <a href="about.php" style="color:inherit;text-decoration:none;font-weight:700;font-size:.9rem;color:var(--accent)">About</a>
+    <a href="portfolio.php" style="color:inherit;text-decoration:none;font-weight:600;font-size:.9rem;color:var(--muted)">Portfolio</a>
+    <a href="contact.php" style="color:inherit;text-decoration:none;font-weight:600;font-size:.9rem;color:var(--muted)">Contact</a>
   </nav>
-  <a href="contact.html" class="btn btn-primary" style="padding:10px 20px;font-size:.85rem">Start a Project</a>
+  <a href="contact.php" class="btn btn-primary" style="padding:10px 20px;font-size:.85rem">Start a Project</a>
   <button id="themeToggle" style="background:transparent;border:none;cursor:pointer;padding:8px;border-radius:8px" aria-label="Toggle theme">
     <svg class="icon" viewBox="0 0 24 24"><path d="M20.5 15.2A8.5 8.5 0 0 1 8.8 3.5 8.6 8.6 0 1 0 20.5 15.2Z"/></svg>
   </button>
@@ -1402,7 +1407,7 @@ footer {
           <p class="about-hero-description">CARE Digital Solutions is a technology-driven and creative digital solutions brand focused on helping businesses and organizations strengthen their digital presence, improve operations, and communicate their value through innovative technology and creative services.</p>
           <div class="about-hero-actions">
             <a href="#who-we-are" class="btn btn-primary">Discover Our Story <svg class="icon" viewBox="0 0 24 24"><path d="M7 17 17 7M7 7h10v10"/></svg></a>
-            <a href="services.html" class="btn btn-secondary">Explore Our Services <svg class="icon" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+            <a href="services.php" class="btn btn-secondary">Explore Our Services <svg class="icon" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
           </div>
           <div class="about-hero-trust">Digital Innovation • Creative Excellence • Business Growth</div>
         </div>
@@ -1803,8 +1808,8 @@ footer {
         <h2 class="cta-title">Let's Build Something Meaningful Together.</h2>
         <p class="cta-description">Have an idea, a business challenge, or a digital project in mind? Let's explore how CARE Digital Solutions can help turn your goals into practical solutions.</p>
         <div class="cta-actions">
-          <a href="contact.html" class="btn btn-primary">Start a Conversation <svg class="icon" viewBox="0 0 24 24"><path d="M7 17 17 7M7 7h10v10"/></svg></a>
-          <a href="services.html" class="btn btn-secondary">Explore Our Services <svg class="icon" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+          <a href="contact.php" class="btn btn-primary">Start a Conversation <svg class="icon" viewBox="0 0 24 24"><path d="M7 17 17 7M7 7h10v10"/></svg></a>
+          <a href="services.php" class="btn btn-secondary">Explore Our Services <svg class="icon" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
         </div>
       </div>
     </section>
@@ -1821,27 +1826,27 @@ footer {
       <div>
         <div class="footer-heading">Quick Links</div>
         <div class="footer-links">
-          <a href="index.html" class="footer-link">Home</a>
-          <a href="services.html" class="footer-link">Services</a>
-          <a href="about.html" class="footer-link">About</a>
-          <a href="contact.html" class="footer-link">Contact</a>
+          <a href="index.php" class="footer-link">Home</a>
+          <a href="services.php" class="footer-link">Services</a>
+          <a href="about.php" class="footer-link">About</a>
+          <a href="contact.php" class="footer-link">Contact</a>
         </div>
       </div>
       <div>
         <div class="footer-heading">Services</div>
         <div class="footer-links">
-          <a href="services.html" class="footer-link">Website Design</a>
-          <a href="services.html" class="footer-link">Software Development</a>
-          <a href="services.html" class="footer-link">Branding & Design</a>
-          <a href="services.html" class="footer-link">ICT Support</a>
+          <a href="services.php" class="footer-link">Website Design</a>
+          <a href="services.php" class="footer-link">Software Development</a>
+          <a href="services.php" class="footer-link">Branding & Design</a>
+          <a href="services.php" class="footer-link">ICT Support</a>
         </div>
       </div>
       <div>
         <div class="footer-heading">Contact</div>
         <div class="footer-links">
-          <a href="mailto:info@caredigitalsolutions.co.tz" class="footer-link" style="color:var(--accent-2);font-weight:600">info@caredigitalsolutions.co.tz</a>
-          <a href="https://wa.me/255613516832" class="footer-link">WhatsApp: 0613 516 832</a>
-          <a href="https://wa.me/255743939008" class="footer-link">WhatsApp: 0743 939 008</a>
+          <a href="mailto:<?= e(setting('site_email')) ?>" class="footer-link" style="color:var(--accent-2);font-weight:600"><?= e(setting('site_email')) ?></a>
+          <a href="<?= e(whatsapp_link(setting('whatsapp_1'))) ?>" class="footer-link">WhatsApp: <?= e(phone_display(setting('site_phone_1'))) ?></a>
+          <a href="<?= e(whatsapp_link(setting('whatsapp_2'))) ?>" class="footer-link">WhatsApp: <?= e(phone_display(setting('site_phone_2'))) ?></a>
           <span class="footer-link" style="color:rgba(255,255,255,.7)">Tanzania</span>
         </div>
       </div>

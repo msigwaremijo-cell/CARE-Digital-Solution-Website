@@ -1,3 +1,11 @@
+<?php
+declare(strict_types=1);
+
+require __DIR__ . '/src/bootstrap.php';
+require __DIR__ . '/src/render.php';
+
+$services = care_published_services();
+?>
 <!DOCTYPE html>
 <html lang="en" data-mode="light">
 <head>
@@ -843,16 +851,16 @@ footer {
 <a class="skip-link" href="#main-content">Skip to content</a>
 
 <header class="topbar">
-  <a href="index.html" style="font-weight:900;font-size:1.2rem;letter-spacing:-.04em;color:var(--text)">CARE<span style="color:var(--accent)">.</span></a>
+  <a href="index.php" style="font-weight:900;font-size:1.2rem;letter-spacing:-.04em;color:var(--text)">CARE<span style="color:var(--accent)">.</span></a>
   <div style="flex:1"></div>
   <nav style="display:flex;gap:24px;align-items:center">
-    <a href="index.html" style="color:inherit;text-decoration:none;font-weight:600;font-size:.9rem;color:var(--muted)">Home</a>
-    <a href="services.html" style="color:inherit;text-decoration:none;font-weight:700;font-size:.9rem;color:var(--accent)">Services</a>
-    <a href="about.html" style="color:inherit;text-decoration:none;font-weight:600;font-size:.9rem;color:var(--muted)">About</a>
-    <a href="portfolio.html" style="color:inherit;text-decoration:none;font-weight:600;font-size:.9rem;color:var(--muted)">Portfolio</a>
-    <a href="contact.html" style="color:inherit;text-decoration:none;font-weight:600;font-size:.9rem;color:var(--muted)">Contact</a>
+    <a href="index.php" style="color:inherit;text-decoration:none;font-weight:600;font-size:.9rem;color:var(--muted)">Home</a>
+    <a href="services.php" style="color:inherit;text-decoration:none;font-weight:700;font-size:.9rem;color:var(--accent)">Services</a>
+    <a href="about.php" style="color:inherit;text-decoration:none;font-weight:600;font-size:.9rem;color:var(--muted)">About</a>
+    <a href="portfolio.php" style="color:inherit;text-decoration:none;font-weight:600;font-size:.9rem;color:var(--muted)">Portfolio</a>
+    <a href="contact.php" style="color:inherit;text-decoration:none;font-weight:600;font-size:.9rem;color:var(--muted)">Contact</a>
   </nav>
-  <a href="contact.html" class="btn btn-primary" style="padding:10px 20px;font-size:.85rem">Start a Project</a>
+  <a href="contact.php" class="btn btn-primary" style="padding:10px 20px;font-size:.85rem">Start a Project</a>
   <button id="themeToggle" style="background:transparent;border:none;cursor:pointer;padding:8px;border-radius:8px" aria-label="Toggle theme">
     <svg class="icon" viewBox="0 0 24 24"><path d="M20.5 15.2A8.5 8.5 0 0 1 8.8 3.5 8.6 8.6 0 1 0 20.5 15.2Z"/></svg>
   </button>
@@ -872,7 +880,7 @@ footer {
           <h1 id="services-hero-title" class="services-hero-title">Digital Solutions That Move Your Business Forward</h1>
           <p class="services-hero-description">From professional websites and creative branding to software development and technology consulting, CARE Digital Solutions helps transform business ideas into practical digital experiences.</p>
           <div class="services-hero-actions">
-            <a href="contact.html" class="btn btn-primary">Discuss Your Project <svg class="icon" viewBox="0 0 24 24"><path d="M7 17 17 7M7 7h10v10"/></svg></a>
+            <a href="contact.php" class="btn btn-primary">Discuss Your Project <svg class="icon" viewBox="0 0 24 24"><path d="M7 17 17 7M7 7h10v10"/></svg></a>
             <a href="#services-overview" class="btn btn-secondary">Explore Our Services <svg class="icon" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
           </div>
         </div>
@@ -910,150 +918,12 @@ footer {
 
       <!-- Services Grid -->
       <div class="services-grid">
-        <!-- Service 1: Website Design -->
-        <article class="service-card reveal" data-category="development">
-          <div class="service-icon">
-            <svg class="icon" viewBox="0 0 24 24" style="width:28px;height:28px"><rect x="3" y="4" width="18" height="15" rx="2"/><path d="M8 22h8M12 19v3M7 9h10M7 13h6"/></svg>
-          </div>
-          <h3 class="service-title">Website Design & Development</h3>
-          <p class="service-description">Professional, responsive websites designed to strengthen business presence, communicate value, and provide excellent user experiences.</p>
-          <div class="service-capabilities">
-            <div class="capability">Corporate websites</div>
-            <div class="capability">Landing pages</div>
-            <div class="capability">Portfolio websites</div>
-            <div class="capability">Responsive web interfaces</div>
-            <div class="capability">Website redesigns</div>
-            <div class="capability">User-focused digital experiences</div>
-          </div>
-          <a href="contact.html" class="service-link">Discuss This Service <svg class="icon" viewBox="0 0 24 24" style="width:16px;height:16px"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
-        </article>
-
-        <!-- Service 2: Software Development -->
-        <article class="service-card reveal" data-category="development">
-          <div class="service-icon">
-            <svg class="icon" viewBox="0 0 24 24" style="width:28px;height:28px"><path d="M12 20V10M18 20V4M6 20v-4"/></svg>
-          </div>
-          <h3 class="service-title">Software Development & Business Systems</h3>
-          <p class="service-description">Custom digital applications and business systems designed to improve processes, organize information, and support business operations.</p>
-          <div class="service-capabilities">
-            <div class="capability">Custom web applications</div>
-            <div class="capability">Business management systems</div>
-            <div class="capability">Workflow solutions</div>
-            <div class="capability">Database-driven applications</div>
-            <div class="capability">System integrations</div>
-            <div class="capability">Business process digitization</div>
-          </div>
-          <a href="contact.html" class="service-link">Discuss This Service <svg class="icon" viewBox="0 0 24 24" style="width:16px;height:16px"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
-        </article>
-
-        <!-- Service 3: AI & Digital Innovation -->
-        <article class="service-card reveal" data-category="ict">
-          <div class="service-icon">
-            <svg class="icon" viewBox="0 0 24 24" style="width:28px;height:28px"><path d="M12 2a10 10 0 1 0 10 10 4 4 0 0 1-5-5 4 4 0 0 1-5-5"/><path d="M8.5 8.5v.01M16 15.5v.01M12 12v.01"/></svg>
-          </div>
-          <h3 class="service-title">Artificial Intelligence & Digital Innovation</h3>
-          <p class="service-description">Practical exploration of AI and emerging technologies to support productivity, automation, and innovative digital experiences.</p>
-          <div class="service-capabilities">
-            <div class="capability">AI-assisted workflows</div>
-            <div class="capability">Intelligent digital features</div>
-            <div class="capability">Business process automation concepts</div>
-            <div class="capability">AI integration planning</div>
-            <div class="capability">Digital innovation consulting</div>
-            <div class="capability">Technology exploration and prototyping</div>
-          </div>
-          <a href="contact.html" class="service-link">Discuss This Service <svg class="icon" viewBox="0 0 24 24" style="width:16px;height:16px"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
-        </article>
-
-        <!-- Service 4: Graphic Design -->
-        <article class="service-card reveal" data-category="creative">
-          <div class="service-icon">
-            <svg class="icon" viewBox="0 0 24 24" style="width:28px;height:28px"><path d="M12 3v18M3 12h18"/><circle cx="12" cy="12" r="8"/><path d="m8 8 8 8m0-8-8 8"/></svg>
-          </div>
-          <h3 class="service-title">Graphic Design & Brand Identity</h3>
-          <p class="service-description">Creative visual communication that helps businesses establish a recognizable, consistent, and professional brand identity.</p>
-          <div class="service-capabilities">
-            <div class="capability">Logo design</div>
-            <div class="capability">Visual identity development</div>
-            <div class="capability">Posters and flyers</div>
-            <div class="capability">Banners and brochures</div>
-            <div class="capability">Business cards</div>
-            <div class="capability">Social media graphics</div>
-          </div>
-          <a href="contact.html" class="service-link">Discuss This Service <svg class="icon" viewBox="0 0 24 24" style="width:16px;height:16px"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
-        </article>
-
-        <!-- Service 5: Printing Services -->
-        <article class="service-card reveal" data-category="printing">
-          <div class="service-icon">
-            <svg class="icon" viewBox="0 0 24 24" style="width:28px;height:28px"><path d="M6 9V2h12V9"/><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><path d="M6 14h12v8H6z"/></svg>
-          </div>
-          <h3 class="service-title">Printing & Branding Services</h3>
-          <p class="service-description">Professional printing and branding solutions for businesses, organizations, events, and promotional activities.</p>
-          <div class="service-capabilities">
-            <div class="capability">Printed promotional materials</div>
-            <div class="capability">Branded business stationery</div>
-            <div class="capability">Signage and banners</div>
-            <div class="capability">Merchandise design</div>
-            <div class="capability">Branded apparel design</div>
-            <div class="capability">Marketing and event materials</div>
-          </div>
-          <a href="contact.html" class="service-link">Discuss This Service <svg class="icon" viewBox="0 0 24 24" style="width:16px;height:16px"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
-        </article>
-
-        <!-- Service 6: Stationery -->
-        <article class="service-card reveal" data-category="printing">
-          <div class="service-icon">
-            <svg class="icon" viewBox="0 0 24 24" style="width:28px;height:28px"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2Z"/></svg>
-          </div>
-          <h3 class="service-title">Stationery & Office Supplies</h3>
-          <p class="service-description">Essential office stationery and business supplies to support everyday administrative and professional activities.</p>
-          <div class="service-capabilities">
-            <div class="capability">Office stationery</div>
-            <div class="capability">Writing materials</div>
-            <div class="capability">Printing supplies</div>
-            <div class="capability">Business documents</div>
-            <div class="capability">Office essentials</div>
-            <div class="capability">Related stationery products</div>
-          </div>
-          <a href="contact.html" class="service-link">Discuss This Service <svg class="icon" viewBox="0 0 24 24" style="width:16px;height:16px"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
-        </article>
-
-        <!-- Service 7: ICT Support -->
-        <article class="service-card reveal" data-category="ict">
-          <div class="service-icon">
-            <svg class="icon" viewBox="0 0 24 24" style="width:28px;height:28px"><path d="M18 10h-1.26A8 8 0 1 0 9 20h9a5 5 0 0 0 0-10z"/></svg>
-          </div>
-          <h3 class="service-title">ICT Support & Consultancy</h3>
-          <p class="service-description">Technology assistance and practical guidance to help businesses maintain reliable systems and make informed technology decisions.</p>
-          <div class="service-capabilities">
-            <div class="capability">Technical troubleshooting</div>
-            <div class="capability">Software installation</div>
-            <div class="capability">Basic system configuration</div>
-            <div class="capability">Technology guidance</div>
-            <div class="capability">ICT support</div>
-            <div class="capability">Digital improvement consulting</div>
-          </div>
-          <a href="contact.html" class="service-link">Discuss This Service <svg class="icon" viewBox="0 0 24 24" style="width:16px;height:16px"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
-        </article>
-
-        <!-- Service 8: Multimedia -->
-        <article class="service-card reveal" data-category="creative">
-          <div class="service-icon">
-            <svg class="icon" viewBox="0 0 24 24" style="width:28px;height:28px"><rect x="2" y="2" width="20" height="20" rx="2.18" ry="2.18"/><line x1="7" y1="2" x2="7" y2="22"/><line x1="17" y1="2" x2="17" y2="22"/><line x1="2" y1="12" x2="22" y2="12"/><line x1="2" y1="7" x2="7" y2="7"/><line x1="2" y1="17" x2="7" y2="17"/><line x1="17" y1="17" x2="22" y2="17"/><line x1="17" y1="7" x2="22" y2="7"/></svg>
-          </div>
-          <h3 class="service-title">Multimedia & Video Editing</h3>
-          <p class="service-description">Engaging multimedia content designed to communicate ideas, promote brands, and tell compelling visual stories.</p>
-          <div class="service-capabilities">
-            <div class="capability">Video editing</div>
-            <div class="capability">Promotional videos</div>
-            <div class="capability">Digital content production</div>
-            <div class="capability">Motion graphics</div>
-            <div class="capability">Social media video content</div>
-            <div class="capability">Visual storytelling</div>
-          </div>
-          <a href="contact.html" class="service-link">Discuss This Service <svg class="icon" viewBox="0 0 24 24" style="width:16px;height:16px"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
-        </article>
+        <?php care_render_service_cards($services); ?>
       </div>
+
+      <?php if (!$services): ?>
+        <p class="section-description" style="text-align:center">Our service list is being updated. Please check back shortly.</p>
+      <?php endif; ?>
     </section>
 
     <!-- Our Approach -->
@@ -1212,8 +1082,8 @@ footer {
         <h2 class="cta-title">Let's Find the Right Digital Solution for Your Business.</h2>
         <p class="cta-description">Tell us what you want to achieve, and let's explore a solution that fits your goals.</p>
         <div class="cta-actions">
-          <a href="contact.html" class="btn btn-primary">Discuss Your Project <svg class="icon" viewBox="0 0 24 24"><path d="M7 17 17 7M7 7h10v10"/></svg></a>
-          <a href="contact.html" class="btn btn-secondary">Contact Us <svg class="icon" viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><path d="M22 6l-10 7L2 6"/></svg></a>
+          <a href="contact.php" class="btn btn-primary">Discuss Your Project <svg class="icon" viewBox="0 0 24 24"><path d="M7 17 17 7M7 7h10v10"/></svg></a>
+          <a href="contact.php" class="btn btn-secondary">Contact Us <svg class="icon" viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><path d="M22 6l-10 7L2 6"/></svg></a>
         </div>
       </div>
     </section>
@@ -1230,11 +1100,11 @@ footer {
       <div>
         <div class="footer-heading">Quick Links</div>
         <div class="footer-links">
-          <a href="index.html" class="footer-link">Home</a>
-          <a href="services.html" class="footer-link">Services</a>
-          <a href="about.html" class="footer-link">About</a>
-          <a href="portfolio.html" class="footer-link">Portfolio</a>
-          <a href="contact.html" class="footer-link">Contact</a>
+          <a href="index.php" class="footer-link">Home</a>
+          <a href="services.php" class="footer-link">Services</a>
+          <a href="about.php" class="footer-link">About</a>
+          <a href="portfolio.php" class="footer-link">Portfolio</a>
+          <a href="contact.php" class="footer-link">Contact</a>
         </div>
       </div>
       <div>
@@ -1249,9 +1119,9 @@ footer {
       <div>
         <div class="footer-heading">Contact</div>
         <div class="footer-links">
-          <a href="mailto:info@caredigitalsolutions.co.tz" class="footer-link" style="color:var(--accent-2);font-weight:600">info@caredigitalsolutions.co.tz</a>
-          <a href="https://wa.me/255613516832" class="footer-link">WhatsApp: 0613 516 832</a>
-          <a href="https://wa.me/255743939008" class="footer-link">WhatsApp: 0743 939 008</a>
+          <a href="mailto:<?= e(setting('site_email')) ?>" class="footer-link" style="color:var(--accent-2);font-weight:600"><?= e(setting('site_email')) ?></a>
+          <a href="<?= e(whatsapp_link(setting('whatsapp_1'))) ?>" class="footer-link">WhatsApp: <?= e(phone_display(setting('site_phone_1'))) ?></a>
+          <a href="<?= e(whatsapp_link(setting('whatsapp_2'))) ?>" class="footer-link">WhatsApp: <?= e(phone_display(setting('site_phone_2'))) ?></a>
           <span class="footer-link" style="color:rgba(255,255,255,.7)">Tanzania</span>
         </div>
       </div>

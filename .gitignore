@@ -1,0 +1,12 @@
+# Local environment secrets — never commit
+.env
+.php.ini.backup-*
+
+# Editors / OS
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
+
+# Logs
+*.log
